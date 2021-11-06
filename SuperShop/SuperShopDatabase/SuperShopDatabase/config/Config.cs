@@ -11,7 +11,8 @@ namespace SuperShopDatabase.config
     class Config
     {
         //salam deyisdim
-	//QESHEEEEY	
+	//QESHEEEEY
+        //yaxciiiii	
 
         private readonly string connectionConfigFilePath = "database_connection.xml";
         
