@@ -8,7 +8,7 @@ namespace SuperShopDatabase.entity
 {
     class Admin
     {
-        private int? id;
+        private int id;
         private string name;
         private string surname;
         private string email;

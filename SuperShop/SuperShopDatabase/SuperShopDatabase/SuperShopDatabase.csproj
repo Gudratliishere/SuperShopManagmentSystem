@@ -61,6 +61,7 @@
     <Compile Include="dao\inter\AbstractDAO.cs" />
     <Compile Include="dao\inter\IAdminDAO.cs" />
     <Compile Include="entity\Admin.cs" />
+    <Compile Include="entity\Operator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

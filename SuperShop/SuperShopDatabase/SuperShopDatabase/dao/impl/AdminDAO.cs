@@ -1,4 +1,6 @@
-﻿using SuperShopDatabase.dao.inter;
+﻿using MySql.Data.MySqlClient;
+using SuperShopDatabase.config;
+using SuperShopDatabase.dao.inter;
 using SuperShopDatabase.entity;
 using System;
 using System.Collections.Generic;
@@ -10,8 +12,15 @@ namespace SuperShopDatabase.dao.impl
 {
     class AdminDAO : AbstractDAO, IAdminDAO
     {
+
+
         public Admin AddAdmin (Admin admin)
         {
+            string query = "INSERT INTO `supershop`(`name`,`surname`,`email`,`password`,`phone`,`status`) " +
+                "VALUES (@name,@surname,@email,@password,@phone,@status)";
+            /*
+             bura yaz gorey nece connect eliyirik
+            */
             throw new NotImplementedException();
         }
 
