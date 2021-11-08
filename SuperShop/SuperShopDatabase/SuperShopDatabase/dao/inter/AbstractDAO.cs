@@ -17,6 +17,7 @@ namespace SuperShopDatabase.dao.inter
 
         public static MySqlConnection Connect ()
         {
+
             var con = new MySqlConnection(connection.GenerateString());
             con.Open();
             return con;
