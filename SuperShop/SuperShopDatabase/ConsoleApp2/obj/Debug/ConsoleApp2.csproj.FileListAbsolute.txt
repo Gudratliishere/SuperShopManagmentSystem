@@ -1,6 +1,0 @@
-G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\ConsoleApp2\bin\Debug\ConsoleApp2.exe.config
-G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\ConsoleApp2\bin\Debug\ConsoleApp2.exe
-G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
-G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
-G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\ConsoleApp2\obj\Debug\ConsoleApp2.exe
-G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\ConsoleApp2\obj\Debug\ConsoleApp2.pdb
