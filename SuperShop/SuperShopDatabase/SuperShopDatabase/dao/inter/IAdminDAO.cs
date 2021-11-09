@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuperShopDatabase.dao.inter
 {
-    interface IAdminDAO
+    public interface IAdminDAO
     {
         Admin GetAdminById (int id);
         Admin GetAdminByEmail (string email);

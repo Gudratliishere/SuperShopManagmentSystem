@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperShopDatabase.entity
 {
-    class Admin
+    public class Admin
     {
         private int id;
         private string name;
@@ -56,6 +56,12 @@ namespace SuperShopDatabase.entity
         {
             get => status;
             set => status = value;
+        }
+
+        public override string ToString ()
+        {
+            return String.Format("Admin({0}, {1}, {2}, {3}, {4}, {5}, {6})", id, name, surname, email, password, 
+                phone, status);
         }
     }
 }

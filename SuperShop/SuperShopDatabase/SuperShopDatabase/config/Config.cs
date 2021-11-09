@@ -8,11 +8,8 @@ using System.Xml;
 
 namespace SuperShopDatabase.config
 {
-    class Config
+    public class Config
     {
-        //salam deyisdim
-	//QESHEEEEY
-        //yaxciiiii	
 
         private readonly string connectionConfigFilePath = "database_connection.xml";
         
@@ -28,7 +25,12 @@ namespace SuperShopDatabase.config
                         FillConnectionWithXml(connection, xml);
             }
             else
+            {
+                var file = File.Create(connectionConfigFilePath);
+                file.Close();
+
                 FillConnectionWithDefault(connection);
+            }
 
             return connection;
         }
@@ -49,6 +51,7 @@ namespace SuperShopDatabase.config
             xml.WriteElementString("username", connection.Encrypt(connection.Username));
             xml.WriteElementString("password", connection.Encrypt(connection.Password));
             xml.WriteElementString("database", connection.Database);
+            xml.WriteElementString("crypt_power", connection.CryptPower.ToString());
             xml.WriteEndElement();
             xml.WriteEndDocument();
             xml.Close();
@@ -72,6 +75,9 @@ namespace SuperShopDatabase.config
                     break;
                 case "database":
                     connection.Database = xml.ReadString();
+                    break;
+                case "crypto_power":
+                    connection.CryptPower = Int32.Parse(xml.ReadString());
                     break;
             }
         }

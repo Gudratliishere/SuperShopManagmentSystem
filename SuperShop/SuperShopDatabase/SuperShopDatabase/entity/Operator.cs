@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperShopDatabase.entity
 {
-    class Operator
+    public class Operator
     {
         private int id;
         private string name;
@@ -14,7 +14,6 @@ namespace SuperShopDatabase.entity
         private string email;
         private string password;
         private string phone;
-        private bool status;
 
         public int Id { get => id; set => id = value; }
 
@@ -28,6 +27,10 @@ namespace SuperShopDatabase.entity
 
         public string Phone { get => phone; set => phone = value; }
 
-        public bool Status { get => status; set => status = value; }
+        public override string ToString ()
+        {
+            return String.Format("Operator({0}, {1}, {2}, {3}, {4}, {5})", id, name, surname, email, password,
+                phone);
+        }
     }
 }

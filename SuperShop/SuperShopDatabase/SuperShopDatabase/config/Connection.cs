@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperShopDatabase.config
 {
-    class Connection
+    public class Connection
     {
         private string host;
         private string port;
@@ -54,7 +54,7 @@ namespace SuperShopDatabase.config
         public string GenerateString ()
         {
             var connectionString = String.Format("host = {0}; port = {1}; username = {2}; password = {3}; " +
-                "database = {4}", host, port, username, password, database);
+                "database = {4}", host, port, Decrypt(username), Decrypt(password), database);
             return connectionString;
         }
 
@@ -62,7 +62,7 @@ namespace SuperShopDatabase.config
         {
             var sb = new StringBuilder();
             foreach (char c in data)
-                sb.Append(c + cryptPower);
+                sb.Append((char) (c + cryptPower));
 
             return sb.ToString();
         }
@@ -71,7 +71,7 @@ namespace SuperShopDatabase.config
         {
             var sb = new StringBuilder();
             foreach (char c in data)
-                sb.Append(c - cryptPower);
+                sb.Append((char) (c - cryptPower));
 
             return sb.ToString();
         }
