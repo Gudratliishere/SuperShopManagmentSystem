@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using SuperShopDatabase.config;
+using SuperShopDatabase.Config;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Entity;
 using System;
@@ -12,12 +12,12 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class ProductKindDAO : IProductKindDAO
     {
-        private Config config;
+        private Configuration config;
         private Connection connection;
 
-        public ProductKindDAO ()
+        private ProductKindDAO ()
         {
-            config = new Config();
+            config = Configuration.GetConfig();
             connection = config.GetConnection();
         }
         

@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using SuperShopDatabase.config;
+using SuperShopDatabase.Config;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Entity;
 using System;
@@ -10,22 +10,23 @@ using System.Threading.Tasks;
 
 namespace SuperShopDatabase.Dao.Impl
 {
-    public class ProductCompanyDAO : Inter.ProductCompanyDAO
+    public class ProductCompanyDAO : IProductCompanyDAO
     {
-        private Config config;
+        private Configuration config;
         private Connection connection;
 
-        public ProductCompanyDAO ()
+        private ProductCompanyDAO ()
         {
-            config = new Config();
+            config = Configuration.GetConfig();
             connection = config.GetConnection();
         }
 
         public ProductCompany AddProductCompany (ProductCompany company)
         {
-            string query = String.Format("insert into product_company (name, email, phone, begin_date, end_date) " +
-                "values ('{0}', '{1}', '{2}', '{3}', '{4}'); select LAST_INSERT_ID();", company.Name, company.Email,
-                company.Phone, company.BeginDate.ToString("yyyy-MM-dd"), company.EndDate.ToString("yyyy-MM-dd"));
+            string query = String.Format("insert into product_company (name, email, phone, begin_date, end_date, " +
+                "last_come_date) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}'); select LAST_INSERT_ID();", 
+                company.Name, company.Email, company.Phone, company.BeginDate.ToString("yyyy-MM-dd"), 
+                company.EndDate.ToString("yyyy-MM-dd"), company.LastComeDate.ToString("yyyy-MM-dd"));
 
             try
             {
@@ -122,6 +123,7 @@ namespace SuperShopDatabase.Dao.Impl
             company.Phone = mdr.GetString(mdr.GetOrdinal("phone"));
             company.BeginDate = DateTime.Parse(mdr.GetString(mdr.GetOrdinal("begin_date")));
             company.EndDate = DateTime.Parse(mdr.GetString(mdr.GetOrdinal("end_date")));
+            company.LastComeDate = DateTime.Parse(mdr.GetString(mdr.GetOrdinal("last_come_date")));
         }
 
         public ProductCompany RemoveProductCompany (ProductCompany company)
@@ -149,8 +151,9 @@ namespace SuperShopDatabase.Dao.Impl
         public ProductCompany UpdateProductCompany (ProductCompany company)
         {
             string query = String.Format("update product_company set name = '{0}', email = '{1}', phone = '{2}', " +
-                "begin_date = '{3}', end_date = '{4}' where id = {5}", company.Name, company.Email, company.Phone, 
-                company.BeginDate.ToString("yyyy-MM-dd"), company.EndDate.ToString("yyyy-MM-dd"), company.Id);
+                "begin_date = '{3}', end_date = '{4}', last_come_date = '{5}' where id = {6}", company.Name, 
+                company.Email, company.Phone, company.BeginDate.ToString("yyyy-MM-dd"), 
+                company.EndDate.ToString("yyyy-MM-dd"), company.LastComeDate.ToString("yyyy-MM-dd"), company.Id);
 
             try
             {

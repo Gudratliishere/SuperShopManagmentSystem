@@ -55,23 +55,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\Config.cs" />
+    <Compile Include="Config\Configuration.cs" />
     <Compile Include="Config\Connection.cs" />
+    <Compile Include="Config\Context.cs" />
     <Compile Include="Dao\Impl\AdminDAO.cs" />
     <Compile Include="Dao\Impl\OperatorDAO.cs" />
     <Compile Include="Dao\Impl\ProductCompanyDAO.cs" />
     <Compile Include="Dao\Impl\ProductKindDAO.cs" />
+    <Compile Include="Dao\Impl\ProductNumberDAO.cs" />
     <Compile Include="Dao\Inter\IAdminDAO.cs" />
+    <Compile Include="Dao\Inter\IBarcodeDAO.cs" />
     <Compile Include="Dao\Inter\IOperatorDAO.cs" />
     <Compile Include="Dao\Inter\IProductKindDAO.cs" />
     <Compile Include="Dao\Inter\IProductNumberDAO.cs" />
     <Compile Include="Dao\Inter\IProductCompanyDAO.cs" />
+    <Compile Include="Dao\Inter\IProductScalesDAO.cs" />
     <Compile Include="Dao\Inter\IProductWeightDAO.cs" />
     <Compile Include="Entity\Admin.cs" />
+    <Compile Include="Entity\Barcode.cs" />
     <Compile Include="Entity\Operator.cs" />
     <Compile Include="Entity\ProductCompany.cs" />
     <Compile Include="Entity\ProductKind.cs" />
     <Compile Include="Entity\ProductNumber.cs" />
+    <Compile Include="Entity\ProductScales.cs" />
     <Compile Include="Entity\ProductWeight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

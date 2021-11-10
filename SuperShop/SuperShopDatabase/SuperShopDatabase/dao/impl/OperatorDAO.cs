@@ -1,7 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
-using SuperShopDatabase.config;
+using SuperShopDatabase.Config;
 using SuperShopDatabase.Dao.Inter;
-using SuperShopDatabase.entity;
+using SuperShopDatabase.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +12,12 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class OperatorDAO : IOperatorDAO
     {
-        private Config config;
+        private Configuration config;
         private Connection connection;
 
-        public OperatorDAO ()
+        private OperatorDAO ()
         {
-            config = new Config();
+            config = Configuration.GetConfig();
             connection = config.GetConnection();
         }
 

@@ -1,4 +1,4 @@
-﻿using SuperShopDatabase.entity;
+﻿using SuperShopDatabase.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuperShopDatabase.Dao.Inter
 {
-    public interface ProductCompanyDAO
+    public interface IProductCompanyDAO
     {
         List<ProductCompany> GetAll ();
         ProductCompany GetProductCompanyById (int id);

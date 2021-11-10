@@ -13,6 +13,7 @@ namespace SuperShopDatabase.Entity
         private double arrivalPrice;
         private double salePrice;
         private int number;
+        private DateTime lastComeDate;
         private ProductCompany company;
         private ProductKind kind;
 
@@ -26,14 +27,16 @@ namespace SuperShopDatabase.Entity
 
         public int Number { get => number; set => number = value; }
 
+        public DateTime LastComeDate { get => lastComeDate; set => lastComeDate = value; }
+
         public ProductCompany Company { get => company; set => company = value; }
 
         public ProductKind Kind { get => kind; set => kind = value; }
 
         public override string ToString ()
         {
-            return String.Format("ProductNumber({0}, {1}, {2}, {3}, {4}, {5}, {6})", id, name, arrivalPrice, 
-                salePrice, number, company, kind);
+            return String.Format("ProductNumber({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})", id, name, arrivalPrice, 
+                salePrice, number, company, kind, lastComeDate);
         }
     }
 }

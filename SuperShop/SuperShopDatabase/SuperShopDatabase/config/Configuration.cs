@@ -6,17 +6,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace SuperShopDatabase.config
+namespace SuperShopDatabase.Config
 {
-    public class Config
+    public class Configuration
     {
 
         private readonly string connectionConfigFilePath = "database_connection.xml";
+        private Connection connection = null;
+
+        private static Configuration config = null;
+
+        private Configuration () { }
+
+        public static Configuration GetConfig ()
+        {
+            if (config == null)
+                config = new Configuration();
+
+            return config;
+        }
         
         public Connection GetConnection ()
         {
-            Connection connection = new Connection();
+            if (connection != null)
+                return connection;
 
+            connection = new Connection();
+            
             if (File.Exists(connectionConfigFilePath))
             {
                 var xml = XmlReader.Create(connectionConfigFilePath);

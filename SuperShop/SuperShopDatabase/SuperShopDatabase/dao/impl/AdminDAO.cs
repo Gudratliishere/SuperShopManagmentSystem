@@ -1,24 +1,24 @@
 ﻿using MySql.Data.MySqlClient;
-using SuperShopDatabase.config;
-using SuperShopDatabase.dao.inter;
-using SuperShopDatabase.entity;
+using SuperShopDatabase.Config;
+using SuperShopDatabase.Dao.Inter;
+using SuperShopDatabase.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperShopDatabase.dao.impl
+namespace SuperShopDatabase.Dao.Impl
 {
     public class AdminDAO : IAdminDAO
     {
 
-        private Config config;
+        private Configuration config;
         private Connection connection;
 
-        public AdminDAO ()
+        private AdminDAO ()
         {
-            config = new Config();
+            config = Configuration.GetConfig();
             connection = config.GetConnection();
         }
 
