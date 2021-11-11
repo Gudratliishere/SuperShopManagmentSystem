@@ -16,7 +16,7 @@ namespace SuperShopDatabase.Dao.Impl
         private Configuration config;
         private Connection connection;
 
-        private AdminDAO ()
+        public AdminDAO ()
         {
             config = Configuration.GetConfig();
             connection = config.GetConnection();

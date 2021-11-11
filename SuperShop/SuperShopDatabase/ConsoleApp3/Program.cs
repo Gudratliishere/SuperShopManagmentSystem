@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SuperShopDatabase.Config;
 using SuperShopDatabase.Dao.Impl;
 using SuperShopDatabase.Entity;
 
@@ -12,20 +9,27 @@ namespace ConsoleApp3
     {
         static void Main (string[] args)
         {
+            var productCompanyDAO = Context.GetProductCompanyDAO();
+            ProductCompany company = productCompanyDAO.GetProductCompanyById(9);
 
-            ProductCompany company = new ProductCompany()
+            var kindDao = Context.GetProductKindDAO();
+            var kind = kindDao.GetProductKindById(2);
+
+            ProductNumber product = new ProductNumber()
             {
-                Name = "veyseloglu",
-                Email = "veyseloglu@gmail.com",
-                Phone = "45465",
-                BeginDate = DateTime.Parse("2023-03-20").ToLocalTime(),
-                EndDate = DateTime.Now
+                Name = "kent 8",
+                ArrivalPrice = 3.4,
+                SalePrice = 3.8,
+                Number = 100,
+                LastComeDate = DateTime.Parse("2021-11-05"),
+                Company = company,
+                Kind = kind
             };
 
-            var dao = new ProductCompanyDAO();
-            company = dao.AddProductCompany(company);
+            var dao = Context.GetProductNumberDAO();
+            product = dao.AddProductNumber(product);
 
-            Console.WriteLine(company);
+            Console.WriteLine(product);
             Console.Read();
         }
     }
