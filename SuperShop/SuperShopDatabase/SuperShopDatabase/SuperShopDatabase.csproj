@@ -63,6 +63,7 @@
     <Compile Include="Dao\Impl\ProductCompanyDAO.cs" />
     <Compile Include="Dao\Impl\ProductKindDAO.cs" />
     <Compile Include="Dao\Impl\ProductNumberDAO.cs" />
+    <Compile Include="Dao\Impl\ProductWeightDAO.cs" />
     <Compile Include="Dao\Inter\IAdminDAO.cs" />
     <Compile Include="Dao\Inter\IBarcodeDAO.cs" />
     <Compile Include="Dao\Inter\IOperatorDAO.cs" />

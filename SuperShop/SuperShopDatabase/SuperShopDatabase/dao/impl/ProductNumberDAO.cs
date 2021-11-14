@@ -122,8 +122,8 @@ namespace SuperShopDatabase.Dao.Impl
         {
             productNumber.Id = Int32.Parse(mdr.GetString(mdr.GetOrdinal("id")));
             productNumber.Name = mdr.GetString(mdr.GetOrdinal("name"));
-            productNumber.ArrivalPrice = Double.Parse(mdr.GetString(mdr.GetOrdinal("arrival_price")));
-            productNumber.SalePrice = Double.Parse(mdr.GetString(mdr.GetOrdinal("sale_price")));
+            productNumber.ArrivalPrice = Double.Parse(mdr.GetString(mdr.GetOrdinal("arrival_price")).Replace('.', ','));
+            productNumber.SalePrice = Double.Parse(mdr.GetString(mdr.GetOrdinal("sale_price")).Replace('.', ','));
             productNumber.Number = Int32.Parse(mdr.GetString(mdr.GetOrdinal("number")));
             productNumber.LastComeDate = DateTime.Parse(mdr.GetString(mdr.GetOrdinal("last_come_date")));
 

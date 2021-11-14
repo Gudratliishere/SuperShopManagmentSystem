@@ -74,6 +74,9 @@ namespace SuperShopDatabase.Config
 
         public static IProductWeightDAO GetProductWeightDAO ()
         {
+            if (productWeightDAO == null)
+                productWeightDAO = new ProductWeightDAO();
+
             return productWeightDAO;
         }
     }

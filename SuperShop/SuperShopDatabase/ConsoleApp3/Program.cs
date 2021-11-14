@@ -9,25 +9,23 @@ namespace ConsoleApp3
     {
         static void Main (string[] args)
         {
-            var productCompanyDAO = Context.GetProductCompanyDAO();
-            ProductCompany company = productCompanyDAO.GetProductCompanyById(9);
-
+            var companyDao = Context.GetProductCompanyDAO();
             var kindDao = Context.GetProductKindDAO();
-            var kind = kindDao.GetProductKindById(2);
 
-            ProductNumber product = new ProductNumber()
+            ProductWeight product = new ProductWeight()
             {
-                Name = "kent 8",
-                ArrivalPrice = 3.4,
-                SalePrice = 3.8,
-                Number = 100,
-                LastComeDate = DateTime.Parse("2021-11-05"),
-                Company = company,
-                Kind = kind
+                Name = "pesox",
+                ArrivalPrice = 0.92,
+                SalePrice = 1.02,
+                Weight = 100,
+                LastComeDate = DateTime.Parse("2021-10-25"),
+                Company = companyDao.GetProductCompanyById(9),
+                Kind = kindDao.GetProductKindById(2)
             };
 
-            var dao = Context.GetProductNumberDAO();
-            product = dao.AddProductNumber(product);
+            var dao = Context.GetProductWeightDAO();
+            product = dao.GetProductWeightById(1);
+            product = dao.RemoveProductWeight(product);
 
             Console.WriteLine(product);
             Console.Read();
