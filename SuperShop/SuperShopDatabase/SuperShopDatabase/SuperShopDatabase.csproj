@@ -59,10 +59,12 @@
     <Compile Include="Config\Connection.cs" />
     <Compile Include="Config\Context.cs" />
     <Compile Include="Dao\Impl\AdminDAO.cs" />
+    <Compile Include="Dao\Impl\BarcodeDAO.cs" />
     <Compile Include="Dao\Impl\OperatorDAO.cs" />
     <Compile Include="Dao\Impl\ProductCompanyDAO.cs" />
     <Compile Include="Dao\Impl\ProductKindDAO.cs" />
     <Compile Include="Dao\Impl\ProductNumberDAO.cs" />
+    <Compile Include="Dao\Impl\ProductScalesDAO.cs" />
     <Compile Include="Dao\Impl\ProductWeightDAO.cs" />
     <Compile Include="Dao\Inter\IAdminDAO.cs" />
     <Compile Include="Dao\Inter\IBarcodeDAO.cs" />

@@ -29,8 +29,8 @@ namespace SuperShopDatabase.Config
 
         public static IBarcodeDAO GetBarcodeDAO ()
         {
-            //if (barcodeDAO == null)
-            //    barcodeDAO = new BA();
+            if (barcodeDAO == null)
+                barcodeDAO = new BarcodeDAO();
 
             return barcodeDAO;
         }
@@ -69,6 +69,9 @@ namespace SuperShopDatabase.Config
 
         public static IProductScalesDAO GetProductScalesDAO ()
         {
+            if (productScalesDAO == null)
+                productScalesDAO = new ProductScalesDAO();
+
             return productScalesDAO;
         }
 

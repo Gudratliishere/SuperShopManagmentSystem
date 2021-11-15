@@ -9,25 +9,20 @@ namespace ConsoleApp3
     {
         static void Main (string[] args)
         {
-            var companyDao = Context.GetProductCompanyDAO();
-            var kindDao = Context.GetProductKindDAO();
+            var scalesDAO = Context.GetProductScalesDAO();
+            var numberDAO = Context.GetProductNumberDAO();
 
-            ProductWeight product = new ProductWeight()
+            Barcode barcode = new Barcode()
             {
-                Name = "pesox",
-                ArrivalPrice = 0.92,
-                SalePrice = 1.02,
-                Weight = 100,
-                LastComeDate = DateTime.Parse("2021-10-25"),
-                Company = companyDao.GetProductCompanyById(9),
-                Kind = kindDao.GetProductKindById(2)
+                ProductNumber = numberDAO.GetProductNumberById(3)
             };
 
-            var dao = Context.GetProductWeightDAO();
-            product = dao.GetProductWeightById(1);
-            product = dao.RemoveProductWeight(product);
 
-            Console.WriteLine(product);
+            var dao = Context.GetBarcodeDAO();
+            barcode = dao.GetBarcodeById(1000000001);
+            dao.RemoveBarcode(barcode);
+
+            Console.WriteLine(barcode);
             Console.Read();
         }
     }

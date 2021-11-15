@@ -127,10 +127,10 @@ namespace SuperShopDatabase.Dao.Impl
             productNumber.Number = Int32.Parse(mdr.GetString(mdr.GetOrdinal("number")));
             productNumber.LastComeDate = DateTime.Parse(mdr.GetString(mdr.GetOrdinal("last_come_date")));
 
-            int productCompanyId = Int32.Parse(mdr.GetString(mdr.GetOrdinal("product_company")));
+            int productCompanyId = Int32.Parse(mdr.GetString(mdr.GetOrdinal("company")));
             productNumber.Company = productCompanyDAO.GetProductCompanyById(productCompanyId);
 
-            int productKindId = Int32.Parse(mdr.GetString(mdr.GetOrdinal("product_kind")));
+            int productKindId = Int32.Parse(mdr.GetString(mdr.GetOrdinal("kind")));
             productNumber.Kind = productKindDAO.GetProductKindById(productKindId);
         }
 
