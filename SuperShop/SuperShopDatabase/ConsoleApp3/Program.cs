@@ -9,20 +9,21 @@ namespace ConsoleApp3
     {
         static void Main (string[] args)
         {
-            var scalesDAO = Context.GetProductScalesDAO();
-            var numberDAO = Context.GetProductNumberDAO();
+            var workerdao = Context.GetWorkerDAO();
+            var dao = Context.GetCashierDAO();
 
-            Barcode barcode = new Barcode()
+            var cashier = new Cashier()
             {
-                ProductNumber = numberDAO.GetProductNumberById(3)
+                Name = "kassa 1",
+                Worker = workerdao.GetWorkerById(2),
             };
 
+            cashier = dao.GetCashierByWorker(workerdao.GetWorkerById(2));
+            cashier.Name = "kassa 5";
+            dao.RemoveCashier(cashier);
 
-            var dao = Context.GetBarcodeDAO();
-            barcode = dao.GetBarcodeById(1000000001);
-            dao.RemoveBarcode(barcode);
 
-            Console.WriteLine(barcode);
+            Console.WriteLine(cashier);
             Console.Read();
         }
     }

@@ -8,11 +8,11 @@ namespace SuperShopDatabase.Entity
 {
     public class Barcode
     {
-        private int id;
+        private long id;
         private ProductNumber productNumber;
         private ProductScales productScales;
 
-        public int Id { get => id; set => id = value; }
+        public long Id { get => id; set => id = value; }
 
         public ProductNumber ProductNumber { get => productNumber; set => productNumber = value; }
 

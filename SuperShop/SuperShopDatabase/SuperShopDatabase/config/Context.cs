@@ -18,6 +18,9 @@ namespace SuperShopDatabase.Config
         private static IProductNumberDAO productNumberDAO = null;
         private static IProductScalesDAO productScalesDAO = null;
         private static IProductWeightDAO productWeightDAO = null;
+        private static IWorkSectorDAO sectorDAO = null;
+        private static IWorkerDAO workerDAO = null;
+        private static ICashierDAO cashierDAO = null;
 
         public static IAdminDAO GetAdminDAO ()
         {
@@ -81,6 +84,30 @@ namespace SuperShopDatabase.Config
                 productWeightDAO = new ProductWeightDAO();
 
             return productWeightDAO;
+        }
+
+        public static IWorkSectorDAO GetWorkSectorDAO ()
+        {
+            if (sectorDAO == null)
+                sectorDAO = new WorkSectorDAO();
+
+            return sectorDAO;
+        }
+
+        public static IWorkerDAO GetWorkerDAO ()
+        {
+            if (workerDAO == null)
+                workerDAO = new WorkerDAO();
+
+            return workerDAO;
+        }
+
+        public static ICashierDAO GetCashierDAO ()
+        {
+            if (cashierDAO == null)
+                cashierDAO = new CashierDAO();
+
+            return cashierDAO;
         }
     }
 }
