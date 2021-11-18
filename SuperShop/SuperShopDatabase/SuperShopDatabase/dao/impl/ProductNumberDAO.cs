@@ -59,7 +59,7 @@ namespace SuperShopDatabase.Dao.Impl
 
         public List<ProductNumber> GetAll ()
         {
-            string query = "select * from product_company";
+            string query = "select * from product_number";
 
             try
             {
@@ -82,6 +82,70 @@ namespace SuperShopDatabase.Dao.Impl
                 }
                 return products;
             } catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public List<ProductNumber> GetAllByKind (ProductKind kind)
+        {
+            string query = String.Format("select * from product_number where kind = {0}", kind.Id);
+
+            try
+            {
+                List<ProductNumber> products = new List<ProductNumber>();
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            while (mdr.Read())
+                            {
+                                var product = new ProductNumber();
+                                FillProductNumberWithMDR(product, mdr);
+                                products.Add(product);
+                            }
+                        }
+                    }
+                }
+                return products;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public List<ProductNumber> GetAllByCompany (ProductCompany company)
+        {
+            string query = String.Format("select * from product_number where company = {0}", company.Id);
+
+            try
+            {
+                List<ProductNumber> products = new List<ProductNumber>();
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            while (mdr.Read())
+                            {
+                                var product = new ProductNumber();
+                                FillProductNumberWithMDR(product, mdr);
+                                products.Add(product);
+                            }
+                        }
+                    }
+                }
+                return products;
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;

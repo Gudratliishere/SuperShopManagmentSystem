@@ -10,6 +10,8 @@ namespace SuperShopDatabase.Dao.Inter
     public interface IProductNumberDAO
     {
         List<ProductNumber> GetAll ();
+        List<ProductNumber> GetAllByKind (ProductKind kind);
+        List<ProductNumber> GetAllByCompany (ProductCompany company);
         ProductNumber GetProductNumberById (int id);
         ProductNumber AddProductNumber (ProductNumber productNumber);
         ProductNumber UpdateProductNumber (ProductNumber productNumber);
