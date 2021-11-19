@@ -25,6 +25,11 @@ namespace SuperShopDatabase.Config
 
             return config;
         }
+
+        public void ResetConnection ()
+        {
+            connection = null;
+        }
         
         public Connection GetConnection ()
         {
@@ -41,12 +46,7 @@ namespace SuperShopDatabase.Config
                         FillConnectionWithXml(connection, xml);
             }
             else
-            {
-                var file = File.Create(connectionConfigFilePath);
-                file.Close();
-
                 FillConnectionWithDefault(connection);
-            }
 
             return connection;
         }

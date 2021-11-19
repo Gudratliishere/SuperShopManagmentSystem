@@ -9,4 +9,3 @@ G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperSh
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\obj\Debug\SuperShopDatabase.csproj.CopyComplete
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\obj\Debug\SuperShopDatabase.dll
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\obj\Debug\SuperShopDatabase.pdb
-G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\obj\Debug\SuperShopDatabase.csprojAssemblyReference.cache

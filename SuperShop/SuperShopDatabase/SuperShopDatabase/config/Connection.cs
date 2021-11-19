@@ -51,6 +51,11 @@ namespace SuperShopDatabase.Config
             set => cryptPower = value;
         }
 
+        public override string ToString ()
+        {
+            return String.Format("Connection({0}, {1}, {2}, {3}, {4})", host, port, username, password, cryptPower);
+        }
+
         public string GenerateString ()
         {
             var connectionString = String.Format("host = {0}; port = {1}; username = {2}; password = {3}; " +

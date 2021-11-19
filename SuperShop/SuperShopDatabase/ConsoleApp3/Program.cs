@@ -9,21 +9,13 @@ namespace ConsoleApp3
     {
         static void Main (string[] args)
         {
-            var workerdao = Context.GetWorkerDAO();
-            var dao = Context.GetCashierDAO();
+            var config = Configuration.GetConfig();
+            var connection = config.GetConnection();
+            var dao = Context.GetAdminDAO();
 
-            var cashier = new Cashier()
-            {
-                Name = "kassa 1",
-                Worker = workerdao.GetWorkerById(2),
-            };
+            Admin admin = dao.GetAdminByEmail("orxan@gmail.com");
 
-            cashier = dao.GetCashierByWorker(workerdao.GetWorkerById(2));
-            cashier.Name = "kassa 5";
-            dao.RemoveCashier(cashier);
-
-
-            Console.WriteLine(cashier);
+            Console.WriteLine(admin);
             Console.Read();
         }
     }
