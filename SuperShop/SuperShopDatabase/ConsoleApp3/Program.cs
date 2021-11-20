@@ -9,13 +9,10 @@ namespace ConsoleApp3
     {
         static void Main (string[] args)
         {
-            var config = Configuration.GetConfig();
-            var connection = config.GetConnection();
-            var dao = Context.GetAdminDAO();
+            var dao = Context.GetProductCompanyDAO();
+            var list = dao.GetAll();
 
-            Admin admin = dao.GetAdminByEmail("orxan@gmail.com");
-
-            Console.WriteLine(admin);
+            Console.WriteLine();
             Console.Read();
         }
     }

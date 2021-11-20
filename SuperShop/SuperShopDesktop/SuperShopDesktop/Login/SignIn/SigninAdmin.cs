@@ -37,16 +37,25 @@ namespace SuperShopDesktop.Login.SignIn
 
             Admin admin = adminDAO.GetAdminByEmail(email);
             if (admin == null)
+            {
                 GiveErrorMessage("Admin doesn't exist with this email!");
+                gtb_email.BorderColor = Color.Red;
+            }
+            else if (!admin.Status)
+                GiveErrorMessage("Admin account is blocked!"); 
             else
             {
                 glbl_errorMessage.Visible = false;
+                gtb_email.BorderColor = Color.Silver;
 
                 if (!admin.Password.Equals(password))
+                {
                     GiveErrorMessage("Password is wrong!");
+                    gtb_password.BorderColor = Color.Red;
+                }
                 else
                 {
-
+                    gtb_password.BorderColor = Color.Silver;
                 }
             }
         }
@@ -55,6 +64,18 @@ namespace SuperShopDesktop.Login.SignIn
         {
             glbl_errorMessage.Text = message;
             glbl_errorMessage.Visible = true;
+        }
+
+        private void gtb_email_KeyDown (object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                gtb_password.Focus();
+        }
+
+        private void gtb_password_KeyDown (object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                gbtn_signin.PerformClick();
         }
     }
 }

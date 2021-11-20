@@ -1,5 +1,7 @@
 ﻿using Guna.UI.WinForms;
+using SuperShopDesktop.Login;
 using SuperShopDesktop.Login.SignIn;
+using SuperShopDesktop.Login.SignUp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +15,15 @@ using System.Windows.Forms;
 
 namespace SuperShopDesktop
 {
-    public partial class Main : Form
+    public partial class MainLogin : Form
     {
-
         private Color buttonSelectedColor = Color.FromArgb(190, 153, 225);
         private Color buttonColor = Color.FromArgb(100, 153, 225);
 
         private GunaButton selectedSignButton = null;
         private GunaButton selectedLoginButton = null;
-        
-        public Main ()
+
+        public MainLogin ()
         {
             InitializeComponent();
         }
@@ -33,7 +34,7 @@ namespace SuperShopDesktop
             selectedLoginButton = gbtn_admin;
 
             pnl_main.Controls.Clear();
-            pnl_main.Controls.Add(new SigninAdmin());
+            pnl_main.Controls.Add(LoginPanelManager.GetSigninAdminPanel());
         }
 
         private void gbtn_admin_MouseEnter (object sender, EventArgs e)
@@ -88,21 +89,45 @@ namespace SuperShopDesktop
         private void gbtn_signin_Click (object sender, EventArgs e)
         {
             ChangeSelectedSignButtonColor(gbtn_signin);
+
+            pnl_main.Controls.Clear();
+            if (selectedLoginButton.Tag.Equals("admin"))
+                pnl_main.Controls.Add(LoginPanelManager.GetSigninAdminPanel());
+            else
+                pnl_main.Controls.Add(LoginPanelManager.GetSigninOperatorPanel());
         }
 
         private void gbtn_signup_Click (object sender, EventArgs e)
         {
             ChangeSelectedSignButtonColor(gbtn_signup);
+
+            pnl_main.Controls.Clear();
+            if (selectedLoginButton.Tag.Equals("admin"))
+                pnl_main.Controls.Add(LoginPanelManager.GetSignupAdminPanel());
+            else
+                pnl_main.Controls.Add(LoginPanelManager.GetSignupOperatorPanel());
         }
 
         private void gbtn_admin_Click (object sender, EventArgs e)
         {
             ChangeSelectedLoginButtonColor(gbtn_admin);
+
+            pnl_main.Controls.Clear();
+            if (selectedSignButton.Tag.Equals("signin"))
+                pnl_main.Controls.Add(LoginPanelManager.GetSigninAdminPanel());
+            else
+                pnl_main.Controls.Add(LoginPanelManager.GetSignupAdminPanel());
         }
 
         private void gbtn_operator_Click (object sender, EventArgs e)
         {
             ChangeSelectedLoginButtonColor(gbtn_operator);
+
+            pnl_main.Controls.Clear();
+            if (selectedSignButton.Tag.Equals("signin"))
+                pnl_main.Controls.Add(LoginPanelManager.GetSigninOperatorPanel());
+            else
+                pnl_main.Controls.Add(LoginPanelManager.GetSignupOperatorPanel());
         }
 
         private void gbtn_setting_MouseEnter (object sender, EventArgs e)

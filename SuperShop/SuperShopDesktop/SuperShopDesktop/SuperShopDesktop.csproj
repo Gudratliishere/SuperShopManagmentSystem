@@ -56,17 +56,73 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Login\Cryption.cs" />
-    <Compile Include="Login\Main.cs">
+    <Compile Include="Login\MainLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Login\MainLogin.Designer.cs">
+      <DependentUpon>MainLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\LoginPanelManager.cs" />
     <Compile Include="Login\SignIn\SigninAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Login\SignIn\SigninAdmin.Designer.cs">
       <DependentUpon>SigninAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\SignIn\SigninOperator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Login\SignIn\SigninOperator.Designer.cs">
+      <DependentUpon>SigninOperator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\SignUp\SignupAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Login\SignUp\SignupAdmin.Designer.cs">
+      <DependentUpon>SignupAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\SignUp\SignupOperator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Login\SignUp\SignupOperator.Designer.cs">
+      <DependentUpon>SignupOperator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\MainAdmin.Designer.cs">
+      <DependentUpon>MainAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Worker\WorkerEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Worker\WorkerEdit.Designer.cs">
+      <DependentUpon>WorkerEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Worker\WorkerPanelManager.cs" />
+    <Compile Include="Main\Menu\Worker\Workers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Worker\Workers.Designer.cs">
+      <DependentUpon>Workers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Products.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Products.Designer.cs">
+      <DependentUpon>Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Worker\WorkerView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Worker\WorkerView.Designer.cs">
+      <DependentUpon>WorkerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\TopBorder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\TopBorder.Designer.cs">
+      <DependentUpon>TopBorder.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,11 +132,38 @@
     <Compile Include="Login\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Login\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Login\MainLogin.resx">
+      <DependentUpon>MainLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\SignIn\SigninAdmin.resx">
       <DependentUpon>SigninAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\SignIn\SigninOperator.resx">
+      <DependentUpon>SigninOperator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\SignUp\SignupAdmin.resx">
+      <DependentUpon>SignupAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\SignUp\SignupOperator.resx">
+      <DependentUpon>SignupOperator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\MainAdmin.resx">
+      <DependentUpon>MainAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Worker\WorkerEdit.resx">
+      <DependentUpon>WorkerEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Worker\Workers.resx">
+      <DependentUpon>Workers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Products.resx">
+      <DependentUpon>Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Worker\WorkerView.resx">
+      <DependentUpon>WorkerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\TopBorder.resx">
+      <DependentUpon>TopBorder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,6 +173,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Login\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -108,7 +192,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Login\SignUp\" />
+    <None Include="images\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\normalize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\female.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

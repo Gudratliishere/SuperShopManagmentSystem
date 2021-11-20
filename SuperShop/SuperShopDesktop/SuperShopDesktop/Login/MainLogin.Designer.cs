@@ -1,6 +1,6 @@
 ﻿namespace SuperShopDesktop
 {
-    partial class Main
+    partial class MainLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainLogin));
             this.pnl_background = new System.Windows.Forms.Panel();
+            this.gbtn_setting = new Guna.UI.WinForms.GunaButton();
             this.gbtn_exit = new Guna.UI.WinForms.GunaButton();
             this.gbtn_operator = new Guna.UI.WinForms.GunaButton();
             this.gbtn_admin = new Guna.UI.WinForms.GunaButton();
             this.gbtn_signup = new Guna.UI.WinForms.GunaButton();
             this.gbtn_signin = new Guna.UI.WinForms.GunaButton();
             this.pnl_main = new System.Windows.Forms.Panel();
-            this.gbtn_setting = new Guna.UI.WinForms.GunaButton();
             this.pnl_background.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,34 @@
             this.pnl_background.Name = "pnl_background";
             this.pnl_background.Size = new System.Drawing.Size(398, 417);
             this.pnl_background.TabIndex = 0;
+            // 
+            // gbtn_setting
+            // 
+            this.gbtn_setting.AnimationHoverSpeed = 0.07F;
+            this.gbtn_setting.AnimationSpeed = 0.03F;
+            this.gbtn_setting.BackColor = System.Drawing.Color.Transparent;
+            this.gbtn_setting.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
+            this.gbtn_setting.BorderColor = System.Drawing.Color.Black;
+            this.gbtn_setting.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gbtn_setting.FocusedColor = System.Drawing.Color.Empty;
+            this.gbtn_setting.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gbtn_setting.ForeColor = System.Drawing.Color.White;
+            this.gbtn_setting.Image = ((System.Drawing.Image)(resources.GetObject("gbtn_setting.Image")));
+            this.gbtn_setting.ImageSize = new System.Drawing.Size(20, 20);
+            this.gbtn_setting.Location = new System.Drawing.Point(12, 370);
+            this.gbtn_setting.Name = "gbtn_setting";
+            this.gbtn_setting.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gbtn_setting.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gbtn_setting.OnHoverForeColor = System.Drawing.Color.White;
+            this.gbtn_setting.OnHoverImage = null;
+            this.gbtn_setting.OnPressedColor = System.Drawing.Color.Black;
+            this.gbtn_setting.Radius = 10;
+            this.gbtn_setting.Size = new System.Drawing.Size(35, 35);
+            this.gbtn_setting.TabIndex = 5;
+            this.gbtn_setting.Text = "Settings";
+            this.gbtn_setting.Click += new System.EventHandler(this.gbtn_setting_Click);
+            this.gbtn_setting.MouseEnter += new System.EventHandler(this.gbtn_setting_MouseEnter);
+            this.gbtn_setting.MouseLeave += new System.EventHandler(this.gbtn_setting_MouseLeave);
             // 
             // gbtn_exit
             // 
@@ -107,6 +135,7 @@
             this.gbtn_operator.Radius = 10;
             this.gbtn_operator.Size = new System.Drawing.Size(35, 35);
             this.gbtn_operator.TabIndex = 3;
+            this.gbtn_operator.Tag = "operator";
             this.gbtn_operator.Text = "Operator";
             this.gbtn_operator.Click += new System.EventHandler(this.gbtn_operator_Click);
             this.gbtn_operator.MouseEnter += new System.EventHandler(this.gbtn_operator_MouseEnter);
@@ -135,6 +164,7 @@
             this.gbtn_admin.Radius = 10;
             this.gbtn_admin.Size = new System.Drawing.Size(35, 35);
             this.gbtn_admin.TabIndex = 2;
+            this.gbtn_admin.Tag = "admin";
             this.gbtn_admin.Text = "Admin";
             this.gbtn_admin.Click += new System.EventHandler(this.gbtn_admin_Click);
             this.gbtn_admin.MouseEnter += new System.EventHandler(this.gbtn_admin_MouseEnter);
@@ -163,6 +193,7 @@
             this.gbtn_signup.Radius = 10;
             this.gbtn_signup.Size = new System.Drawing.Size(119, 28);
             this.gbtn_signup.TabIndex = 1;
+            this.gbtn_signup.Tag = "signup";
             this.gbtn_signup.Text = "Sign up";
             this.gbtn_signup.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gbtn_signup.Click += new System.EventHandler(this.gbtn_signup_Click);
@@ -191,6 +222,7 @@
             this.gbtn_signin.Radius = 10;
             this.gbtn_signin.Size = new System.Drawing.Size(119, 28);
             this.gbtn_signin.TabIndex = 0;
+            this.gbtn_signin.Tag = "signin";
             this.gbtn_signin.Text = "Sign in";
             this.gbtn_signin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gbtn_signin.Click += new System.EventHandler(this.gbtn_signin_Click);
@@ -202,34 +234,6 @@
             this.pnl_main.Name = "pnl_main";
             this.pnl_main.Size = new System.Drawing.Size(346, 417);
             this.pnl_main.TabIndex = 1;
-            // 
-            // gbtn_setting
-            // 
-            this.gbtn_setting.AnimationHoverSpeed = 0.07F;
-            this.gbtn_setting.AnimationSpeed = 0.03F;
-            this.gbtn_setting.BackColor = System.Drawing.Color.Transparent;
-            this.gbtn_setting.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
-            this.gbtn_setting.BorderColor = System.Drawing.Color.Black;
-            this.gbtn_setting.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gbtn_setting.FocusedColor = System.Drawing.Color.Empty;
-            this.gbtn_setting.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.gbtn_setting.ForeColor = System.Drawing.Color.White;
-            this.gbtn_setting.Image = ((System.Drawing.Image)(resources.GetObject("gbtn_setting.Image")));
-            this.gbtn_setting.ImageSize = new System.Drawing.Size(20, 20);
-            this.gbtn_setting.Location = new System.Drawing.Point(12, 370);
-            this.gbtn_setting.Name = "gbtn_setting";
-            this.gbtn_setting.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.gbtn_setting.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gbtn_setting.OnHoverForeColor = System.Drawing.Color.White;
-            this.gbtn_setting.OnHoverImage = null;
-            this.gbtn_setting.OnPressedColor = System.Drawing.Color.Black;
-            this.gbtn_setting.Radius = 10;
-            this.gbtn_setting.Size = new System.Drawing.Size(35, 35);
-            this.gbtn_setting.TabIndex = 5;
-            this.gbtn_setting.Text = "Settings";
-            this.gbtn_setting.Click += new System.EventHandler(this.gbtn_setting_Click);
-            this.gbtn_setting.MouseEnter += new System.EventHandler(this.gbtn_setting_MouseEnter);
-            this.gbtn_setting.MouseLeave += new System.EventHandler(this.gbtn_setting_MouseLeave);
             // 
             // Main
             // 

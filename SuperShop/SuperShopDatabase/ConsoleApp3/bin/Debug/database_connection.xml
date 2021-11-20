@@ -5,5 +5,5 @@
 	<username>vssx</username>
 	<password>6446</password>
 	<database>supershop</database>
-	<crypto_power>4</crypto_power>
+	<crypt_power>4</crypt_power>
 </details>

@@ -92,7 +92,7 @@ namespace SuperShopDatabase.Config
                 case "database":
                     connection.Database = xml.ReadString();
                     break;
-                case "crypto_power":
+                case "crypt_power":
                     connection.CryptPower = Int32.Parse(xml.ReadString());
                     break;
             }

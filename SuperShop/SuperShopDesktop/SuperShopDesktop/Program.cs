@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperShopDesktop.Main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace SuperShopDesktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new MainAdmin());
         }
     }
 }
