@@ -27,8 +27,8 @@ namespace SuperShopDatabase.Dao.Impl
             string query = String.Format("insert into product_number (name, arrival_price, sale_price, number, " +
                 "last_come_date, company, kind) values ('{0}', {1}, {2}, {3}, '{4}', {5}, {6}); " +
                 "select LAST_INSERT_ID();", productNumber.Name, productNumber.ArrivalPrice.ToString().Replace(',', '.'),
-                productNumber.SalePrice.ToString().Replace(',', '.'), productNumber.Number, 
-                productNumber.LastComeDate.ToString("yyyy-MM-dd"), 
+                productNumber.SalePrice.ToString().Replace(',', '.'), productNumber.Number,
+                productNumber.LastComeDate.ToString("yyyy-MM-dd"),
                 productNumber.Company.Id, productNumber.Kind.Id);
 
             try
@@ -81,7 +81,8 @@ namespace SuperShopDatabase.Dao.Impl
                     }
                 }
                 return products;
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
@@ -175,7 +176,8 @@ namespace SuperShopDatabase.Dao.Impl
                     }
                 }
                 return product;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
@@ -213,7 +215,8 @@ namespace SuperShopDatabase.Dao.Impl
                     }
                 }
                 return productNumber;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
@@ -223,9 +226,11 @@ namespace SuperShopDatabase.Dao.Impl
         public ProductNumber UpdateProductNumber (ProductNumber productNumber)
         {
             string query = String.Format("update product_number set name = '{0}', arrival_price = {1}, sale_price = {2}, " +
-                "number = {3}, last_come_date = '{4}', company = {5}, kind = {6} where id = {7}", productNumber.Name, 
-                productNumber.ArrivalPrice, productNumber.SalePrice, productNumber.Number, 
-                productNumber.LastComeDate.ToString("yyyy-MM-dd"), productNumber.Company.Id, productNumber.Kind.Id);
+                "number = {3}, last_come_date = '{4}', company = {5}, kind = {6} where id = {7}", productNumber.Name,
+                productNumber.ArrivalPrice.ToString().Replace(',', '.'),
+                productNumber.SalePrice.ToString().Replace(',', '.'), productNumber.Number,
+                productNumber.LastComeDate.ToString("yyyy-MM-dd"), productNumber.Company.Id, productNumber.Kind.Id,
+                productNumber.Id);
 
             try
             {
@@ -238,7 +243,8 @@ namespace SuperShopDatabase.Dao.Impl
                     }
                 }
                 return productNumber;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;

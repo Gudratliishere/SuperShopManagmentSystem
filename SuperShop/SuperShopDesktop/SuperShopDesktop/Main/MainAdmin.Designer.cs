@@ -32,14 +32,17 @@
             this.pnl_top = new System.Windows.Forms.Panel();
             this.gresize = new Guna.UI.WinForms.GunaResize(this.components);
             this.pnl_body = new System.Windows.Forms.Panel();
-            this.pnl_windows = new System.Windows.Forms.Panel();
             this.flp_menu = new System.Windows.Forms.FlowLayoutPanel();
             this.gbtn_products = new Guna.UI.WinForms.GunaButton();
             this.gbtn_workers = new Guna.UI.WinForms.GunaButton();
             this.gbtn_cashiers = new Guna.UI.WinForms.GunaButton();
             this.gbtn_settings = new Guna.UI.WinForms.GunaButton();
+            this.pnl_menu = new System.Windows.Forms.Panel();
+            this.pnl_windows = new System.Windows.Forms.Panel();
+            this.gbtn_add = new Guna.UI.WinForms.GunaButton();
             this.pnl_body.SuspendLayout();
             this.flp_menu.SuspendLayout();
+            this.pnl_menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_top
@@ -58,20 +61,12 @@
             // 
             this.pnl_body.BackColor = System.Drawing.SystemColors.Control;
             this.pnl_body.Controls.Add(this.pnl_windows);
-            this.pnl_body.Controls.Add(this.flp_menu);
+            this.pnl_body.Controls.Add(this.pnl_menu);
             this.pnl_body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_body.Location = new System.Drawing.Point(0, 30);
             this.pnl_body.Name = "pnl_body";
             this.pnl_body.Size = new System.Drawing.Size(800, 420);
             this.pnl_body.TabIndex = 1;
-            // 
-            // pnl_windows
-            // 
-            this.pnl_windows.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_windows.Location = new System.Drawing.Point(0, 43);
-            this.pnl_windows.Name = "pnl_windows";
-            this.pnl_windows.Size = new System.Drawing.Size(800, 377);
-            this.pnl_windows.TabIndex = 1;
             // 
             // flp_menu
             // 
@@ -80,7 +75,7 @@
             this.flp_menu.Controls.Add(this.gbtn_workers);
             this.flp_menu.Controls.Add(this.gbtn_cashiers);
             this.flp_menu.Controls.Add(this.gbtn_settings);
-            this.flp_menu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flp_menu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp_menu.Location = new System.Drawing.Point(0, 0);
             this.flp_menu.Name = "flp_menu";
             this.flp_menu.Size = new System.Drawing.Size(800, 43);
@@ -192,6 +187,50 @@
             this.gbtn_settings.Text = "Settings";
             this.gbtn_settings.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // pnl_menu
+            // 
+            this.pnl_menu.Controls.Add(this.gbtn_add);
+            this.pnl_menu.Controls.Add(this.flp_menu);
+            this.pnl_menu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_menu.Location = new System.Drawing.Point(0, 0);
+            this.pnl_menu.Name = "pnl_menu";
+            this.pnl_menu.Size = new System.Drawing.Size(800, 43);
+            this.pnl_menu.TabIndex = 2;
+            // 
+            // pnl_windows
+            // 
+            this.pnl_windows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_windows.Location = new System.Drawing.Point(0, 43);
+            this.pnl_windows.Name = "pnl_windows";
+            this.pnl_windows.Size = new System.Drawing.Size(800, 377);
+            this.pnl_windows.TabIndex = 3;
+            // 
+            // gbtn_add
+            // 
+            this.gbtn_add.AnimationHoverSpeed = 0.07F;
+            this.gbtn_add.AnimationSpeed = 0.03F;
+            this.gbtn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_add.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_add.BorderColor = System.Drawing.Color.Black;
+            this.gbtn_add.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gbtn_add.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gbtn_add.FocusedColor = System.Drawing.Color.Empty;
+            this.gbtn_add.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbtn_add.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_add.Image = global::SuperShopDesktop.Properties.Resources.add;
+            this.gbtn_add.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gbtn_add.ImageSize = new System.Drawing.Size(20, 20);
+            this.gbtn_add.Location = new System.Drawing.Point(755, 0);
+            this.gbtn_add.Name = "gbtn_add";
+            this.gbtn_add.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gbtn_add.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gbtn_add.OnHoverForeColor = System.Drawing.Color.White;
+            this.gbtn_add.OnHoverImage = null;
+            this.gbtn_add.OnPressedColor = System.Drawing.Color.Black;
+            this.gbtn_add.Size = new System.Drawing.Size(45, 43);
+            this.gbtn_add.TabIndex = 1;
+            this.gbtn_add.Click += new System.EventHandler(this.gbtn_add_Click);
+            // 
             // MainAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +245,7 @@
             this.Text = "Shop Manager";
             this.pnl_body.ResumeLayout(false);
             this.flp_menu.ResumeLayout(false);
+            this.pnl_menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,6 +260,8 @@
         private Guna.UI.WinForms.GunaButton gbtn_workers;
         private Guna.UI.WinForms.GunaButton gbtn_cashiers;
         private Guna.UI.WinForms.GunaButton gbtn_settings;
-        private System.Windows.Forms.Panel pnl_windows;
+        private System.Windows.Forms.Panel pnl_menu;
+        private Guna.UI.WinForms.GunaButton gbtn_add;
+        public System.Windows.Forms.Panel pnl_windows;
     }
 }

@@ -111,6 +111,37 @@ namespace SuperShopDatabase.Dao.Impl
             }
         }
 
+        public ProductKind GetProductKindByName (string name)
+        {
+            string query = String.Format("select * from product_kind where name = '{0}'", name);
+
+            try
+            {
+                ProductKind kind = new ProductKind();
+
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            if (mdr.Read())
+                                FillProductKindWithMDR(kind, mdr);
+                            else
+                                throw new Exception("This kind of product doesn't exist");
+                        }
+                    }
+                }
+
+                return kind;
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         private void FillProductKindWithMDR (ProductKind kind, MySqlDataReader mdr)
         {
             kind.Id = Int32.Parse(mdr.GetString(mdr.GetOrdinal("id")));

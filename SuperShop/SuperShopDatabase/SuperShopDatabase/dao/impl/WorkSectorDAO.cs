@@ -115,6 +115,38 @@ namespace SuperShopDatabase.Dao.Impl
             }
         }
 
+        public WorkSector GetWorkSectorByName (string name)
+        {
+            string query = String.Format("select * from work_sector where name = '{0}'", name);
+
+            try
+            {
+                WorkSector sector = new WorkSector();
+
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            if (mdr.Read())
+                                FillWorkSectorWithMDR(sector, mdr);
+                            else
+                                throw new Exception("This kind of working sector doesn't exist");
+                        }
+                    }
+                }
+
+                return sector;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         private void FillWorkSectorWithMDR (WorkSector sector, MySqlDataReader mdr)
         {
             sector.Id = Int32.Parse(mdr.GetString(mdr.GetOrdinal("id")));

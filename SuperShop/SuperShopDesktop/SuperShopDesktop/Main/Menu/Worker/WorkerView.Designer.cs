@@ -29,18 +29,18 @@
         private void InitializeComponent ()
         {
             this.pnl_top = new System.Windows.Forms.Panel();
-            this.lbl_nameSurname = new System.Windows.Forms.Label();
-            this.flp_controls = new System.Windows.Forms.FlowLayoutPanel();
             this.pb_gender = new System.Windows.Forms.PictureBox();
+            this.flp_controls = new System.Windows.Forms.FlowLayoutPanel();
             this.gbtn_edit = new Guna.UI.WinForms.GunaButton();
             this.gbtn_back = new Guna.UI.WinForms.GunaButton();
+            this.lbl_nameSurname = new System.Windows.Forms.Label();
             this.gpb_profilePhoto = new Guna.UI.WinForms.GunaPictureBox();
             this.flp_body = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl_contacts = new System.Windows.Forms.Panel();
-            this.lbl_contact = new System.Windows.Forms.Label();
-            this.lbl_email = new System.Windows.Forms.Label();
-            this.lbl_phone = new System.Windows.Forms.Label();
             this.lbl_address = new System.Windows.Forms.Label();
+            this.lbl_phone = new System.Windows.Forms.Label();
+            this.lbl_email = new System.Windows.Forms.Label();
+            this.lbl_contact = new System.Windows.Forms.Label();
             this.pnl_birthday = new System.Windows.Forms.Panel();
             this.lbl_birthday = new System.Windows.Forms.Label();
             this.lbl_birthdayHeader = new System.Windows.Forms.Label();
@@ -51,12 +51,12 @@
             this.lbl_wage = new System.Windows.Forms.Label();
             this.lbl_wageHeader = new System.Windows.Forms.Label();
             this.pnl_workTime = new System.Windows.Forms.Panel();
+            this.lbl_endTime = new System.Windows.Forms.Label();
             this.lbl_startTime = new System.Windows.Forms.Label();
             this.lbl_workTimeHeader = new System.Windows.Forms.Label();
-            this.lbl_endTime = new System.Windows.Forms.Label();
             this.pnl_top.SuspendLayout();
-            this.flp_controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_gender)).BeginInit();
+            this.flp_controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gpb_profilePhoto)).BeginInit();
             this.flp_body.SuspendLayout();
             this.pnl_contacts.SuspendLayout();
@@ -78,15 +78,15 @@
             this.pnl_top.Size = new System.Drawing.Size(704, 155);
             this.pnl_top.TabIndex = 0;
             // 
-            // lbl_nameSurname
+            // pb_gender
             // 
-            this.lbl_nameSurname.AutoSize = true;
-            this.lbl_nameSurname.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_nameSurname.Location = new System.Drawing.Point(198, 98);
-            this.lbl_nameSurname.Name = "lbl_nameSurname";
-            this.lbl_nameSurname.Size = new System.Drawing.Size(351, 37);
-            this.lbl_nameSurname.TabIndex = 1;
-            this.lbl_nameSurname.Text = "Name Surname FatherName";
+            this.pb_gender.BackgroundImage = global::SuperShopDesktop.Properties.Resources.female;
+            this.pb_gender.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_gender.Location = new System.Drawing.Point(205, 71);
+            this.pb_gender.Name = "pb_gender";
+            this.pb_gender.Size = new System.Drawing.Size(24, 24);
+            this.pb_gender.TabIndex = 5;
+            this.pb_gender.TabStop = false;
             // 
             // flp_controls
             // 
@@ -97,16 +97,6 @@
             this.flp_controls.Name = "flp_controls";
             this.flp_controls.Size = new System.Drawing.Size(84, 155);
             this.flp_controls.TabIndex = 4;
-            // 
-            // pb_gender
-            // 
-            this.pb_gender.BackgroundImage = global::SuperShopDesktop.Properties.Resources.female;
-            this.pb_gender.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pb_gender.Location = new System.Drawing.Point(205, 71);
-            this.pb_gender.Name = "pb_gender";
-            this.pb_gender.Size = new System.Drawing.Size(24, 24);
-            this.pb_gender.TabIndex = 5;
-            this.pb_gender.TabStop = false;
             // 
             // gbtn_edit
             // 
@@ -132,6 +122,7 @@
             this.gbtn_edit.Radius = 10;
             this.gbtn_edit.Size = new System.Drawing.Size(36, 31);
             this.gbtn_edit.TabIndex = 3;
+            this.gbtn_edit.Click += new System.EventHandler(this.gbtn_edit_Click);
             // 
             // gbtn_back
             // 
@@ -158,6 +149,16 @@
             this.gbtn_back.Size = new System.Drawing.Size(36, 31);
             this.gbtn_back.TabIndex = 2;
             this.gbtn_back.Click += new System.EventHandler(this.gbtn_back_Click);
+            // 
+            // lbl_nameSurname
+            // 
+            this.lbl_nameSurname.AutoSize = true;
+            this.lbl_nameSurname.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_nameSurname.Location = new System.Drawing.Point(198, 98);
+            this.lbl_nameSurname.Name = "lbl_nameSurname";
+            this.lbl_nameSurname.Size = new System.Drawing.Size(351, 37);
+            this.lbl_nameSurname.TabIndex = 1;
+            this.lbl_nameSurname.Text = "Name Surname FatherName";
             // 
             // gpb_profilePhoto
             // 
@@ -196,25 +197,16 @@
             this.pnl_contacts.Size = new System.Drawing.Size(346, 135);
             this.pnl_contacts.TabIndex = 0;
             // 
-            // lbl_contact
+            // lbl_address
             // 
-            this.lbl_contact.AutoSize = true;
-            this.lbl_contact.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_contact.Location = new System.Drawing.Point(22, 11);
-            this.lbl_contact.Name = "lbl_contact";
-            this.lbl_contact.Size = new System.Drawing.Size(85, 30);
-            this.lbl_contact.TabIndex = 2;
-            this.lbl_contact.Text = "Contact";
-            // 
-            // lbl_email
-            // 
-            this.lbl_email.AutoSize = true;
-            this.lbl_email.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_email.Location = new System.Drawing.Point(64, 41);
-            this.lbl_email.Name = "lbl_email";
-            this.lbl_email.Size = new System.Drawing.Size(48, 21);
-            this.lbl_email.TabIndex = 3;
-            this.lbl_email.Text = "Email";
+            this.lbl_address.AutoSize = true;
+            this.lbl_address.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_address.Location = new System.Drawing.Point(64, 83);
+            this.lbl_address.MinimumSize = new System.Drawing.Size(180, 0);
+            this.lbl_address.Name = "lbl_address";
+            this.lbl_address.Size = new System.Drawing.Size(180, 21);
+            this.lbl_address.TabIndex = 5;
+            this.lbl_address.Text = "Address";
             // 
             // lbl_phone
             // 
@@ -226,16 +218,25 @@
             this.lbl_phone.TabIndex = 4;
             this.lbl_phone.Text = "Phone";
             // 
-            // lbl_address
+            // lbl_email
             // 
-            this.lbl_address.AutoSize = true;
-            this.lbl_address.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_address.Location = new System.Drawing.Point(64, 83);
-            this.lbl_address.MinimumSize = new System.Drawing.Size(180, 0);
-            this.lbl_address.Name = "lbl_address";
-            this.lbl_address.Size = new System.Drawing.Size(180, 21);
-            this.lbl_address.TabIndex = 5;
-            this.lbl_address.Text = "Address";
+            this.lbl_email.AutoSize = true;
+            this.lbl_email.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_email.Location = new System.Drawing.Point(64, 41);
+            this.lbl_email.Name = "lbl_email";
+            this.lbl_email.Size = new System.Drawing.Size(48, 21);
+            this.lbl_email.TabIndex = 3;
+            this.lbl_email.Text = "Email";
+            // 
+            // lbl_contact
+            // 
+            this.lbl_contact.AutoSize = true;
+            this.lbl_contact.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_contact.Location = new System.Drawing.Point(22, 11);
+            this.lbl_contact.Name = "lbl_contact";
+            this.lbl_contact.Size = new System.Drawing.Size(85, 30);
+            this.lbl_contact.TabIndex = 2;
+            this.lbl_contact.Text = "Contact";
             // 
             // pnl_birthday
             // 
@@ -334,6 +335,16 @@
             this.pnl_workTime.Size = new System.Drawing.Size(346, 135);
             this.pnl_workTime.TabIndex = 4;
             // 
+            // lbl_endTime
+            // 
+            this.lbl_endTime.AutoSize = true;
+            this.lbl_endTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_endTime.Location = new System.Drawing.Point(64, 62);
+            this.lbl_endTime.Name = "lbl_endTime";
+            this.lbl_endTime.Size = new System.Drawing.Size(71, 21);
+            this.lbl_endTime.TabIndex = 4;
+            this.lbl_endTime.Text = "End time";
+            // 
             // lbl_startTime
             // 
             this.lbl_startTime.AutoSize = true;
@@ -354,16 +365,6 @@
             this.lbl_workTimeHeader.TabIndex = 2;
             this.lbl_workTimeHeader.Text = "Working Time";
             // 
-            // lbl_endTime
-            // 
-            this.lbl_endTime.AutoSize = true;
-            this.lbl_endTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_endTime.Location = new System.Drawing.Point(64, 62);
-            this.lbl_endTime.Name = "lbl_endTime";
-            this.lbl_endTime.Size = new System.Drawing.Size(71, 21);
-            this.lbl_endTime.TabIndex = 4;
-            this.lbl_endTime.Text = "End time";
-            // 
             // WorkerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,8 +377,8 @@
             this.Load += new System.EventHandler(this.WorkerView_Load);
             this.pnl_top.ResumeLayout(false);
             this.pnl_top.PerformLayout();
-            this.flp_controls.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_gender)).EndInit();
+            this.flp_controls.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gpb_profilePhoto)).EndInit();
             this.flp_body.ResumeLayout(false);
             this.pnl_contacts.ResumeLayout(false);

@@ -11,6 +11,7 @@ namespace SuperShopDatabase.Dao.Inter
     {
         List<ProductKind> GetAll ();
         ProductKind GetProductKindById (int id);
+        ProductKind GetProductKindByName (string name);
         ProductKind AddProductKind (ProductKind kind);
         ProductKind UpdateProductKind (ProductKind kind);
         ProductKind RemoveProductKind (ProductKind kind);

@@ -25,11 +25,19 @@ namespace SuperShopDatabase.Dao.Impl
 
         public Worker AddWorker (Worker worker)
         {
+            StringBuilder imagePath = new StringBuilder();
+            foreach (char c in worker.ImagePath)
+            {
+                imagePath.Append(c);
+                if (c == '\\')
+                    imagePath.Append(@"\\");
+            }
+
             string query = String.Format("insert into worker (name, surname, father_name, gender, birthday, address, " +
                 "phone, email, image_path, sector, wage, start_time, end_time) values ('{0}', '{1}', '{2}', '{3}', " +
                 "'{4}', '{5}', '{6}', '{7}', '{8}', {9}, {10}, '{11}', '{12}'); select LAST_INSERT_ID();", worker.Name, 
                 worker.Surname, worker.FatherName, worker.Gender.ToLower(), worker.Birthday.ToString("yyyy-MM-dd"), 
-                worker.Address, worker.Phone, worker.Email, worker.ImagePath, worker.Sector.Id, worker.Wage, 
+                worker.Address, worker.Phone, worker.Email, imagePath, worker.Sector.Id, worker.Wage, 
                 worker.StartTime, worker.EndTime);
 
             try
@@ -300,11 +308,19 @@ namespace SuperShopDatabase.Dao.Impl
 
         public Worker UpdateWorker (Worker worker)
         {
+            StringBuilder imagePath = new StringBuilder();
+            foreach (char c in worker.ImagePath)
+            {
+                imagePath.Append(c);
+                if (c == '\\')
+                    imagePath.Append(@"\\");
+            }
+
             string query = String.Format("update worker set name = '{0}', surname = '{1}', father_name = '{2}', " +
                 "gender = '{3}', birthday = '{4}', address = '{5}', phone = '{6}', email = '{7}', image_path = '{8}', " +
                 "sector = {9}, wage = {10}, start_time = '{11}', end_time = '{12}' where id = {13}", worker.Name, 
                 worker.Surname, worker.FatherName, worker.Gender, worker.Birthday.ToString("yyyy-MM-dd"), 
-                worker.Address, worker.Phone, worker.Email, worker.ImagePath, worker.Sector.Id, worker.Wage, 
+                worker.Address, worker.Phone, worker.Email, imagePath.ToString(), worker.Sector.Id, worker.Wage, 
                 worker.StartTime, worker.EndTime, worker.Id);
 
             try

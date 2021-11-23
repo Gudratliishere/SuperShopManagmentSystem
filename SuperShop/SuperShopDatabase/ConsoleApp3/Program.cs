@@ -9,10 +9,10 @@ namespace ConsoleApp3
     {
         static void Main (string[] args)
         {
-            var dao = Context.GetProductCompanyDAO();
-            var list = dao.GetAll();
+            var dao = Context.GetWorkSectorDAO();
+            var sector = dao.GetWorkSectorByName("kassir");
 
-            Console.WriteLine();
+            Console.WriteLine(sector);
             Console.Read();
         }
     }

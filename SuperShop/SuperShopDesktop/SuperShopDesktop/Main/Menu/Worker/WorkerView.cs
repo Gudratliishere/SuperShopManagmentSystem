@@ -15,7 +15,6 @@ namespace SuperShopDesktop.Main.Menu.Worker
     public partial class WorkerView : UserControl
     {
         public SuperShopDatabase.Entity.Worker Worker { get; set; }
-        public Workers WorkersPanel { get; set; }
 
         public WorkerView ()
         {
@@ -24,7 +23,14 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
         private void WorkerView_Load (object sender, EventArgs e)
         {
-            gpb_profilePhoto.Image = Image.FromFile(Worker.ImagePath);
+            try
+            {
+                gpb_profilePhoto.Image = Image.FromFile(Worker.ImagePath);
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             gpb_profilePhoto.SizeMode = PictureBoxSizeMode.StretchImage;
 
             lbl_nameSurname.Text = Worker.Name + " " + Worker.Surname + " " + Worker.FatherName;
@@ -43,8 +49,19 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
         private void gbtn_back_Click (object sender, EventArgs e)
         {
-            WorkersPanel.pnl_body.Controls.Clear();
-            WorkersPanel.pnl_body.Controls.Add(WorkersPanel.Gunadgv);
+            MainAdmin.Instance.pnl_windows.Controls.Clear();
+            var worker = new Workers();
+            worker.Dock = DockStyle.Fill;
+            MainAdmin.Instance.pnl_windows.Controls.Add(worker);
+        }
+
+        private void gbtn_edit_Click (object sender, EventArgs e)
+        {
+            MainAdmin.Instance.pnl_windows.Controls.Clear();
+            WorkerEdit edit = new WorkerEdit();
+            edit.Worker = Worker;
+            edit.Dock = DockStyle.Fill;
+            MainAdmin.Instance.pnl_windows.Controls.Add(edit);
         }
     }
 }

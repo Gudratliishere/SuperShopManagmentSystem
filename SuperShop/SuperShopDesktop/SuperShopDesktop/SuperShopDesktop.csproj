@@ -93,23 +93,46 @@
     <Compile Include="Main\MainAdmin.Designer.cs">
       <DependentUpon>MainAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\Menu\AddNew.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\AddNew.Designer.cs">
+      <DependentUpon>AddNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\ProductCompany\Companies.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\ProductCompany\Companies.Designer.cs">
+      <DependentUpon>Companies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Product\ProductNumberEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Product\ProductNumberEdit.Designer.cs">
+      <DependentUpon>ProductNumberEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Product\ProductWeightEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Product\ProductWeightEdit.Designer.cs">
+      <DependentUpon>ProductWeightEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\Menu\Worker\WorkerEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main\Menu\Worker\WorkerEdit.Designer.cs">
       <DependentUpon>WorkerEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\Menu\Worker\WorkerPanelManager.cs" />
     <Compile Include="Main\Menu\Worker\Workers.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main\Menu\Worker\Workers.Designer.cs">
       <DependentUpon>Workers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\Menu\Products.cs">
+    <Compile Include="Main\Menu\Product\Products.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\Menu\Products.Designer.cs">
+    <Compile Include="Main\Menu\Product\Products.Designer.cs">
       <DependentUpon>Products.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Menu\Worker\WorkerView.cs">
@@ -150,13 +173,25 @@
     <EmbeddedResource Include="Main\MainAdmin.resx">
       <DependentUpon>MainAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\AddNew.resx">
+      <DependentUpon>AddNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\ProductCompany\Companies.resx">
+      <DependentUpon>Companies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Product\ProductNumberEdit.resx">
+      <DependentUpon>ProductNumberEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Product\ProductWeightEdit.resx">
+      <DependentUpon>ProductWeightEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Worker\WorkerEdit.resx">
       <DependentUpon>WorkerEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Worker\Workers.resx">
       <DependentUpon>Workers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\Menu\Products.resx">
+    <EmbeddedResource Include="Main\Menu\Product\Products.resx">
       <DependentUpon>Products.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Worker\WorkerView.resx">
@@ -214,6 +249,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\female.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\product.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\product_number.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\product_weight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\company.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\product_kind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\worker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\working_sector.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

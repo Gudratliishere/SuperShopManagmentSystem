@@ -115,6 +115,36 @@ namespace SuperShopDatabase.Dao.Impl
             }
         }
 
+        public ProductCompany GetProductCompanyByName (string name)
+        {
+            string query = String.Format("select * from product_company where name = '{0}'", name);
+
+            try
+            {
+                ProductCompany company = new ProductCompany();
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            if (mdr.Read())
+                                FillProductCompanyWithMDR(company, mdr);
+                            else
+                                throw new Exception("Product doesn't exist with this name");
+                        }
+                    }
+                }
+                return company;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         private void FillProductCompanyWithMDR (ProductCompany company, MySqlDataReader mdr)
         {
             company.Id = Int32.Parse(mdr.GetString(mdr.GetOrdinal("id")));

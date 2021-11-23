@@ -1,5 +1,6 @@
 ﻿using SuperShopDesktop.Main.Menu;
 using SuperShopDesktop.Main.Menu.Worker;
+using SuperShopDesktop.Main.Menu.Product;
 using SuperShopDesktop.Properties;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,14 @@ namespace SuperShopDesktop.Main
 {
     public partial class MainAdmin : Form
     {
+        public static MainAdmin Instance;
+
         public MainAdmin ()
         {
             InitializeComponent();
             InitializeTopBorder();
+
+            Instance = this;
         }
 
         private void InitializeTopBorder ()
@@ -42,6 +47,14 @@ namespace SuperShopDesktop.Main
             Workers personals = new Workers();
             personals.Dock = DockStyle.Fill;
             pnl_windows.Controls.Add(personals);
+        }
+
+        private void gbtn_add_Click (object sender, EventArgs e)
+        {
+            pnl_windows.Controls.Clear();
+            AddNew add = new AddNew();
+            add.Dock = DockStyle.Fill;
+            pnl_windows.Controls.Add(add);
         }
     }
 }

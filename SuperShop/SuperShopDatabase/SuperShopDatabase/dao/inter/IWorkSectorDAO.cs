@@ -11,6 +11,7 @@ namespace SuperShopDatabase.Dao.Inter
     {
         List<WorkSector> GetAll ();
         WorkSector GetWorkSectorById (int id);
+        WorkSector GetWorkSectorByName (string name);
         WorkSector AddWorkSector (WorkSector sector);
         WorkSector UpdateWorkSector (WorkSector sector);
         WorkSector RemoveWorkSector (WorkSector sector);

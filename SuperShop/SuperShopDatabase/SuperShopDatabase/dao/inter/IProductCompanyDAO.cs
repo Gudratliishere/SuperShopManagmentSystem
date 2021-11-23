@@ -11,6 +11,7 @@ namespace SuperShopDatabase.Dao.Inter
     {
         List<ProductCompany> GetAll ();
         ProductCompany GetProductCompanyById (int id);
+        ProductCompany GetProductCompanyByName (string name);
         ProductCompany AddProductCompany (ProductCompany company);
         ProductCompany UpdateProductCompany (ProductCompany company);
         ProductCompany RemoveProductCompany (ProductCompany company);
