@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SuperShopDesktop.Main.Menu.Cashier;
 
 namespace SuperShopDesktop.Main
 {
@@ -55,6 +56,19 @@ namespace SuperShopDesktop.Main
             AddNew add = new AddNew();
             add.Dock = DockStyle.Fill;
             pnl_windows.Controls.Add(add);
+        }
+
+        private void gbtn_cashiers_Click (object sender, EventArgs e)
+        {
+            Cashiers cashiers = new Cashiers();
+            cashiers.Dock = DockStyle.Fill;
+            pnl_windows.Controls.Clear();
+            pnl_windows.Controls.Add(cashiers);
+        }
+
+        private void MainAdmin_Load (object sender, EventArgs e)
+        {
+            gbtn_products.PerformClick();
         }
     }
 }

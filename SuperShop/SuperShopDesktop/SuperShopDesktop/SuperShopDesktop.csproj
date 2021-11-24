@@ -99,11 +99,29 @@
     <Compile Include="Main\Menu\AddNew.Designer.cs">
       <DependentUpon>AddNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\Menu\ProductCompany\Companies.cs">
+    <Compile Include="Main\Menu\Cashier\CashierEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\Menu\ProductCompany\Companies.Designer.cs">
-      <DependentUpon>Companies.cs</DependentUpon>
+    <Compile Include="Main\Menu\Cashier\CashierEdit.Designer.cs">
+      <DependentUpon>CashierEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Cashier\Cashiers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Cashier\Cashiers.Designer.cs">
+      <DependentUpon>Cashiers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Product\ProductCompanyEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Product\ProductCompanyEdit.Designer.cs">
+      <DependentUpon>ProductCompanyEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Product\ProductKindEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Product\ProductKindEdit.Designer.cs">
+      <DependentUpon>ProductKindEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Menu\Product\ProductNumberEdit.cs">
       <SubType>UserControl</SubType>
@@ -141,6 +159,12 @@
     <Compile Include="Main\Menu\Worker\WorkerView.Designer.cs">
       <DependentUpon>WorkerView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\Menu\Worker\WorkSectorEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Worker\WorkSectorEdit.Designer.cs">
+      <DependentUpon>WorkSectorEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\TopBorder.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,8 +200,17 @@
     <EmbeddedResource Include="Main\Menu\AddNew.resx">
       <DependentUpon>AddNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\Menu\ProductCompany\Companies.resx">
-      <DependentUpon>Companies.cs</DependentUpon>
+    <EmbeddedResource Include="Main\Menu\Cashier\CashierEdit.resx">
+      <DependentUpon>CashierEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Cashier\Cashiers.resx">
+      <DependentUpon>Cashiers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Product\ProductCompanyEdit.resx">
+      <DependentUpon>ProductCompanyEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Product\ProductKindEdit.resx">
+      <DependentUpon>ProductKindEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Product\ProductNumberEdit.resx">
       <DependentUpon>ProductNumberEdit.cs</DependentUpon>
@@ -196,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Worker\WorkerView.resx">
       <DependentUpon>WorkerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Worker\WorkSectorEdit.resx">
+      <DependentUpon>WorkSectorEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\TopBorder.resx">
       <DependentUpon>TopBorder.cs</DependentUpon>
@@ -276,6 +312,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\working_sector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\cashier.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

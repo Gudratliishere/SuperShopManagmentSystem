@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using SuperShopDatabase.Entity;
+using Guna.UI.WinForms;
 
 namespace SuperShopDesktop.Main.Menu.Product
 {
@@ -64,7 +65,7 @@ namespace SuperShopDesktop.Main.Menu.Product
 
         private void gdgv_sidebar_CellContentClick (object sender, DataGridViewCellEventArgs e)
         {
-            int id = Int32.Parse(gdgv_sidebar.CurrentRow.Cells[0].Value.ToString());
+            int id = int.Parse(gdgv_sidebar.CurrentRow.Cells[0].Value.ToString());
             if (gcb_specify.SelectedIndex == 1)
             {
                 selectedProductCompany = productCompanyDAO.GetProductCompanyById(id);
@@ -171,7 +172,8 @@ namespace SuperShopDesktop.Main.Menu.Product
                 edit.Dock = DockStyle.Fill;
                 MainAdmin.Instance.pnl_windows.Controls.Clear();
                 MainAdmin.Instance.pnl_windows.Controls.Add(edit);
-            } else
+            }
+            else
             {
                 ProductWeightEdit edit = new ProductWeightEdit();
                 edit.Product = productWeightDAO.GetProductWeightById(id);
@@ -179,6 +181,114 @@ namespace SuperShopDesktop.Main.Menu.Product
                 MainAdmin.Instance.pnl_windows.Controls.Clear();
                 MainAdmin.Instance.pnl_windows.Controls.Add(edit);
             }
+        }
+
+        private void gdgv_products_MouseClick (object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hit = gdgv_products.HitTest(e.X, e.Y);
+                gdgv_products.ClearSelection();
+                if (hit.RowIndex >= 0)
+                {
+                    gdgv_products.Rows[hit.RowIndex].Selected = true;
+                    GunaButton button = GenerateRemoveButton(e.Location, RemoveProduct);
+                    button.MouseLeave += delegate (object sender2, EventArgs e2)
+                    {
+                        button.Visible = false;
+                    };
+                    gdgv_products.Controls.Add(button);
+                }
+            }
+        }
+
+        private void RemoveProduct ()
+        {
+            int id = int.Parse(gdgv_products.CurrentRow.Cells[0].Value.ToString());
+            if (lastIndex == 0)
+                productNumberDAO.RemoveProductNumber(productNumberDAO.GetProductNumberById(id));
+            else
+                productWeightDAO.RemoveProductWeight(productWeightDAO.GetProductWeightById(id));
+        }
+
+        private void RemoveSpecifyBar ()
+        {
+            int id = int.Parse(gdgv_sidebar.CurrentRow.Cells[0].Value.ToString());
+            if (gcb_specify.SelectedIndex == 1)
+                productCompanyDAO.RemoveProductCompany(productCompanyDAO.GetProductCompanyById(id));
+            else if (gcb_specify.SelectedIndex == 2)
+                productKindDAO.RemoveProductKind(productKindDAO.GetProductKindById(id));
+        }
+
+        private GunaButton GenerateRemoveButton (Point point, Action action)
+        {
+            GunaButton button = new GunaButton()
+            {
+                Image = null,
+                Text = "Remove",
+                Size = new Size(63, 23),
+                Location = point,
+                TabIndex = 1
+            };
+            button.Click += delegate (object sender, EventArgs e)
+            {
+                DialogResult dt =
+                MessageBox.Show("Are you sure to remove?", "Remove", MessageBoxButtons.YesNo);
+                if (dt == DialogResult.Yes)
+                {
+                    action.Invoke();
+                    MainAdmin.Instance.gbtn_products.PerformClick();
+                }
+            };
+            return button;
+        }
+
+        private void gbtn_edit_Click (object sender, EventArgs e)
+        {
+            if (gcb_specify.SelectedIndex != 0)
+            {
+                int id = int.Parse(gdgv_sidebar.CurrentRow.Cells[0].Value.ToString());
+                if (gcb_specify.SelectedIndex == 1)
+                {
+                    ProductCompanyEdit edit = new ProductCompanyEdit();
+                    edit.ProductCompany = productCompanyDAO.GetProductCompanyById(id);
+                    edit.Dock = DockStyle.Fill;
+                    MainAdmin.Instance.pnl_windows.Controls.Clear();
+                    MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+                }
+                else if (gcb_specify.SelectedIndex == 2)
+                {
+                    ProductKindEdit edit = new ProductKindEdit();
+                    edit.ProductKind = productKindDAO.GetProductKindById(id);
+                    edit.Dock = DockStyle.Fill;
+                    MainAdmin.Instance.pnl_windows.Controls.Clear();
+                    MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+                }
+            }
+        }
+
+        private void gbtn_remove_Click (object sender, EventArgs e)
+        {
+            if (gcb_specify.SelectedIndex != 0)
+            {
+                DialogResult dt =
+                    MessageBox.Show("Are you sure to remove?", "Remove", MessageBoxButtons.YesNo);
+                if (dt == DialogResult.Yes)
+                {
+                    RemoveSpecifyBar();
+                    MainAdmin.Instance.gbtn_products.PerformClick();
+                }
+            }
+        }
+
+        private void gbtn_searchByName_Click (object sender, EventArgs e)
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = gdgv_products.DataSource;
+            bs.Filter = "Name like '%" + gtb_searchByName.Text + "%'";
+            gdgv_products.DataSource = bs;
+            pnl_products.Controls.Clear();
+            pnl_products.Controls.Add(gdgv_products);
         }
     }
 }

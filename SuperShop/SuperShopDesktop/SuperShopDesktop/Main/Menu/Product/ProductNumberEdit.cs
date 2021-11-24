@@ -33,13 +33,13 @@ namespace SuperShopDesktop.Main.Menu.Product
 
         private void ProductNumberEdit_Load (object sender, EventArgs e)
         {
-            var companyNames = new List<String>();
-            productCompanyDAO.GetAll().ForEach((company) => companyNames.Add(company.Name));
-            gcb_productCompany.DataSource = companyNames;
+            gcb_productCompany.DataSource = productCompanyDAO.GetAll();
+            gcb_productCompany.DisplayMember = "Name";
+            gcb_productCompany.ValueMember = "Id";
 
-            var kindNames = new List<String>();
-            productKindDAO.GetAll().ForEach((kind) => kindNames.Add(kind.Name));
-            gcb_productKind.DataSource = kindNames;
+            gcb_productKind.DataSource = productKindDAO.GetAll();
+            gcb_productKind.DisplayMember = "Name";
+            gcb_productKind.ValueMember = "Id";
 
             if (product != null)
             {
@@ -47,7 +47,14 @@ namespace SuperShopDesktop.Main.Menu.Product
                 gnum_number.Value = product.Number;
                 gtb_arrivalPrice.Text = product.ArrivalPrice.ToString();
                 gtb_salePrice.Text = product.SalePrice.ToString();
-                gdtp_lastComeDate.Value = product.LastComeDate;
+                try
+                {
+                    gdtp_lastComeDate.Value = product.LastComeDate;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 gcb_productCompany.SelectedItem = product.Company.Name;
                 gcb_productKind.SelectedItem = product.Kind.Name;
             }
@@ -65,33 +72,37 @@ namespace SuperShopDesktop.Main.Menu.Product
             product.Number = (int) gnum_number.Value;
             try
             {
-                product.ArrivalPrice = double.Parse(gtb_arrivalPrice.Text);
-            } catch
+                var arrivalPrice = gtb_arrivalPrice.Text.Replace('.', ',');
+                product.ArrivalPrice = double.Parse(arrivalPrice);
+            }
+            catch
             {
-                MessageBox.Show("Please write arrival price at right format!");
                 gtb_arrivalPrice.BorderColor = Color.Red;
             }
             try
             {
-                product.SalePrice = double.Parse(gtb_salePrice.Text);
+                var salePrice = gtb_salePrice.Text.Replace('.', ',');
+                product.SalePrice = double.Parse(salePrice);
+                product.LastComeDate = gdtp_lastComeDate.Value;
+                int companyId = int.Parse(gcb_productCompany.SelectedValue.ToString());
+                product.Company = productCompanyDAO.GetProductCompanyById(companyId);
+                int kindId = int.Parse(gcb_productKind.SelectedValue.ToString());
+                product.Kind = productKindDAO.GetProductKindById(kindId);
+
+                if (productNumberDAO.GetProductNumberById(product.Id) == null)
+                    productNumberDAO.AddProductNumber(product);
+                else
+                    productNumberDAO.UpdateProductNumber(product);
+
+                Products products = new Products();
+                products.Dock = DockStyle.Fill;
+                MainAdmin.Instance.pnl_windows.Controls.Clear();
+                MainAdmin.Instance.pnl_windows.Controls.Add(products);
             }
             catch
             {
-                MessageBox.Show("Please write sale price at right format!");
                 gtb_salePrice.BorderColor = Color.Red;
             }
-            product.Company = productCompanyDAO.GetProductCompanyByName(gcb_productCompany.SelectedItem.ToString());
-            product.Kind = productKindDAO.GetProductKindByName(gcb_productKind.SelectedItem.ToString());
-
-            if (productNumberDAO.GetProductNumberById(product.Id) == null)
-                productNumberDAO.AddProductNumber(product);
-            else
-                productNumberDAO.UpdateProductNumber(product);
-
-            Products products = new Products();
-            products.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(products);
         }
     }
 }

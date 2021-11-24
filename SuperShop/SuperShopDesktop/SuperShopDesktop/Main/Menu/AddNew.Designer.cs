@@ -29,6 +29,7 @@
         private void InitializeComponent ()
         {
             this.pnl_options = new System.Windows.Forms.Panel();
+            this.gbtn_cashier = new Guna.UI.WinForms.GunaButton();
             this.gbtn_workSector = new Guna.UI.WinForms.GunaButton();
             this.gbtn_worker = new Guna.UI.WinForms.GunaButton();
             this.gbtn_kind = new Guna.UI.WinForms.GunaButton();
@@ -45,6 +46,7 @@
             // pnl_options
             // 
             this.pnl_options.AutoScroll = true;
+            this.pnl_options.Controls.Add(this.gbtn_cashier);
             this.pnl_options.Controls.Add(this.gbtn_workSector);
             this.pnl_options.Controls.Add(this.gbtn_worker);
             this.pnl_options.Controls.Add(this.gbtn_kind);
@@ -56,6 +58,33 @@
             this.pnl_options.Name = "pnl_options";
             this.pnl_options.Size = new System.Drawing.Size(764, 454);
             this.pnl_options.TabIndex = 0;
+            // 
+            // gbtn_cashier
+            // 
+            this.gbtn_cashier.AnimationHoverSpeed = 0.07F;
+            this.gbtn_cashier.AnimationSpeed = 0.03F;
+            this.gbtn_cashier.BackColor = System.Drawing.Color.Transparent;
+            this.gbtn_cashier.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(151)))), ((int)(((byte)(240)))));
+            this.gbtn_cashier.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(211)))), ((int)(((byte)(240)))));
+            this.gbtn_cashier.BorderSize = 2;
+            this.gbtn_cashier.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gbtn_cashier.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbtn_cashier.FocusedColor = System.Drawing.Color.Empty;
+            this.gbtn_cashier.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbtn_cashier.ForeColor = System.Drawing.Color.White;
+            this.gbtn_cashier.Image = global::SuperShopDesktop.Properties.Resources.cashier;
+            this.gbtn_cashier.ImageSize = new System.Drawing.Size(20, 20);
+            this.gbtn_cashier.Location = new System.Drawing.Point(0, 296);
+            this.gbtn_cashier.Name = "gbtn_cashier";
+            this.gbtn_cashier.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gbtn_cashier.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(211)))), ((int)(((byte)(240)))));
+            this.gbtn_cashier.OnHoverForeColor = System.Drawing.Color.White;
+            this.gbtn_cashier.OnHoverImage = null;
+            this.gbtn_cashier.OnPressedColor = System.Drawing.Color.Black;
+            this.gbtn_cashier.Size = new System.Drawing.Size(764, 42);
+            this.gbtn_cashier.TabIndex = 6;
+            this.gbtn_cashier.Text = "Cashier";
+            this.gbtn_cashier.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gbtn_cashier_MouseDoubleClick);
             // 
             // gbtn_workSector
             // 
@@ -82,7 +111,7 @@
             this.gbtn_workSector.Size = new System.Drawing.Size(764, 42);
             this.gbtn_workSector.TabIndex = 5;
             this.gbtn_workSector.Text = "Working sector";
-            this.gbtn_workSector.Click += new System.EventHandler(this.gbtn_workSector_Click);
+            this.gbtn_workSector.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gbtn_workSector_MouseDoubleClick);
             // 
             // gbtn_worker
             // 
@@ -136,6 +165,7 @@
             this.gbtn_kind.Size = new System.Drawing.Size(764, 42);
             this.gbtn_kind.TabIndex = 3;
             this.gbtn_kind.Text = "Product kind";
+            this.gbtn_kind.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gbtn_kind_MouseDoubleClick);
             // 
             // gbtn_company
             // 
@@ -162,6 +192,7 @@
             this.gbtn_company.Size = new System.Drawing.Size(764, 42);
             this.gbtn_company.TabIndex = 2;
             this.gbtn_company.Text = "Product company";
+            this.gbtn_company.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gbtn_company_MouseDoubleClick);
             // 
             // pnl_productSub
             // 
@@ -200,6 +231,7 @@
             this.gbtn_productWeight.Size = new System.Drawing.Size(724, 42);
             this.gbtn_productWeight.TabIndex = 2;
             this.gbtn_productWeight.Text = "Weight product";
+            this.gbtn_productWeight.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gbtn_productWeight_MouseDoubleClick);
             // 
             // gbtn_productNumber
             // 
@@ -226,6 +258,7 @@
             this.gbtn_productNumber.Size = new System.Drawing.Size(724, 42);
             this.gbtn_productNumber.TabIndex = 1;
             this.gbtn_productNumber.Text = "Numbered product";
+            this.gbtn_productNumber.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gbtn_productNumber_MouseDoubleClick);
             // 
             // pnl_productLeftSpace
             // 
@@ -288,5 +321,6 @@
         private Guna.UI.WinForms.GunaButton gbtn_worker;
         private Guna.UI.WinForms.GunaButton gbtn_kind;
         private Guna.UI.WinForms.GunaButton gbtn_company;
+        private Guna.UI.WinForms.GunaButton gbtn_cashier;
     }
 }

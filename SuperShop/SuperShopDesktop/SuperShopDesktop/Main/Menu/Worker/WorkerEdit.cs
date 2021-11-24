@@ -52,12 +52,9 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
         private void WorkerEdit_Load (object sender, EventArgs e)
         {
-            var sectors = sectorDAO.GetAll();
-            var sectorNames = new List<string>();
-            foreach (WorkSector sector in sectors)
-                sectorNames.Add(sector.Name);
-
-            gcb_sector.DataSource = sectorNames;
+            gcb_sector.DataSource = sectorDAO.GetAll();
+            gcb_sector.DisplayMember = "Name";
+            gcb_sector.ValueMember = "Id";
 
             if (Worker != null)
             {
@@ -126,12 +123,19 @@ namespace SuperShopDesktop.Main.Menu.Worker
             Worker.ImagePath = imagePath;
             Worker.Birthday = gdtp_birthday.Value;
             Worker.Wage = (int) gnum_wage.Value;
-            Worker.Sector = sectorDAO.GetWorkSectorByName(gcb_sector.SelectedItem.ToString());
+            int sectorId = int.Parse(gcb_sector.SelectedValue.ToString());
+            Worker.Sector = sectorDAO.GetWorkSectorById(sectorId);
 
             if (workerDAO.GetWorkerById(Worker.Id) != null)
                 workerDAO.UpdateWorker(Worker);
             else
                 workerDAO.AddWorker(Worker);
+
+            WorkerView view = new WorkerView();
+            view.Worker = Worker;
+            view.Dock = DockStyle.Fill;
+            MainAdmin.Instance.pnl_windows.Controls.Clear();
+            MainAdmin.Instance.pnl_windows.Controls.Add(view);
         }
     }
 }
