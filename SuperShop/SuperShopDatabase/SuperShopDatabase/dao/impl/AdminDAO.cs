@@ -26,8 +26,7 @@ namespace SuperShopDatabase.Dao.Impl
         {
             int status = (admin.Status) ? 1 : 0;
             string query = String.Format("INSERT INTO admin (name, surname, email, password, phone, status) " +
-                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', {5}); select LAST_INSERT_ID();", admin.Name, admin.Surname,
-                admin.Email, admin.Password, admin.Phone, status);
+                "VALUES ('@name', '@surname', '@email', '@password', '@phone', @status); select LAST_INSERT_ID();");
 
             try
             {
@@ -35,9 +34,17 @@ namespace SuperShopDatabase.Dao.Impl
                 {
                     con.Open();
                     using (var cmd = new MySqlCommand(query, con))
-                    using (var mdr = cmd.ExecuteReader())
-                        if (mdr.Read())
-                            admin.Id = Int32.Parse(mdr.GetString(0));
+                    {
+                        cmd.Parameters.AddWithValue("@name", admin.Name);
+                        cmd.Parameters.AddWithValue("@surname", admin.Surname);
+                        cmd.Parameters.AddWithValue("@email", admin.Email);
+                        cmd.Parameters.AddWithValue("@password", admin.Password);
+                        cmd.Parameters.AddWithValue("@phone", admin.Phone);
+                        cmd.Parameters.AddWithValue("@status", admin.Status);
+                        using (var mdr = cmd.ExecuteReader())
+                            if (mdr.Read())
+                                admin.Id = Int32.Parse(mdr.GetString(0));
+                    }
                 }
 
                 return admin;
@@ -174,7 +181,8 @@ namespace SuperShopDatabase.Dao.Impl
                 }
 
                 return admin;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;
@@ -184,9 +192,8 @@ namespace SuperShopDatabase.Dao.Impl
         public Admin UpdateAdmin (Admin admin)
         {
             int status = (admin.Status) ? 1 : 0;
-            string query = String.Format("update admin set name = '{0}', surname = '{1}', email = '{2}', " +
-                "password = '{3}', phone = '{4}', status = {5} where id = {6}", admin.Name, admin.Surname, 
-                admin.Email, admin.Password, admin.Phone, status, admin.Id);
+            string query = String.Format("update admin set name = '@name', surname = '@surname', email = '@email', " +
+                "password = '@password', phone = '@phone', status = @status where id = @id");
 
             try
             {
@@ -195,12 +202,19 @@ namespace SuperShopDatabase.Dao.Impl
                     con.Open();
                     using (var cmd = new MySqlCommand(query, con))
                     {
+                        cmd.Parameters.AddWithValue("@name", admin.Name);
+                        cmd.Parameters.AddWithValue("@surname", admin.Surname);
+                        cmd.Parameters.AddWithValue("@email", admin.Email);
+                        cmd.Parameters.AddWithValue("@password", admin.Password);
+                        cmd.Parameters.AddWithValue("@phone", admin.Phone);
+                        cmd.Parameters.AddWithValue("@status", admin.Status);
                         cmd.ExecuteNonQuery();
                     }
                 }
 
                 return admin;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return null;

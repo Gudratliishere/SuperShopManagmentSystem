@@ -12,6 +12,7 @@ namespace SuperShopDatabase.Dao.Inter
         List<ProductWeight> GetAll ();
         List<ProductWeight> GetAllByKind (ProductKind kind);
         List<ProductWeight> GetAllByCompany (ProductCompany company);
+        List<ProductWeight> GetAllByName (string name);
         ProductWeight GetProductWeightById (int id);
         ProductWeight AddProductWeight (ProductWeight productWeight);
         ProductWeight UpdateProductWeight (ProductWeight productWeight);

@@ -293,6 +293,7 @@
             this.Controls.Add(this.glbl_name);
             this.Name = "SignupAdmin";
             this.Size = new System.Drawing.Size(346, 417);
+            this.Load += new System.EventHandler(this.SignupAdmin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

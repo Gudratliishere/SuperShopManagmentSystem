@@ -153,6 +153,38 @@ namespace SuperShopDatabase.Dao.Impl
             }
         }
 
+        public List<ProductNumber> GetAllByName (string name)
+        {
+            string query = String.Format("select * from product_number where name = '{0}'", name);
+
+            try
+            {
+                List<ProductNumber> products = new List<ProductNumber>();
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            while (mdr.Read())
+                            {
+                                var product = new ProductNumber();
+                                FillProductNumberWithMDR(product, mdr);
+                                products.Add(product);
+                            }
+                        }
+                    }
+                }
+                return products;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         public ProductNumber GetProductNumberById (int id)
         {
             string query = String.Format("select * from product_number where id = {0}", id);

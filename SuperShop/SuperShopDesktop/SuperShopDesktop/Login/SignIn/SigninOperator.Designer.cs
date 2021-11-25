@@ -74,6 +74,7 @@
             this.gchb_showpass.Size = new System.Drawing.Size(58, 20);
             this.gchb_showpass.TabIndex = 13;
             this.gchb_showpass.Text = "Show";
+            this.gchb_showpass.CheckedChanged += new System.EventHandler(this.gchb_showpass_CheckedChanged);
             // 
             // gbtn_signin
             // 
@@ -174,6 +175,7 @@
             this.Controls.Add(this.glbl_email);
             this.Name = "SigninOperator";
             this.Size = new System.Drawing.Size(346, 417);
+            this.Load += new System.EventHandler(this.SigninOperator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,6 +1,6 @@
 ﻿namespace SuperShopDesktop.Main
 {
-    partial class MainAdmin
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            this.components = new System.ComponentModel.Container();
             this.pnl_top = new System.Windows.Forms.Panel();
-            this.gresize = new Guna.UI.WinForms.GunaResize(this.components);
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_windows = new System.Windows.Forms.Panel();
             this.pnl_menu = new System.Windows.Forms.Panel();
+            this.gbtn_add = new Guna.UI.WinForms.GunaButton();
+            this.gbtn_notification = new Guna.UI.WinForms.GunaButton();
+            this.gbtn_logout = new Guna.UI.WinForms.GunaButton();
             this.flp_menu = new System.Windows.Forms.FlowLayoutPanel();
             this.gbtn_products = new Guna.UI.WinForms.GunaButton();
             this.gbtn_workers = new Guna.UI.WinForms.GunaButton();
             this.gbtn_cashiers = new Guna.UI.WinForms.GunaButton();
             this.gbtn_settings = new Guna.UI.WinForms.GunaButton();
-            this.gbtn_add = new Guna.UI.WinForms.GunaButton();
             this.pnl_body.SuspendLayout();
             this.pnl_menu.SuspendLayout();
             this.flp_menu.SuspendLayout();
@@ -52,10 +52,6 @@
             this.pnl_top.Name = "pnl_top";
             this.pnl_top.Size = new System.Drawing.Size(800, 30);
             this.pnl_top.TabIndex = 0;
-            // 
-            // gresize
-            // 
-            this.gresize.TargetForm = this;
             // 
             // pnl_body
             // 
@@ -79,12 +75,92 @@
             // pnl_menu
             // 
             this.pnl_menu.Controls.Add(this.gbtn_add);
+            this.pnl_menu.Controls.Add(this.gbtn_notification);
+            this.pnl_menu.Controls.Add(this.gbtn_logout);
             this.pnl_menu.Controls.Add(this.flp_menu);
             this.pnl_menu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_menu.Location = new System.Drawing.Point(0, 0);
             this.pnl_menu.Name = "pnl_menu";
             this.pnl_menu.Size = new System.Drawing.Size(800, 43);
             this.pnl_menu.TabIndex = 2;
+            // 
+            // gbtn_add
+            // 
+            this.gbtn_add.AnimationHoverSpeed = 0.07F;
+            this.gbtn_add.AnimationSpeed = 0.03F;
+            this.gbtn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_add.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_add.BorderColor = System.Drawing.Color.Black;
+            this.gbtn_add.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gbtn_add.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gbtn_add.FocusedColor = System.Drawing.Color.Empty;
+            this.gbtn_add.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbtn_add.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_add.Image = global::SuperShopDesktop.Properties.Resources.add;
+            this.gbtn_add.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gbtn_add.ImageSize = new System.Drawing.Size(20, 20);
+            this.gbtn_add.Location = new System.Drawing.Point(665, 0);
+            this.gbtn_add.Name = "gbtn_add";
+            this.gbtn_add.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gbtn_add.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gbtn_add.OnHoverForeColor = System.Drawing.Color.White;
+            this.gbtn_add.OnHoverImage = null;
+            this.gbtn_add.OnPressedColor = System.Drawing.Color.Black;
+            this.gbtn_add.Size = new System.Drawing.Size(45, 43);
+            this.gbtn_add.TabIndex = 5;
+            this.gbtn_add.Click += new System.EventHandler(this.gbtn_add_Click);
+            // 
+            // gbtn_notification
+            // 
+            this.gbtn_notification.AnimationHoverSpeed = 0.07F;
+            this.gbtn_notification.AnimationSpeed = 0.03F;
+            this.gbtn_notification.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_notification.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_notification.BorderColor = System.Drawing.Color.Black;
+            this.gbtn_notification.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gbtn_notification.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gbtn_notification.FocusedColor = System.Drawing.Color.Empty;
+            this.gbtn_notification.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbtn_notification.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_notification.Image = global::SuperShopDesktop.Properties.Resources.notification;
+            this.gbtn_notification.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gbtn_notification.ImageSize = new System.Drawing.Size(20, 20);
+            this.gbtn_notification.Location = new System.Drawing.Point(710, 0);
+            this.gbtn_notification.Name = "gbtn_notification";
+            this.gbtn_notification.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gbtn_notification.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gbtn_notification.OnHoverForeColor = System.Drawing.Color.White;
+            this.gbtn_notification.OnHoverImage = null;
+            this.gbtn_notification.OnPressedColor = System.Drawing.Color.Black;
+            this.gbtn_notification.Size = new System.Drawing.Size(45, 43);
+            this.gbtn_notification.TabIndex = 3;
+            this.gbtn_notification.Click += new System.EventHandler(this.gbtn_notification_Click);
+            // 
+            // gbtn_logout
+            // 
+            this.gbtn_logout.AnimationHoverSpeed = 0.07F;
+            this.gbtn_logout.AnimationSpeed = 0.03F;
+            this.gbtn_logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_logout.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_logout.BorderColor = System.Drawing.Color.Black;
+            this.gbtn_logout.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gbtn_logout.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gbtn_logout.FocusedColor = System.Drawing.Color.Empty;
+            this.gbtn_logout.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbtn_logout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
+            this.gbtn_logout.Image = global::SuperShopDesktop.Properties.Resources.logout;
+            this.gbtn_logout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gbtn_logout.ImageSize = new System.Drawing.Size(20, 20);
+            this.gbtn_logout.Location = new System.Drawing.Point(755, 0);
+            this.gbtn_logout.Name = "gbtn_logout";
+            this.gbtn_logout.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gbtn_logout.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gbtn_logout.OnHoverForeColor = System.Drawing.Color.White;
+            this.gbtn_logout.OnHoverImage = null;
+            this.gbtn_logout.OnPressedColor = System.Drawing.Color.Black;
+            this.gbtn_logout.Size = new System.Drawing.Size(45, 43);
+            this.gbtn_logout.TabIndex = 1;
+            this.gbtn_logout.Click += new System.EventHandler(this.gbtn_logout_Click);
             // 
             // flp_menu
             // 
@@ -205,34 +281,9 @@
             this.gbtn_settings.TabIndex = 3;
             this.gbtn_settings.Text = "Settings";
             this.gbtn_settings.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gbtn_settings.Click += new System.EventHandler(this.gbtn_settings_Click);
             // 
-            // gbtn_add
-            // 
-            this.gbtn_add.AnimationHoverSpeed = 0.07F;
-            this.gbtn_add.AnimationSpeed = 0.03F;
-            this.gbtn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
-            this.gbtn_add.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
-            this.gbtn_add.BorderColor = System.Drawing.Color.Black;
-            this.gbtn_add.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gbtn_add.Dock = System.Windows.Forms.DockStyle.Right;
-            this.gbtn_add.FocusedColor = System.Drawing.Color.Empty;
-            this.gbtn_add.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbtn_add.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(215)))), ((int)(((byte)(240)))));
-            this.gbtn_add.Image = global::SuperShopDesktop.Properties.Resources.add;
-            this.gbtn_add.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.gbtn_add.ImageSize = new System.Drawing.Size(20, 20);
-            this.gbtn_add.Location = new System.Drawing.Point(755, 0);
-            this.gbtn_add.Name = "gbtn_add";
-            this.gbtn_add.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.gbtn_add.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gbtn_add.OnHoverForeColor = System.Drawing.Color.White;
-            this.gbtn_add.OnHoverImage = null;
-            this.gbtn_add.OnPressedColor = System.Drawing.Color.Black;
-            this.gbtn_add.Size = new System.Drawing.Size(45, 43);
-            this.gbtn_add.TabIndex = 1;
-            this.gbtn_add.Click += new System.EventHandler(this.gbtn_add_Click);
-            // 
-            // MainAdmin
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,7 +292,7 @@
             this.Controls.Add(this.pnl_top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(220, 40);
-            this.Name = "MainAdmin";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shop Manager";
             this.Load += new System.EventHandler(this.MainAdmin_Load);
@@ -255,15 +306,16 @@
         #endregion
 
         private System.Windows.Forms.Panel pnl_top;
-        private Guna.UI.WinForms.GunaResize gresize;
         private System.Windows.Forms.Panel pnl_body;
         private System.Windows.Forms.FlowLayoutPanel flp_menu;
         private System.Windows.Forms.Panel pnl_menu;
-        private Guna.UI.WinForms.GunaButton gbtn_add;
+        private Guna.UI.WinForms.GunaButton gbtn_logout;
         public System.Windows.Forms.Panel pnl_windows;
         public Guna.UI.WinForms.GunaButton gbtn_products;
         public Guna.UI.WinForms.GunaButton gbtn_workers;
         public Guna.UI.WinForms.GunaButton gbtn_cashiers;
         public Guna.UI.WinForms.GunaButton gbtn_settings;
+        private Guna.UI.WinForms.GunaButton gbtn_add;
+        private Guna.UI.WinForms.GunaButton gbtn_notification;
     }
 }

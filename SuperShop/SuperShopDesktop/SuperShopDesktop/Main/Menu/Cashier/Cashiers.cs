@@ -45,8 +45,8 @@ namespace SuperShopDesktop.Main.Menu.Cashier
             CashierEdit edit = new CashierEdit();
             edit.Dock = DockStyle.Fill;
             edit.Cashier = cashierDAO.GetCashierById(id);
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(edit);
         }
     }
 }

@@ -11,6 +11,7 @@ using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using Guna.UI.WinForms;
 using SuperShopDatabase.Entity;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Login.SignUp
 {
@@ -93,35 +94,42 @@ namespace SuperShopDesktop.Login.SignUp
             }
 
             if (emptyTextBoxExists)
-                GiveMessage("Please fill information fully!", false);
+                GiveMessage(LanguageConfig.RM.GetString("Login_SignupOper_fullInformation"), false);
             else if (operatorDAO.GetOperatorByEmail(email) != null)
-                GiveMessage("Operator already exists with this email!", false);
+                GiveMessage(LanguageConfig.RM.GetString("Login_SignupOper_operExistEmail"), false);
             else
             {
                 glbl_errorMessage.Visible = false;
 
                 if (operatorDAO.GetOperatorByPhone(phone) != null)
-                    GiveMessage("Operator already exists with this phone!", false);
+                    GiveMessage(LanguageConfig.RM.GetString("Login_SignupOper_operExistPhone"), false);
                 else
                 {
                     glbl_errorMessage.Visible = false;
 
                     if (!password.Equals(confirmPassword))
-                        GiveMessage("Password doesn't match!", false);
+                        GiveMessage(LanguageConfig.RM.GetString("Login_Signup_passwordNotMatch"), false);
                     else
                     {
-                        glbl_errorMessage.Visible = false;
+                        if (!email.Contains("@"))
+                        {
+                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_validEmail"), false);
+                        }
+                        else
+                        {
+                            glbl_errorMessage.Visible = false;
 
-                        Operator oper = new Operator();
-                        oper.Name = name;
-                        oper.Surname = surname;
-                        oper.Email = email;
-                        oper.Phone = phone;
-                        oper.Password = password;
+                            Operator oper = new Operator();
+                            oper.Name = name;
+                            oper.Surname = surname;
+                            oper.Email = email;
+                            oper.Phone = phone;
+                            oper.Password = Cryption.Encrypt(password);
 
-                        operatorDAO.AddOperator(oper);
+                            operatorDAO.AddOperator(oper);
 
-                        GiveMessage("Successfully created!", true);
+                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                        }
                     }
                 }
             }
@@ -135,6 +143,23 @@ namespace SuperShopDesktop.Login.SignUp
             else
                 glbl_errorMessage.ForeColor = Color.Red;
             glbl_errorMessage.Visible = true;
+        }
+
+        private void SignupOperator_Load (object sender, EventArgs e)
+        {
+            LoadControlTexts();
+        }
+
+        private void LoadControlTexts ()
+        {
+            glbl_email.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_email");
+            glbl_surname.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_surname");
+            glbl_email.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_email");
+            glbl_phone.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_phone");
+            glbl_password.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_password");
+            glbl_confirmPassword.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_confirmPassword");
+            gbtn_signup.Text = LanguageConfig.RM.GetString("Login_Signup_gbtn_signup");
+            gchb_showpass.Text = LanguageConfig.RM.GetString("Login_Signup_gchb_showpass");
         }
     }
 }

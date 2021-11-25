@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using SuperShopDatabase.Entity;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Cashier
 {
@@ -45,6 +46,15 @@ namespace SuperShopDesktop.Main.Menu.Cashier
             }
         }
 
+        private void LoadControlTexts ()
+        {
+            lbl_name.Text = LanguageConfig.RM.GetString("Main_Menu_CashierEdit_lbl_name");
+            lbl_worker.Text = LanguageConfig.RM.GetString("Main_Menu_CashierEdit_lbl_worker");
+            gbtn_save.Text = LanguageConfig.RM.GetString("Main_Menu_CashierEdit_gbtn_save");
+            gbtn_remove.Text = LanguageConfig.RM.GetString("Main_Menu_CashierEdit_gbtn_remove");
+            gbtn_reset.Text = LanguageConfig.RM.GetString("Main_Menu_CashierEdit_gbtn_reset");
+        }
+
         private void gbtn_reset_Click (object sender, EventArgs e)
         {
             Cashier.Sales = 0;
@@ -54,8 +64,8 @@ namespace SuperShopDesktop.Main.Menu.Cashier
 
             var cashier = new Cashiers();
             cashier.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(cashier);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(cashier);
         }
 
         private void gbtn_remove_Click (object sender, EventArgs e)
@@ -64,8 +74,8 @@ namespace SuperShopDesktop.Main.Menu.Cashier
 
             var cashier = new Cashiers();
             cashier.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(cashier);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(cashier);
         }
 
         private void gbtn_save_Click (object sender, EventArgs e)
@@ -85,8 +95,8 @@ namespace SuperShopDesktop.Main.Menu.Cashier
 
             var cashier = new Cashiers();
             cashier.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(cashier);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(cashier);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SuperShopDatabase.Entity;
 using SuperShopDesktop.Properties;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Worker
 {
@@ -23,6 +24,8 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
         private void WorkerView_Load (object sender, EventArgs e)
         {
+            LoadControlTexts();
+
             try
             {
                 gpb_profilePhoto.Image = Image.FromFile(Worker.ImagePath);
@@ -47,21 +50,30 @@ namespace SuperShopDesktop.Main.Menu.Worker
             lbl_endTime.Text = Worker.EndTime;
         }
 
+        private void LoadControlTexts ()
+        {
+            lbl_contact.Text = LanguageConfig.RM.GetString("Main_WorkerView_lbl_contact");
+            lbl_birthdayHeader.Text = LanguageConfig.RM.GetString("Main_WorkerView_lbl_birthdayHeader");
+            lbl_sectorHeader.Text = LanguageConfig.RM.GetString("Main_WorkerView_lbl_sectorHeader");
+            lbl_wageHeader.Text = LanguageConfig.RM.GetString("Main_WorkerView_lbl_wageHeader");
+            lbl_workTimeHeader.Text = LanguageConfig.RM.GetString("Main_WorkerView_lbl_workTimeHeader");
+        }
+
         private void gbtn_back_Click (object sender, EventArgs e)
         {
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Clear();
             var worker = new Workers();
             worker.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Add(worker);
+            MainForm.Instance.pnl_windows.Controls.Add(worker);
         }
 
         private void gbtn_edit_Click (object sender, EventArgs e)
         {
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Clear();
             WorkerEdit edit = new WorkerEdit();
             edit.Worker = Worker;
             edit.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+            MainForm.Instance.pnl_windows.Controls.Add(edit);
         }
     }
 }

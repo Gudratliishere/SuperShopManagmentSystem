@@ -176,6 +176,7 @@
             this.Controls.Add(this.glbl_email);
             this.Name = "SigninAdmin";
             this.Size = new System.Drawing.Size(346, 417);
+            this.Load += new System.EventHandler(this.SigninAdmin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

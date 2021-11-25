@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SuperShopDatabase.Config;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop
 {
@@ -44,6 +45,20 @@ namespace SuperShopDesktop
         private void gbtn_close_Click (object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Settings_Load (object sender, EventArgs e)
+        {
+            LoadControlTexts();
+        }
+
+        private void LoadControlTexts ()
+        {
+            glbl_user.Text = LanguageConfig.RM.GetString("Login_Settings_glbl_user");
+            glbl_pass.Text = LanguageConfig.RM.GetString("Login_Settings_glbl_pass");
+            glbl_database.Text = LanguageConfig.RM.GetString("Login_Settings_glbl_database");
+            gbtn_save.Text = LanguageConfig.RM.GetString("Login_Settings_glbl_save");
+            gchb_show.Text = LanguageConfig.RM.GetString("Login_Settings_gchb_show");
         }
     }
 }

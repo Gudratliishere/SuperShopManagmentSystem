@@ -1,4 +1,6 @@
 ﻿using Guna.UI.WinForms;
+using SuperShopDesktop.DesktopConfiguration;
+using SuperShopDesktop.Language;
 using SuperShopDesktop.Login;
 using SuperShopDesktop.Login.SignIn;
 using SuperShopDesktop.Login.SignUp;
@@ -17,6 +19,8 @@ namespace SuperShopDesktop
 {
     public partial class MainLogin : Form
     {
+        public static MainLogin Instance;
+
         private Color buttonSelectedColor = Color.FromArgb(190, 153, 225);
         private Color buttonColor = Color.FromArgb(100, 153, 225);
 
@@ -26,15 +30,26 @@ namespace SuperShopDesktop
         public MainLogin ()
         {
             InitializeComponent();
+
+            Instance = this;
         }
 
         private void Main_Load (object sender, EventArgs e)
         {
+            LoadControlTexts();
             selectedSignButton = gbtn_signin;
             selectedLoginButton = gbtn_admin;
 
             pnl_main.Controls.Clear();
             pnl_main.Controls.Add(LoginPanelManager.GetSigninAdminPanel());
+        }
+
+        private void LoadControlTexts ()
+        {
+            gbtn_signin.Text = LanguageConfig.RM.GetString("Login_MainLogin_gbtn_signin");
+            gbtn_signup.Text = LanguageConfig.RM.GetString("Login_MainLogin_gbtn_signup");
+            gbtn_exit.Text = LanguageConfig.RM.GetString("Login_MainLogin_gbtn_exit");
+            gbtn_setting.Text = LanguageConfig.RM.GetString("Login_MainLogin_gbtn_setting");
         }
 
         private void gbtn_admin_MouseEnter (object sender, EventArgs e)

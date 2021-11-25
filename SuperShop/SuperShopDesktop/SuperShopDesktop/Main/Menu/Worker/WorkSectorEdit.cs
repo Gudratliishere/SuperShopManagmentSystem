@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Entity;
 using SuperShopDatabase.Config;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Worker
 {
@@ -28,8 +29,15 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
         private void WorkSectorEdit_Load (object sender, EventArgs e)
         {
+            LoadControlTexts();
             if (sector != null)
                 gtb_name.Text = sector.Name;
+        }
+
+        private void LoadControlTexts ()
+        {
+            lbl_name.Text = LanguageConfig.RM.GetString("Main_WorkSector_lbl_name");
+            gbtn_save.Text = LanguageConfig.RM.GetString("Main_WorkSector_gbtn_save");
         }
 
         private void gbtn_save_Click (object sender, EventArgs e)
@@ -46,8 +54,8 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
             Workers workers = new Workers();
             workers.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(workers);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(workers);
         }
     }
 }

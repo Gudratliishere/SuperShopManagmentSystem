@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Entity;
 using SuperShopDatabase.Config;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Product
 {
@@ -30,6 +31,14 @@ namespace SuperShopDesktop.Main.Menu.Product
         {
             if (ProductKind != null)
                 gtb_name.Text = ProductKind.Name;
+
+            LoadControlTexts(); 
+        }
+
+        private void LoadControlTexts ()
+        {
+            lbl_name.Text = LanguageConfig.RM.GetString("Main_ProductKindEdit_lbl_name");
+            gbtn_save.Text = LanguageConfig.RM.GetString("Main_ProductKindEdit_gbtn_save");
         }
 
         private void gbtn_save_Click (object sender, EventArgs e)
@@ -46,8 +55,8 @@ namespace SuperShopDesktop.Main.Menu.Product
 
             Products products = new Products();
             products.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(products);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(products);
         }
     }
 }

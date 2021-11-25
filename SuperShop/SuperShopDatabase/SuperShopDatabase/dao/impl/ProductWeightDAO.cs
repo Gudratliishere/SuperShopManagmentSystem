@@ -154,6 +154,38 @@ namespace SuperShopDatabase.Dao.Impl
             }
         }
 
+        public List<ProductWeight> GetAllByName (string name)
+        {
+            string query = String.Format("select * from product_weight where name = '{0}'", name);
+
+            try
+            {
+                List<ProductWeight> products = new List<ProductWeight>();
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            while (mdr.Read())
+                            {
+                                var product = new ProductWeight();
+                                FillProductWeightWithMDR(product, mdr);
+                                products.Add(product);
+                            }
+                        }
+                    }
+                }
+                return products;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         public ProductWeight GetProductWeightById (int id)
         {
             string query = String.Format("select * from product_weight where id = {0}", id);

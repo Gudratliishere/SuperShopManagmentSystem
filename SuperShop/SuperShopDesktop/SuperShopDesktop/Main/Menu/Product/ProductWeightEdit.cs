@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SuperShopDatabase.Config;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Entity;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Product
 {
@@ -58,6 +59,20 @@ namespace SuperShopDesktop.Main.Menu.Product
                 gcb_productCompany.SelectedItem = product.Company.Name;
                 gcb_productKind.SelectedItem = product.Kind.Name;
             }
+
+            LoadControlTexts();
+        }
+
+        private void LoadControlTexts ()
+        {
+            lbl_name.Text = LanguageConfig.RM.GetString("Main_ProductWeightEdit_lbl_name");
+            lbl_arrivalPrice.Text = LanguageConfig.RM.GetString("Main_ProductWeightEdit_lbl_arrivalPrice");
+            lbl_salePrice.Text = LanguageConfig.RM.GetString("Main_ProductWeightEdit_lbl_salePrice");
+            lbl_weight.Text = LanguageConfig.RM.GetString("Main_ProductWeightEdit_lbl_weight");
+            lbl_lastComeDate.Text = LanguageConfig.RM.GetString("Main_ProductWeightEdit_lbl_lastComeDate");
+            lbl_productCompany.Text = LanguageConfig.RM.GetString("Main_ProductWeightEdit_lbl_productCompany");
+            lbl_productKind.Text = LanguageConfig.RM.GetString("Main_ProductWeightEdit_lbl_productKind");
+            gbtn_save.Text = LanguageConfig.RM.GetString("Main_ProductWeightEdit_gbtn_save");
         }
 
         private void gbtn_save_Click (object sender, EventArgs e)
@@ -105,8 +120,8 @@ namespace SuperShopDesktop.Main.Menu.Product
 
                 Products products = new Products();
                 products.Dock = DockStyle.Fill;
-                MainAdmin.Instance.pnl_windows.Controls.Clear();
-                MainAdmin.Instance.pnl_windows.Controls.Add(products);
+                MainForm.Instance.pnl_windows.Controls.Clear();
+                MainForm.Instance.pnl_windows.Controls.Add(products);
             }
             catch
             {

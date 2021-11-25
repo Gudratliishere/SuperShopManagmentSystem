@@ -55,6 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesktopConfiguration\IniFile.cs" />
+    <Compile Include="DesktopConfiguration\LanguageConfig.cs" />
+    <Compile Include="Language\Az.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Az.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Language\En.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>En.resx</DependentUpon>
+    </Compile>
     <Compile Include="Login\Cryption.cs" />
     <Compile Include="Login\MainLogin.cs">
       <SubType>Form</SubType>
@@ -87,11 +99,11 @@
     <Compile Include="Login\SignUp\SignupOperator.Designer.cs">
       <DependentUpon>SignupOperator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\MainAdmin.cs">
+    <Compile Include="Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\MainAdmin.Designer.cs">
-      <DependentUpon>MainAdmin.cs</DependentUpon>
+    <Compile Include="Main\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Menu\AddNew.cs">
       <SubType>UserControl</SubType>
@@ -110,6 +122,12 @@
     </Compile>
     <Compile Include="Main\Menu\Cashier\Cashiers.Designer.cs">
       <DependentUpon>Cashiers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Notification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Menu\Product\ProductCompanyEdit.cs">
       <SubType>UserControl</SubType>
@@ -134,6 +152,12 @@
     </Compile>
     <Compile Include="Main\Menu\Product\ProductWeightEdit.Designer.cs">
       <DependentUpon>ProductWeightEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Menu\Settings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\Menu\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Menu\Worker\WorkerEdit.cs">
       <SubType>UserControl</SubType>
@@ -179,6 +203,14 @@
     <Compile Include="Login\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Language\Az.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Az.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\En.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>En.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\MainLogin.resx">
       <DependentUpon>MainLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,8 +226,8 @@
     <EmbeddedResource Include="Login\SignUp\SignupOperator.resx">
       <DependentUpon>SignupOperator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\MainAdmin.resx">
-      <DependentUpon>MainAdmin.cs</DependentUpon>
+    <EmbeddedResource Include="Main\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\AddNew.resx">
       <DependentUpon>AddNew.cs</DependentUpon>
@@ -205,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Cashier\Cashiers.resx">
       <DependentUpon>Cashiers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Product\ProductCompanyEdit.resx">
       <DependentUpon>ProductCompanyEdit.cs</DependentUpon>
@@ -217,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Product\ProductWeightEdit.resx">
       <DependentUpon>ProductWeightEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Menu\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Menu\Worker\WorkerEdit.resx">
       <DependentUpon>WorkerEdit.cs</DependentUpon>
@@ -319,5 +357,11 @@
   <ItemGroup>
     <None Include="images\cashier.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\logout.png" />
+    <Content Include="images\notification.png" />
+    <Content Include="images\search.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

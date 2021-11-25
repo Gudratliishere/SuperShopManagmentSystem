@@ -11,6 +11,7 @@ using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using Guna.UI.WinForms;
 using SuperShopDatabase.Entity;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Login.SignUp
 {
@@ -57,36 +58,43 @@ namespace SuperShopDesktop.Login.SignUp
             }
 
             if (emptyTextBoxExists)
-                GiveMessage("Please fill information fully!", false);
+                GiveMessage(LanguageConfig.RM.GetString("Login_SignupAdmin_fullInformation"), false);
             else if (adminDAO.GetAdminByEmail(email) != null)
-                GiveMessage("Admin already exists with this email!", false);
+                GiveMessage(LanguageConfig.RM.GetString("Login_SignupAdmin_adminExistEmail"), false);
             else
             {
                 glbl_errorMessage.Visible = false;
 
                 if (adminDAO.GetAdminByPhone(phone) != null)
-                    GiveMessage("Admin already exists with this phone!", false);
+                    GiveMessage(LanguageConfig.RM.GetString("Login_SignupAdmin_adminExistPhone"), false);
                 else
                 {
                     glbl_errorMessage.Visible = false;
 
                     if (!password.Equals(confirmPassword))
-                        GiveMessage("Password doesn't match!", false);
+                        GiveMessage(LanguageConfig.RM.GetString("Login_Signup_passwordNotMatch"), false);
                     else
                     {
-                        glbl_errorMessage.Visible = false;
+                        if (!email.Contains("@"))
+                        {
+                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_validEmail"), false);
+                        }
+                        else
+                        {
+                            glbl_errorMessage.Visible = false;
 
-                        Admin admin = new Admin();
-                        admin.Name = name;
-                        admin.Surname = surname;
-                        admin.Email = email;
-                        admin.Phone = phone;
-                        admin.Password = password;
-                        admin.Status = true;
+                            Admin admin = new Admin();
+                            admin.Name = name;
+                            admin.Surname = surname;
+                            admin.Email = email;
+                            admin.Phone = phone;
+                            admin.Password = Cryption.Encrypt(password);
+                            admin.Status = true;
 
-                        adminDAO.AddAdmin(admin);
+                            adminDAO.AddAdmin(admin);
 
-                        GiveMessage("Successfully created!", true);
+                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                        }
                     }
                 }
             }
@@ -137,6 +145,23 @@ namespace SuperShopDesktop.Login.SignUp
         {
             if (e.KeyCode == Keys.Enter)
                 gbtn_signup.PerformClick();
+        }
+
+        private void SignupAdmin_Load (object sender, EventArgs e)
+        {
+            LoadControlTexts();
+        }
+
+        private void LoadControlTexts ()
+        {
+            glbl_email.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_email");
+            glbl_surname.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_surname");
+            glbl_email.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_email");
+            glbl_phone.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_phone");
+            glbl_password.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_password");
+            glbl_confirmPassword.Text = LanguageConfig.RM.GetString("Login_Signup_glbl_confirmPassword");
+            gbtn_signup.Text = LanguageConfig.RM.GetString("Login_Signup_gbtn_signup");
+            gchb_showpass.Text = LanguageConfig.RM.GetString("Login_Signup_gchb_showpass");
         }
     }
 }

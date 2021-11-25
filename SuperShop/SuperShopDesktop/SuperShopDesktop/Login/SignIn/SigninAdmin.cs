@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using SuperShopDatabase.Entity;
+using SuperShopDesktop.Main;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Login.SignIn
 {
@@ -33,29 +35,32 @@ namespace SuperShopDesktop.Login.SignIn
 
             string email = gtb_email.Text.Trim();
             string password = gtb_password.Text.Trim();
-            //password = Cryption.Encrypt(password);
 
             Admin admin = adminDAO.GetAdminByEmail(email);
             if (admin == null)
             {
-                GiveErrorMessage("Admin doesn't exist with this email!");
+                GiveErrorMessage(LanguageConfig.RM.GetString("Login_SigninAdmin_adminNotExist"));
                 gtb_email.BorderColor = Color.Red;
             }
             else if (!admin.Status)
-                GiveErrorMessage("Admin account is blocked!"); 
+                GiveErrorMessage(LanguageConfig.RM.GetString("Login_SigninAdmin_adminBlocked")); 
             else
             {
                 glbl_errorMessage.Visible = false;
                 gtb_email.BorderColor = Color.Silver;
 
-                if (!admin.Password.Equals(password))
+                if (!admin.Password.Equals(Cryption.Encrypt(password)))
                 {
-                    GiveErrorMessage("Password is wrong!");
+                    GiveErrorMessage(LanguageConfig.RM.GetString("Login_SigninAdmin_passwordWrong"));
                     gtb_password.BorderColor = Color.Red;
                 }
                 else
                 {
                     gtb_password.BorderColor = Color.Silver;
+                    MainForm main = new MainForm();
+                    MainForm.Session = 1;
+                    main.Show();
+                    MainLogin.Instance.Hide();
                 }
             }
         }
@@ -76,6 +81,20 @@ namespace SuperShopDesktop.Login.SignIn
         {
             if (e.KeyCode == Keys.Enter)
                 gbtn_signin.PerformClick();
+        }
+
+        private void SigninAdmin_Load (object sender, EventArgs e)
+        {
+            LoadControlTexts();
+        }
+
+        private void LoadControlTexts ()
+        {
+            glbl_email.Text = LanguageConfig.RM.GetString("Login_Signin_glbl_email");
+            glbl_password.Text = LanguageConfig.RM.GetString("Login_Signin_glbl_password");
+            glbl_forgotPassword.Text = LanguageConfig.RM.GetString("Login_Signin_glbl_forgetPassword");
+            gbtn_signin.Text = LanguageConfig.RM.GetString("Login_Signin_gbtn_signin");
+            gchb_showpass.Text = LanguageConfig.RM.GetString("Login_Signin_gchb_showpass");
         }
     }
 }

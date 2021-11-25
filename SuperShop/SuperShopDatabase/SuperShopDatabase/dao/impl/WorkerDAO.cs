@@ -98,76 +98,15 @@ namespace SuperShopDatabase.Dao.Impl
             }
         }
 
-        public List<Worker> GetAllByName (string name)
-        {
-            string query = String.Format("select * from worker where name = '{0}'", name);
-
-            try
-            {
-                List<Worker> workers = new List<Worker>();
-
-                using (var con = new MySqlConnection(connection.GenerateString()))
-                {
-                    con.Open();
-                    using (var cmd = new MySqlCommand(query, con))
-                    {
-                        using (var mdr = cmd.ExecuteReader())
-                        {
-                            while (mdr.Read())
-                            {
-                                Worker worker = new Worker();
-                                FillWorkerWithMDR(worker, mdr);
-                                workers.Add(worker);
-                            }
-                        }
-                    }
-                }
-                return workers;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-
-        public List<Worker> GetAllByNameAndSurname (string name, string surname)
-        {
-            string query = String.Format("select * from worker where name = '{0}' and surname = '{1}'", name, surname);
-
-            try
-            {
-                List<Worker> workers = new List<Worker>();
-
-                using (var con = new MySqlConnection(connection.GenerateString()))
-                {
-                    con.Open();
-                    using (var cmd = new MySqlCommand(query, con))
-                    {
-                        using (var mdr = cmd.ExecuteReader())
-                        {
-                            while (mdr.Read())
-                            {
-                                Worker worker = new Worker();
-                                FillWorkerWithMDR(worker, mdr);
-                                workers.Add(worker);
-                            }
-                        }
-                    }
-                }
-                return workers;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-
         public List<Worker> GetAllByNameAndSurnameAndFatherName (string name, string surname, string fatherName)
         {
-            string query = String.Format("select * from worker where name = '{0}' and surname = '{1}' and " +
-                "father_name = '{2}'", name, surname, fatherName);
+            string query = "select * from worker where 1 = 1";
+            if (!name.Trim().Equals(""))
+                query += " and name = @name";
+            if (!surname.Trim().Equals(""))
+                query += " and surname = @surname";
+            if (!fatherName.Trim().Equals(""))
+                query += " and father_name = @fatherName";
 
             try
             {
@@ -178,6 +117,13 @@ namespace SuperShopDatabase.Dao.Impl
                     con.Open();
                     using (var cmd = new MySqlCommand(query, con))
                     {
+                        if (!name.Trim().Equals(""))
+                            cmd.Parameters.AddWithValue("@name", name);
+                        if (!surname.Trim().Equals(""))
+                            cmd.Parameters.AddWithValue("@surname", surname);
+                        if (!fatherName.Trim().Equals(""))
+                            cmd.Parameters.AddWithValue("@fatherName", fatherName);
+
                         using (var mdr = cmd.ExecuteReader())
                         {
                             while (mdr.Read())

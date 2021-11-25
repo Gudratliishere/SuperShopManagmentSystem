@@ -11,6 +11,7 @@ using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using SuperShopDatabase.Entity;
 using Guna.UI.WinForms;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Product
 {
@@ -20,8 +21,9 @@ namespace SuperShopDesktop.Main.Menu.Product
         private IProductKindDAO productKindDAO;
         private IProductNumberDAO productNumberDAO;
         private IProductWeightDAO productWeightDAO;
+        private IBarcodeDAO barcodeDAO;
 
-        private SuperShopDatabase.Entity.ProductCompany selectedProductCompany;
+        private ProductCompany selectedProductCompany;
         private ProductKind selectedProductKind;
         private int lastIndex;
 
@@ -33,6 +35,7 @@ namespace SuperShopDesktop.Main.Menu.Product
             productKindDAO = Context.GetProductKindDAO();
             productNumberDAO = Context.GetProductNumberDAO();
             productWeightDAO = Context.GetProductWeightDAO();
+            barcodeDAO = Context.GetBarcodeDAO();
         }
 
         private void gcb_specify_SelectedIndexChanged (object sender, EventArgs e)
@@ -82,6 +85,25 @@ namespace SuperShopDesktop.Main.Menu.Product
         private void Products_Load (object sender, EventArgs e)
         {
             FillProductsGridWithAll();
+            LoadControlTexts();
+        }
+
+        private void LoadControlTexts ()
+        {
+            var list = new List<Specify>();
+            list.Add(new Specify("az", LanguageConfig.RM.GetString("Main_Products_gcb_all")));
+            list.Add(new Specify("en", LanguageConfig.RM.GetString("Main_Products_gcb_company")));
+            list.Add(new Specify("en", LanguageConfig.RM.GetString("Main_Products_gcb_kind")));
+            gcb_specify.DataSource = list;
+            gcb_specify.DisplayMember = "Name";
+            gcb_specify.ValueMember = "Id";
+
+            var list2 = new List<ProductClass>();
+            list2.Add(new ProductClass("az", LanguageConfig.RM.GetString("Main_Products_gcb_productNumber")));
+            list2.Add(new ProductClass("en", LanguageConfig.RM.GetString("Main_Products_gcb_productWeight")));
+            gcb_productClass.DataSource = list2;
+            gcb_productClass.DisplayMember = "Name";
+            gcb_productClass.ValueMember = "Id";
         }
 
         private void gcb_productClass_SelectedIndexChanged (object sender, EventArgs e)
@@ -170,16 +192,16 @@ namespace SuperShopDesktop.Main.Menu.Product
                 ProductNumberEdit edit = new ProductNumberEdit();
                 edit.Product = productNumberDAO.GetProductNumberById(id);
                 edit.Dock = DockStyle.Fill;
-                MainAdmin.Instance.pnl_windows.Controls.Clear();
-                MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+                MainForm.Instance.pnl_windows.Controls.Clear();
+                MainForm.Instance.pnl_windows.Controls.Add(edit);
             }
             else
             {
                 ProductWeightEdit edit = new ProductWeightEdit();
                 edit.Product = productWeightDAO.GetProductWeightById(id);
                 edit.Dock = DockStyle.Fill;
-                MainAdmin.Instance.pnl_windows.Controls.Clear();
-                MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+                MainForm.Instance.pnl_windows.Controls.Clear();
+                MainForm.Instance.pnl_windows.Controls.Add(edit);
             }
         }
 
@@ -225,7 +247,7 @@ namespace SuperShopDesktop.Main.Menu.Product
             GunaButton button = new GunaButton()
             {
                 Image = null,
-                Text = "Remove",
+                Text = LanguageConfig.RM.GetString("Main_Remove"),
                 Size = new Size(63, 23),
                 Location = point,
                 TabIndex = 1
@@ -233,11 +255,12 @@ namespace SuperShopDesktop.Main.Menu.Product
             button.Click += delegate (object sender, EventArgs e)
             {
                 DialogResult dt =
-                MessageBox.Show("Are you sure to remove?", "Remove", MessageBoxButtons.YesNo);
+                MessageBox.Show(LanguageConfig.RM.GetString("Main_SureRemove"),
+                    LanguageConfig.RM.GetString("Main_Remove"), MessageBoxButtons.YesNo);
                 if (dt == DialogResult.Yes)
                 {
                     action.Invoke();
-                    MainAdmin.Instance.gbtn_products.PerformClick();
+                    MainForm.Instance.gbtn_products.PerformClick();
                 }
             };
             return button;
@@ -253,16 +276,16 @@ namespace SuperShopDesktop.Main.Menu.Product
                     ProductCompanyEdit edit = new ProductCompanyEdit();
                     edit.ProductCompany = productCompanyDAO.GetProductCompanyById(id);
                     edit.Dock = DockStyle.Fill;
-                    MainAdmin.Instance.pnl_windows.Controls.Clear();
-                    MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+                    MainForm.Instance.pnl_windows.Controls.Clear();
+                    MainForm.Instance.pnl_windows.Controls.Add(edit);
                 }
                 else if (gcb_specify.SelectedIndex == 2)
                 {
                     ProductKindEdit edit = new ProductKindEdit();
                     edit.ProductKind = productKindDAO.GetProductKindById(id);
                     edit.Dock = DockStyle.Fill;
-                    MainAdmin.Instance.pnl_windows.Controls.Clear();
-                    MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+                    MainForm.Instance.pnl_windows.Controls.Clear();
+                    MainForm.Instance.pnl_windows.Controls.Add(edit);
                 }
             }
         }
@@ -272,23 +295,88 @@ namespace SuperShopDesktop.Main.Menu.Product
             if (gcb_specify.SelectedIndex != 0)
             {
                 DialogResult dt =
-                    MessageBox.Show("Are you sure to remove?", "Remove", MessageBoxButtons.YesNo);
+                    MessageBox.Show(LanguageConfig.RM.GetString("Main_SureRemove"),
+                    LanguageConfig.RM.GetString("Main_Remove"), MessageBoxButtons.YesNo);
                 if (dt == DialogResult.Yes)
                 {
                     RemoveSpecifyBar();
-                    MainAdmin.Instance.gbtn_products.PerformClick();
+                    MainForm.Instance.gbtn_products.PerformClick();
                 }
             }
         }
 
         private void gbtn_searchByName_Click (object sender, EventArgs e)
         {
-            BindingSource bs = new BindingSource();
-            bs.DataSource = gdgv_products.DataSource;
-            bs.Filter = "Name like '%" + gtb_searchByName.Text + "%'";
-            gdgv_products.DataSource = bs;
-            pnl_products.Controls.Clear();
-            pnl_products.Controls.Add(gdgv_products);
+            if (gcb_productClass.SelectedIndex == 0)
+                FillDataSourceForNumberedProcuts(productNumberDAO.GetAllByName(gtb_searchByName.Text.Trim()));
+            else
+                FillDataSourceForWeightProcuts(productWeightDAO.GetAllByName(gtb_searchByName.Text.Trim()));
         }
+
+        private void gtb_searchByName_KeyDown (object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                gbtn_searchByName.PerformClick();
+        }
+
+        private void gtb_searchByBarcode_KeyDown (object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                gbtn_searchByBarcode.PerformClick();
+        }
+
+        private void gbtn_searchByBarcode_Click (object sender, EventArgs e)
+        {
+            var barcode = barcodeDAO.GetBarcodeById(int.Parse(gtb_searchByBarcode.Text.Trim()));
+            if (barcode.ProductNumber != null)
+            {
+                var list = new List<ProductNumber>();
+                list.Add(barcode.ProductNumber);
+                FillDataSourceForNumberedProcuts(list);
+            }
+            else
+            {
+                var list = new List<ProductScales>();
+                list.Add(barcode.ProductScales);
+                FillDataSourceForScaledProducts(list);
+            }
+        }
+
+        private void FillDataSourceForScaledProducts (List<ProductScales> products)
+        {
+            var data = from product in products
+                       select new
+                       {
+                           product.Id,
+                           product.MeasureDate,
+                           product.Weight,
+                           product.ProductWeight.Name
+                       };
+            gdgv_products.DataSource = data.ToList();
+        }
+    }
+
+    class Specify
+    {
+        public Specify (string id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    class ProductClass
+    {
+        public ProductClass (string id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }

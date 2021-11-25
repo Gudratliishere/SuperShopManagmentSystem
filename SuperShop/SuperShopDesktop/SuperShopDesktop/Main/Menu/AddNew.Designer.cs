@@ -303,6 +303,7 @@
             this.Controls.Add(this.pnl_options);
             this.Name = "AddNew";
             this.Size = new System.Drawing.Size(764, 454);
+            this.Load += new System.EventHandler(this.AddNew_Load);
             this.pnl_options.ResumeLayout(false);
             this.pnl_productSub.ResumeLayout(false);
             this.ResumeLayout(false);

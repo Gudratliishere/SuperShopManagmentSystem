@@ -13,9 +13,9 @@ namespace SuperShopDesktop.Main
 {
     public partial class TopBorder : UserControl
     {
-        private MainAdmin mainAdmin;
+        private MainForm mainAdmin;
 
-        public TopBorder (MainAdmin mainAdmin)
+        public TopBorder (MainForm mainAdmin)
         {
             InitializeComponent();
 

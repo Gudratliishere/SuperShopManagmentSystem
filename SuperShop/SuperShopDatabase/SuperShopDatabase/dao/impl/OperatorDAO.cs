@@ -24,8 +24,7 @@ namespace SuperShopDatabase.Dao.Impl
         public Operator AddOperator (Operator oper)
         {
             string query = String.Format("insert into operator (name, surname, email, password, phone) " +
-                "values ('{0}', '{1}', '{2}', '{3}', '{4}'); select LAST_INSERT_ID();", oper.Name, oper.Surname, 
-                oper.Email, oper.Password, oper.Phone);
+                "values ('@name', '@surname', '@email', '@password', '@phone'); select LAST_INSERT_ID();");
 
             try
             {
@@ -34,6 +33,11 @@ namespace SuperShopDatabase.Dao.Impl
                     con.Open();
                     using (var cmd = new MySqlCommand(query, con))
                     {
+                        cmd.Parameters.AddWithValue("@name", oper.Name);
+                        cmd.Parameters.AddWithValue("@surname", oper.Surname);
+                        cmd.Parameters.AddWithValue("@email", oper.Email);
+                        cmd.Parameters.AddWithValue("@password", oper.Password);
+                        cmd.Parameters.AddWithValue("@phone", oper.Phone);
                         using (var mdr = cmd.ExecuteReader())
                         {
                             if (mdr.Read())
@@ -179,8 +183,8 @@ namespace SuperShopDatabase.Dao.Impl
 
         public Operator UpdateOperator (Operator oper)
         {
-            string query = String.Format("update operator set name = '{0}', surname = '{1}', email = '{2}', " +
-                "password = '{3}', phone = '{4}'", oper.Name, oper.Surname, oper.Email, oper.Password, oper.Phone);
+            string query = String.Format("update operator set name = '@name', surname = '@surname', email = '@email', " +
+                "password = '@password', phone = '@phone'");
 
             try
             {
@@ -189,6 +193,11 @@ namespace SuperShopDatabase.Dao.Impl
                     con.Open();
                     using (var cmd = new MySqlCommand(query, con))
                     {
+                        cmd.Parameters.AddWithValue("@name", oper.Name);
+                        cmd.Parameters.AddWithValue("@surname", oper.Surname);
+                        cmd.Parameters.AddWithValue("@email", oper.Email);
+                        cmd.Parameters.AddWithValue("@password", oper.Password);
+                        cmd.Parameters.AddWithValue("@phone", oper.Phone);
                         cmd.ExecuteNonQuery();
                     }
                 }

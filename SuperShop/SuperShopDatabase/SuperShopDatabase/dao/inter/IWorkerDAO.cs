@@ -10,8 +10,6 @@ namespace SuperShopDatabase.Dao.Inter
     public interface IWorkerDAO
     {
         List<Worker> GetAll ();
-        List<Worker> GetAllByName (string name);
-        List<Worker> GetAllByNameAndSurname (string name, string surname);
         List<Worker> GetAllByNameAndSurnameAndFatherName (string name, string surname, string fatherName);
         List<Worker> GetAllBySector (WorkSector sector);
         Worker GetWorkerById (int id);

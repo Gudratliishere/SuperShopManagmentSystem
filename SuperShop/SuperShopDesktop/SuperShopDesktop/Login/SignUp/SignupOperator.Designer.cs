@@ -293,6 +293,7 @@
             this.Controls.Add(this.glbl_name);
             this.Name = "SignupOperator";
             this.Size = new System.Drawing.Size(346, 417);
+            this.Load += new System.EventHandler(this.SignupOperator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

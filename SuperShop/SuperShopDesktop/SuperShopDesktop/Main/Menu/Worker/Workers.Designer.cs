@@ -43,12 +43,18 @@
             this.gbtn_edit = new Guna.UI.WinForms.GunaButton();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.gdgv_workers = new Guna.UI.WinForms.GunaDataGridView();
+            this.flp_search = new System.Windows.Forms.FlowLayoutPanel();
+            this.gtb_searchByName = new Guna.UI.WinForms.GunaTextBox();
+            this.gtb_searchBySurname = new Guna.UI.WinForms.GunaTextBox();
+            this.gtb_searchByFatherName = new Guna.UI.WinForms.GunaTextBox();
+            this.gbtn_searchByName = new Guna.UI.WinForms.GunaButton();
             this.pnl_sidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdgv_sidebar)).BeginInit();
             this.pnl_productClass.SuspendLayout();
             this.pnl_editRemove.SuspendLayout();
             this.pnl_body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdgv_workers)).BeginInit();
+            this.flp_search.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_sidebar
@@ -218,6 +224,7 @@
             // pnl_body
             // 
             this.pnl_body.Controls.Add(this.gdgv_workers);
+            this.pnl_body.Controls.Add(this.flp_search);
             this.pnl_body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_body.Location = new System.Drawing.Point(200, 0);
             this.pnl_body.Name = "pnl_body";
@@ -253,12 +260,12 @@
             this.gdgv_workers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gdgv_workers.EnableHeadersVisualStyles = false;
             this.gdgv_workers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.gdgv_workers.Location = new System.Drawing.Point(0, 0);
+            this.gdgv_workers.Location = new System.Drawing.Point(0, 34);
             this.gdgv_workers.Name = "gdgv_workers";
             this.gdgv_workers.RowHeadersVisible = false;
             this.gdgv_workers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdgv_workers.Size = new System.Drawing.Size(499, 444);
-            this.gdgv_workers.TabIndex = 1;
+            this.gdgv_workers.Size = new System.Drawing.Size(499, 410);
+            this.gdgv_workers.TabIndex = 2;
             this.gdgv_workers.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.gdgv_workers.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.gdgv_workers.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -283,6 +290,102 @@
             this.gdgv_workers.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.gdgv_workers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdgv_workers_CellContentDoubleClick);
             // 
+            // flp_search
+            // 
+            this.flp_search.AutoScroll = true;
+            this.flp_search.Controls.Add(this.gtb_searchByName);
+            this.flp_search.Controls.Add(this.gtb_searchBySurname);
+            this.flp_search.Controls.Add(this.gtb_searchByFatherName);
+            this.flp_search.Controls.Add(this.gbtn_searchByName);
+            this.flp_search.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flp_search.Location = new System.Drawing.Point(0, 0);
+            this.flp_search.Name = "flp_search";
+            this.flp_search.Size = new System.Drawing.Size(499, 34);
+            this.flp_search.TabIndex = 0;
+            // 
+            // gtb_searchByName
+            // 
+            this.gtb_searchByName.BackColor = System.Drawing.Color.Transparent;
+            this.gtb_searchByName.BaseColor = System.Drawing.Color.White;
+            this.gtb_searchByName.BorderColor = System.Drawing.Color.Silver;
+            this.gtb_searchByName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.gtb_searchByName.FocusedBaseColor = System.Drawing.Color.White;
+            this.gtb_searchByName.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gtb_searchByName.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.gtb_searchByName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gtb_searchByName.Location = new System.Drawing.Point(3, 3);
+            this.gtb_searchByName.Name = "gtb_searchByName";
+            this.gtb_searchByName.PasswordChar = '\0';
+            this.gtb_searchByName.Radius = 10;
+            this.gtb_searchByName.SelectedText = "";
+            this.gtb_searchByName.Size = new System.Drawing.Size(207, 30);
+            this.gtb_searchByName.TabIndex = 1;
+            this.gtb_searchByName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtb_searchByName_KeyDown);
+            // 
+            // gtb_searchBySurname
+            // 
+            this.gtb_searchBySurname.BackColor = System.Drawing.Color.Transparent;
+            this.gtb_searchBySurname.BaseColor = System.Drawing.Color.White;
+            this.gtb_searchBySurname.BorderColor = System.Drawing.Color.Silver;
+            this.gtb_searchBySurname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.gtb_searchBySurname.FocusedBaseColor = System.Drawing.Color.White;
+            this.gtb_searchBySurname.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gtb_searchBySurname.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.gtb_searchBySurname.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gtb_searchBySurname.Location = new System.Drawing.Point(216, 3);
+            this.gtb_searchBySurname.Name = "gtb_searchBySurname";
+            this.gtb_searchBySurname.PasswordChar = '\0';
+            this.gtb_searchBySurname.Radius = 10;
+            this.gtb_searchBySurname.SelectedText = "";
+            this.gtb_searchBySurname.Size = new System.Drawing.Size(207, 30);
+            this.gtb_searchBySurname.TabIndex = 2;
+            this.gtb_searchBySurname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtb_searchBySurname_KeyDown);
+            // 
+            // gtb_searchByFatherName
+            // 
+            this.gtb_searchByFatherName.BackColor = System.Drawing.Color.Transparent;
+            this.gtb_searchByFatherName.BaseColor = System.Drawing.Color.White;
+            this.gtb_searchByFatherName.BorderColor = System.Drawing.Color.Silver;
+            this.gtb_searchByFatherName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.gtb_searchByFatherName.FocusedBaseColor = System.Drawing.Color.White;
+            this.gtb_searchByFatherName.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gtb_searchByFatherName.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.gtb_searchByFatherName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gtb_searchByFatherName.Location = new System.Drawing.Point(3, 39);
+            this.gtb_searchByFatherName.Name = "gtb_searchByFatherName";
+            this.gtb_searchByFatherName.PasswordChar = '\0';
+            this.gtb_searchByFatherName.Radius = 10;
+            this.gtb_searchByFatherName.SelectedText = "";
+            this.gtb_searchByFatherName.Size = new System.Drawing.Size(207, 30);
+            this.gtb_searchByFatherName.TabIndex = 3;
+            this.gtb_searchByFatherName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtb_searchByFatherName_KeyDown);
+            // 
+            // gbtn_searchByName
+            // 
+            this.gbtn_searchByName.AnimationHoverSpeed = 0.07F;
+            this.gbtn_searchByName.AnimationSpeed = 0.03F;
+            this.gbtn_searchByName.BackColor = System.Drawing.Color.Transparent;
+            this.gbtn_searchByName.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gbtn_searchByName.BorderColor = System.Drawing.Color.Black;
+            this.gbtn_searchByName.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.gbtn_searchByName.FocusedColor = System.Drawing.Color.Empty;
+            this.gbtn_searchByName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbtn_searchByName.ForeColor = System.Drawing.Color.White;
+            this.gbtn_searchByName.Image = global::SuperShopDesktop.Properties.Resources.search;
+            this.gbtn_searchByName.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gbtn_searchByName.ImageSize = new System.Drawing.Size(20, 20);
+            this.gbtn_searchByName.Location = new System.Drawing.Point(216, 39);
+            this.gbtn_searchByName.Name = "gbtn_searchByName";
+            this.gbtn_searchByName.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.gbtn_searchByName.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.gbtn_searchByName.OnHoverForeColor = System.Drawing.Color.White;
+            this.gbtn_searchByName.OnHoverImage = null;
+            this.gbtn_searchByName.OnPressedColor = System.Drawing.Color.Black;
+            this.gbtn_searchByName.Radius = 10;
+            this.gbtn_searchByName.Size = new System.Drawing.Size(40, 29);
+            this.gbtn_searchByName.TabIndex = 4;
+            this.gbtn_searchByName.Click += new System.EventHandler(this.gbtn_searchByName_Click);
+            // 
             // Workers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +401,7 @@
             this.pnl_editRemove.ResumeLayout(false);
             this.pnl_body.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gdgv_workers)).EndInit();
+            this.flp_search.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -313,5 +417,10 @@
         private Guna.UI.WinForms.GunaButton gbtn_edit;
         private System.Windows.Forms.Panel pnl_body;
         private Guna.UI.WinForms.GunaDataGridView gdgv_workers;
+        private System.Windows.Forms.FlowLayoutPanel flp_search;
+        private Guna.UI.WinForms.GunaTextBox gtb_searchByName;
+        private Guna.UI.WinForms.GunaTextBox gtb_searchBySurname;
+        private Guna.UI.WinForms.GunaTextBox gtb_searchByFatherName;
+        private Guna.UI.WinForms.GunaButton gbtn_searchByName;
     }
 }

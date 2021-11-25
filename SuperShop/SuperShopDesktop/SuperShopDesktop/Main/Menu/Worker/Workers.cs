@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using Guna.UI.WinForms;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Worker
 {
@@ -36,6 +37,17 @@ namespace SuperShopDesktop.Main.Menu.Worker
             {
                 Console.WriteLine(ex.Message);
             }
+            LoadControlTexts();
+        }
+
+        private void LoadControlTexts ()
+        {
+            var list = new List<Specify>();
+            list.Add(new Specify("az", LanguageConfig.RM.GetString("Main_Workers_cb_all")));
+            list.Add(new Specify("en", LanguageConfig.RM.GetString("Main_Workers_cb_sector")));
+            gcb_sector.DataSource = list;
+            gcb_sector.DisplayMember = "Name";
+            gcb_sector.ValueMember = "Id";
         }
 
         private void FillWorkers (List<SuperShopDatabase.Entity.Worker> workers)
@@ -61,8 +73,8 @@ namespace SuperShopDesktop.Main.Menu.Worker
             WorkerView view = new WorkerView();
             view.Worker = workerDAO.GetWorkerById(workerId);
             view.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(view);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(view);
         }
 
         private void gcb_sector_SelectedIndexChanged (object sender, EventArgs e)
@@ -94,12 +106,13 @@ namespace SuperShopDesktop.Main.Menu.Worker
             if (gcb_sector.SelectedIndex == 1)
             {
                 DialogResult dt =
-                    MessageBox.Show("Are you sure to remove?", "Remove", MessageBoxButtons.YesNo);
+                    MessageBox.Show(LanguageConfig.RM.GetString("Main_SureRemove"),
+                    LanguageConfig.RM.GetString("Main_Remove"), MessageBoxButtons.YesNo);
                 if (dt == DialogResult.Yes)
                 {
                     int id = int.Parse(gdgv_sidebar.CurrentRow.Cells[0].Value.ToString());
                     workSectorDAO.RemoveWorkSector(workSectorDAO.GetWorkSectorById(id));
-                    MainAdmin.Instance.gbtn_workers.PerformClick();
+                    MainForm.Instance.gbtn_workers.PerformClick();
                 }
             }
         }
@@ -112,9 +125,45 @@ namespace SuperShopDesktop.Main.Menu.Worker
                 WorkSectorEdit edit = new WorkSectorEdit();
                 edit.sector = workSectorDAO.GetWorkSectorById(id);
                 edit.Dock = DockStyle.Fill;
-                MainAdmin.Instance.pnl_windows.Controls.Clear();
-                MainAdmin.Instance.pnl_windows.Controls.Add(edit);
+                MainForm.Instance.pnl_windows.Controls.Clear();
+                MainForm.Instance.pnl_windows.Controls.Add(edit);
             }
+        }
+
+        private void gbtn_searchByName_Click (object sender, EventArgs e)
+        {
+            FillWorkers(workerDAO.GetAllByNameAndSurnameAndFatherName(gtb_searchByName.Text, gtb_searchBySurname.Text,
+                gtb_searchByFatherName.Text));
+        }
+
+        private void gtb_searchByName_KeyDown (object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                gbtn_searchByName.PerformClick();
+        }
+
+        private void gtb_searchBySurname_KeyDown (object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                gbtn_searchByName.PerformClick();
+        }
+
+        private void gtb_searchByFatherName_KeyDown (object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                gbtn_searchByName.PerformClick();
+        }
+
+        class Specify
+        {
+            public Specify (string id, string name)
+            {
+                Id = id;
+                Name = name;
+            }
+
+            public string Id { get; set; }
+            public string Name { get; set; }
         }
     }
 }

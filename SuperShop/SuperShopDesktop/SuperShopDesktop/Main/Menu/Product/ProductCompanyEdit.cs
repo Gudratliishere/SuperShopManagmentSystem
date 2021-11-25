@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using SuperShopDatabase.Entity;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Product
 {
@@ -57,6 +58,19 @@ namespace SuperShopDesktop.Main.Menu.Product
                     Console.WriteLine(ex.Message);
                 }
             }
+
+            LoadControlTexts();
+        }
+
+        private void LoadControlTexts ()
+        {
+            lbl_name.Text = LanguageConfig.RM.GetString("Main_ProductCompanyEdit_lbl_name");
+            lbl_email.Text = LanguageConfig.RM.GetString("Main_ProductCompanyEdit_lbl_email");
+            lbl_phone.Text = LanguageConfig.RM.GetString("Main_ProductCompanyEdit_lbl_phone");
+            lbl_lastComeDate.Text = LanguageConfig.RM.GetString("Main_ProductCompanyEdit_lbl_lastComeDate");
+            lbl_beginDate.Text = LanguageConfig.RM.GetString("Main_ProductCompanyEdit_lbl_beginDate");
+            lbl_endDate.Text = LanguageConfig.RM.GetString("Main_ProductCompanyEdit_lbl_endDate");
+            gbtn_save.Text = LanguageConfig.RM.GetString("Main_ProductCompanyEdit_gbtn_save");
         }
 
         private void gbtn_save_Click (object sender, EventArgs e)
@@ -78,8 +92,8 @@ namespace SuperShopDesktop.Main.Menu.Product
 
             Products products = new Products();
             products.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(products);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(products);
         }
     }
 }

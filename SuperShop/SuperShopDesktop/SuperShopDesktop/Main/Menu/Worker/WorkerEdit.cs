@@ -11,6 +11,7 @@ using SuperShopDesktop.Properties;
 using SuperShopDatabase.Dao.Inter;
 using SuperShopDatabase.Config;
 using SuperShopDatabase.Entity;
+using SuperShopDesktop.DesktopConfiguration;
 
 namespace SuperShopDesktop.Main.Menu.Worker
 {
@@ -52,6 +53,8 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
         private void WorkerEdit_Load (object sender, EventArgs e)
         {
+            LoadControlTexts();
+
             gcb_sector.DataSource = sectorDAO.GetAll();
             gcb_sector.DisplayMember = "Name";
             gcb_sector.ValueMember = "Id";
@@ -83,6 +86,26 @@ namespace SuperShopDesktop.Main.Menu.Worker
             }
         }
 
+        private void LoadControlTexts ()
+        {
+            lbl_name.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_name");
+            lbl_surname.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_surname");
+            lbl_fatherName.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_fatherName");
+            lbl_contact.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_contact");
+            lbl_email.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_email");
+            lbl_phone.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_phone");
+            lbl_address.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_address");
+            lbl_birthdayHeader.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_birthdayHeader");
+            lbl_birthday.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_birthday");
+            lbl_sectorHeader.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_sectorHeader");
+            lbl_sector.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_sector");
+            lbl_wageHeader.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_wageHeader");
+            lbl_wage.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_wage");
+            lbl_workTimeHeader.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_workTimeHeader");
+            lbl_startTime.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_startTime");
+            lbl_endTime.Text = LanguageConfig.RM.GetString("Main_WorkerEdit_lbl_endTime");
+        }
+
         private void gpb_profilePhoto_MouseDoubleClick (object sender, MouseEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -96,13 +119,13 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
         private void gbtn_back_Click (object sender, EventArgs e)
         {
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Clear();
             if (Worker != null)
             {
                 WorkerView view = new WorkerView();
                 view.Worker = Worker;
                 view.Dock = DockStyle.Fill;
-                MainAdmin.Instance.pnl_windows.Controls.Add(view);
+                MainForm.Instance.pnl_windows.Controls.Add(view);
             }
         }
 
@@ -134,8 +157,8 @@ namespace SuperShopDesktop.Main.Menu.Worker
             WorkerView view = new WorkerView();
             view.Worker = Worker;
             view.Dock = DockStyle.Fill;
-            MainAdmin.Instance.pnl_windows.Controls.Clear();
-            MainAdmin.Instance.pnl_windows.Controls.Add(view);
+            MainForm.Instance.pnl_windows.Controls.Clear();
+            MainForm.Instance.pnl_windows.Controls.Add(view);
         }
     }
 }
