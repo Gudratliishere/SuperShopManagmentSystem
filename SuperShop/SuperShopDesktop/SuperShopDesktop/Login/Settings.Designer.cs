@@ -42,6 +42,8 @@
             this.gtb_host = new Guna.UI.WinForms.GunaTextBox();
             this.glbl_host = new Guna.UI.WinForms.GunaLabel();
             this.gbtn_close = new Guna.UI.WinForms.GunaButton();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.gpbar_save = new Guna.UI.WinForms.GunaProgressBar();
             this.SuspendLayout();
             // 
             // gbtn_save
@@ -101,6 +103,7 @@
             this.gtb_database.SelectedText = "";
             this.gtb_database.Size = new System.Drawing.Size(200, 30);
             this.gtb_database.TabIndex = 23;
+            this.gtb_database.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtb_database_KeyDown);
             // 
             // glbl_database
             // 
@@ -129,6 +132,7 @@
             this.gtb_pass.SelectedText = "";
             this.gtb_pass.Size = new System.Drawing.Size(200, 30);
             this.gtb_pass.TabIndex = 21;
+            this.gtb_pass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtb_pass_KeyDown);
             // 
             // glbl_pass
             // 
@@ -157,6 +161,7 @@
             this.gtb_user.SelectedText = "";
             this.gtb_user.Size = new System.Drawing.Size(200, 30);
             this.gtb_user.TabIndex = 19;
+            this.gtb_user.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtb_user_KeyDown);
             // 
             // glbl_user
             // 
@@ -185,6 +190,7 @@
             this.gtb_port.SelectedText = "";
             this.gtb_port.Size = new System.Drawing.Size(200, 30);
             this.gtb_port.TabIndex = 17;
+            this.gtb_port.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtb_port_KeyDown);
             // 
             // glbl_port
             // 
@@ -213,6 +219,7 @@
             this.gtb_host.SelectedText = "";
             this.gtb_host.Size = new System.Drawing.Size(200, 30);
             this.gtb_host.TabIndex = 15;
+            this.gtb_host.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtb_host_KeyDown);
             // 
             // glbl_host
             // 
@@ -251,12 +258,35 @@
             this.gbtn_close.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gbtn_close.Click += new System.EventHandler(this.gbtn_close_Click);
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            // 
+            // gpbar_save
+            // 
+            this.gpbar_save.BackColor = System.Drawing.Color.Transparent;
+            this.gpbar_save.BorderColor = System.Drawing.Color.Black;
+            this.gpbar_save.ColorStyle = Guna.UI.WinForms.ColorStyle.Default;
+            this.gpbar_save.IdleColor = System.Drawing.Color.Gainsboro;
+            this.gpbar_save.Location = new System.Drawing.Point(70, 177);
+            this.gpbar_save.Minimum = 1;
+            this.gpbar_save.Name = "gpbar_save";
+            this.gpbar_save.ProgressMaxColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gpbar_save.ProgressMinColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gpbar_save.Radius = 10;
+            this.gpbar_save.Size = new System.Drawing.Size(200, 23);
+            this.gpbar_save.TabIndex = 27;
+            this.gpbar_save.Value = 1;
+            this.gpbar_save.Visible = false;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(338, 414);
+            this.Controls.Add(this.gpbar_save);
             this.Controls.Add(this.gbtn_close);
             this.Controls.Add(this.gbtn_save);
             this.Controls.Add(this.gchb_show);
@@ -295,5 +325,7 @@
         private Guna.UI.WinForms.GunaTextBox gtb_host;
         private Guna.UI.WinForms.GunaLabel glbl_host;
         private Guna.UI.WinForms.GunaButton gbtn_close;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private Guna.UI.WinForms.GunaProgressBar gpbar_save;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,14 +31,20 @@ namespace SuperShopDatabase.Config
         {
             connection = null;
         }
-        
+
+        public void CreateDatabase ()
+        {
+            DatabaseCreater.Connection = GetConnection();
+            DatabaseCreater.CreateDatabase();
+        }
+
         public Connection GetConnection ()
         {
             if (connection != null)
                 return connection;
 
             connection = new Connection();
-            
+
             if (File.Exists(connectionConfigFilePath))
             {
                 var xml = XmlReader.Create(connectionConfigFilePath);

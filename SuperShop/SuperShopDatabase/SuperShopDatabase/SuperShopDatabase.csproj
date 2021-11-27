@@ -58,6 +58,7 @@
     <Compile Include="Config\Configuration.cs" />
     <Compile Include="Config\Connection.cs" />
     <Compile Include="Config\Context.cs" />
+    <Compile Include="Config\DatabaseCreater.cs" />
     <Compile Include="Dao\Impl\AdminDAO.cs" />
     <Compile Include="Dao\Impl\BarcodeDAO.cs" />
     <Compile Include="Dao\Impl\CashierDAO.cs" />
