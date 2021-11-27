@@ -128,6 +128,67 @@ namespace SuperShopDatabase.Dao.Impl
             }
         }
 
+        public Barcode GetBarcodeByProductNumber (ProductNumber product)
+        {
+            try
+            {
+                string query = String.Format("select * from barcode where product_number = {0}", product.Id);
+
+                Barcode barcode = new Barcode();
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            if (mdr.Read())
+                                FillBarcodeWithMDR(barcode, mdr);
+                            else
+                                throw new Exception("Barcode doesn't exists with this id");
+                        }
+                    }
+                }
+                return barcode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        public Barcode GetBarcodeByProductWeight (ProductWeight product)
+        {
+            try
+            {
+                string query = String.Format("select * from barcode where product_weight = {0}", product.Id);
+
+                Barcode barcode = new Barcode();
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            if (mdr.Read())
+                                FillBarcodeWithMDR(barcode, mdr);
+                            else
+                                throw new Exception("Barcode doesn't exists with this id");
+                        }
+                    }
+                }
+                return barcode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
         private void FillBarcodeWithMDR (Barcode barcode, MySqlDataReader mdr)
         {
             barcode.Id = long.Parse(mdr.GetString(mdr.GetOrdinal("id")));

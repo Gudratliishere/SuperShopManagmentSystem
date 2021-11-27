@@ -394,6 +394,15 @@ namespace SuperShopDesktop.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kassir.
+        /// </summary>
+        internal static string Main_AddNew_gbtn_cashier {
+            get {
+                return ResourceManager.GetString("Main_AddNew_gbtn_cashier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İstehsalçı.
         /// </summary>
         internal static string Main_AddNew_gbtn_company {
@@ -534,6 +543,24 @@ namespace SuperShopDesktop.Language {
         internal static string Main_Menu_CashierEdit_lbl_worker {
             get {
                 return ResourceManager.GetString("Main_Menu_CashierEdit_lbl_worker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to qaldı!.
+        /// </summary>
+        internal static string Main_Notification_lessProductNumberLeft {
+            get {
+                return ResourceManager.GetString("Main_Notification_lessProductNumberLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kg qaldı!.
+        /// </summary>
+        internal static string Main_Notification_lessProductWeightLeft {
+            get {
+                return ResourceManager.GetString("Main_Notification_lessProductWeightLeft", resourceCulture);
             }
         }
         

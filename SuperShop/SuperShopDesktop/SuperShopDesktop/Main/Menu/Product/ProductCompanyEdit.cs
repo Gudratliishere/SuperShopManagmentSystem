@@ -25,7 +25,7 @@ namespace SuperShopDesktop.Main.Menu.Product
             productCompanyDAO = Context.GetProductCompanyDAO();
         }
 
-        public SuperShopDatabase.Entity.ProductCompany ProductCompany { get; set; }
+        public ProductCompany ProductCompany { get; set; }
 
         private void ProductCompanyEdit_Load (object sender, EventArgs e)
         {

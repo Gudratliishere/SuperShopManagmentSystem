@@ -483,4 +483,13 @@
   <data name="Main_WorkSector_lbl_name" xml:space="preserve">
     <value>Ad</value>
   </data>
+  <data name="Main_Notification_lessProductNumberLeft" xml:space="preserve">
+    <value>qaldı!</value>
+  </data>
+  <data name="Main_Notification_lessProductWeightLeft" xml:space="preserve">
+    <value>kg qaldı!</value>
+  </data>
+  <data name="Main_AddNew_gbtn_cashier" xml:space="preserve">
+    <value>Kassir</value>
+  </data>
 </root>

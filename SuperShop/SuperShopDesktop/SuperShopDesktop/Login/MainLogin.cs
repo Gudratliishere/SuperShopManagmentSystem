@@ -36,6 +36,7 @@ namespace SuperShopDesktop
 
         private void Main_Load (object sender, EventArgs e)
         {
+            LanguageConfig.LoadResource();
             LoadControlTexts();
             selectedSignButton = gbtn_signin;
             selectedLoginButton = gbtn_admin;

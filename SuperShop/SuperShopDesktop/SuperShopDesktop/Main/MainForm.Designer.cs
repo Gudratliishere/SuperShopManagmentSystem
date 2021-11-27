@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent ()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnl_top = new System.Windows.Forms.Panel();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_windows = new System.Windows.Forms.Panel();
@@ -291,6 +292,7 @@
             this.Controls.Add(this.pnl_body);
             this.Controls.Add(this.pnl_top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(220, 40);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -316,6 +318,6 @@
         public Guna.UI.WinForms.GunaButton gbtn_cashiers;
         public Guna.UI.WinForms.GunaButton gbtn_settings;
         private Guna.UI.WinForms.GunaButton gbtn_add;
-        private Guna.UI.WinForms.GunaButton gbtn_notification;
+        public Guna.UI.WinForms.GunaButton gbtn_notification;
     }
 }

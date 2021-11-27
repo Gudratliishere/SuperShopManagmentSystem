@@ -480,4 +480,28 @@
   <data name="Main_WorkSector_lbl_name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Main_Notification_lessProductNumberLeft" xml:space="preserve">
+    <value>products left!</value>
+  </data>
+  <data name="Main_Notification_lessProductWeightLeft" xml:space="preserve">
+    <value>kg left!</value>
+  </data>
+  <data name="Login_Signin_gbtn_signin" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Login_Signin_gchb_showpass" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Login_Signin_glbl_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Login_Signin_glbl_forgotPassword" xml:space="preserve">
+    <value>Forget password?</value>
+  </data>
+  <data name="Login_Signin_glbl_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Main_AddNew_gbtn_cashier" xml:space="preserve">
+    <value>Cashier</value>
+  </data>
 </root>

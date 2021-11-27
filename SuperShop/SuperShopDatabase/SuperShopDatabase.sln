@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.1705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShopDatabase", "SuperShopDatabase\SuperShopDatabase.csproj", "{FFFD9172-758E-4EAA-B74A-3EA25735A1D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3", "ConsoleApp3\ConsoleApp3.csproj", "{8088478F-63AE-43B1-97F5-42EA0713372B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{FFFD9172-758E-4EAA-B74A-3EA25735A1D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFFD9172-758E-4EAA-B74A-3EA25735A1D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFFD9172-758E-4EAA-B74A-3EA25735A1D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8088478F-63AE-43B1-97F5-42EA0713372B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8088478F-63AE-43B1-97F5-42EA0713372B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8088478F-63AE-43B1-97F5-42EA0713372B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8088478F-63AE-43B1-97F5-42EA0713372B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

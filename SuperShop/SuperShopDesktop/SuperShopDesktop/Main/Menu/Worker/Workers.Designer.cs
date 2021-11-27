@@ -289,6 +289,7 @@
             this.gdgv_workers.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.gdgv_workers.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.gdgv_workers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdgv_workers_CellContentDoubleClick);
+            this.gdgv_workers.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gdgv_workers_MouseClick);
             // 
             // flp_search
             // 

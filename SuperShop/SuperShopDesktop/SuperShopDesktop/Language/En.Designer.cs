@@ -151,6 +151,51 @@ namespace SuperShopDesktop.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sign in.
+        /// </summary>
+        internal static string Login_Signin_gbtn_signin {
+            get {
+                return ResourceManager.GetString("Login_Signin_gbtn_signin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show.
+        /// </summary>
+        internal static string Login_Signin_gchb_showpass {
+            get {
+                return ResourceManager.GetString("Login_Signin_gchb_showpass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string Login_Signin_glbl_email {
+            get {
+                return ResourceManager.GetString("Login_Signin_glbl_email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forget password?.
+        /// </summary>
+        internal static string Login_Signin_glbl_forgotPassword {
+            get {
+                return ResourceManager.GetString("Login_Signin_glbl_forgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Login_Signin_glbl_password {
+            get {
+                return ResourceManager.GetString("Login_Signin_glbl_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Admin account is blocked!.
         /// </summary>
         internal static string Login_SigninAdmin_adminBlocked {
@@ -394,6 +439,15 @@ namespace SuperShopDesktop.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cashier.
+        /// </summary>
+        internal static string Main_AddNew_gbtn_cashier {
+            get {
+                return ResourceManager.GetString("Main_AddNew_gbtn_cashier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product company.
         /// </summary>
         internal static string Main_AddNew_gbtn_company {
@@ -534,6 +588,24 @@ namespace SuperShopDesktop.Language {
         internal static string Main_Menu_CashierEdit_lbl_worker {
             get {
                 return ResourceManager.GetString("Main_Menu_CashierEdit_lbl_worker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to products left!.
+        /// </summary>
+        internal static string Main_Notification_lessProductNumberLeft {
+            get {
+                return ResourceManager.GetString("Main_Notification_lessProductNumberLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kg left!.
+        /// </summary>
+        internal static string Main_Notification_lessProductWeightLeft {
+            get {
+                return ResourceManager.GetString("Main_Notification_lessProductWeightLeft", resourceCulture);
             }
         }
         

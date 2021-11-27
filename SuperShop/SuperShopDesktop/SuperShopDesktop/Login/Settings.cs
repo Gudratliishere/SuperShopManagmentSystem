@@ -57,7 +57,7 @@ namespace SuperShopDesktop
             glbl_user.Text = LanguageConfig.RM.GetString("Login_Settings_glbl_user");
             glbl_pass.Text = LanguageConfig.RM.GetString("Login_Settings_glbl_pass");
             glbl_database.Text = LanguageConfig.RM.GetString("Login_Settings_glbl_database");
-            gbtn_save.Text = LanguageConfig.RM.GetString("Login_Settings_glbl_save");
+            gbtn_save.Text = LanguageConfig.RM.GetString("Login_Settings_gbtn_save");
             gchb_show.Text = LanguageConfig.RM.GetString("Login_Settings_gchb_show");
         }
     }

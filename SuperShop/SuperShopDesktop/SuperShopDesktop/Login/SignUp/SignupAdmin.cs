@@ -69,16 +69,16 @@ namespace SuperShopDesktop.Login.SignUp
                     GiveMessage(LanguageConfig.RM.GetString("Login_SignupAdmin_adminExistPhone"), false);
                 else
                 {
-                    glbl_errorMessage.Visible = false;
-
-                    if (!password.Equals(confirmPassword))
-                        GiveMessage(LanguageConfig.RM.GetString("Login_Signup_passwordNotMatch"), false);
+                    if (!email.Contains("@"))
+                    {
+                        GiveMessage(LanguageConfig.RM.GetString("Login_Signup_validEmail"), false);
+                    }
                     else
                     {
-                        if (!email.Contains("@"))
-                        {
-                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_validEmail"), false);
-                        }
+                        glbl_errorMessage.Visible = false;
+
+                        if (!password.Equals(confirmPassword))
+                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_passwordNotMatch"), false);
                         else
                         {
                             glbl_errorMessage.Visible = false;

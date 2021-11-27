@@ -19,9 +19,6 @@ namespace SuperShopDesktop.Main.Menu
         public Notification ()
         {
             InitializeComponent();
-
-            Notifications.Add("Notification 1");
-            Notifications.Add("Notification 2");
         }
 
         private void Notification_Load (object sender, EventArgs e)
@@ -48,6 +45,8 @@ namespace SuperShopDesktop.Main.Menu
             button.Click += delegate (object sender, EventArgs e)
             {
                 pnl_notification.Controls.Remove(panel);
+                Notifications.Remove(notification);
+                MainForm.Instance.gbtn_notification.BaseColor = Color.Transparent;
             };
             panel.Controls.Add(label);
             panel.Controls.Add(button);

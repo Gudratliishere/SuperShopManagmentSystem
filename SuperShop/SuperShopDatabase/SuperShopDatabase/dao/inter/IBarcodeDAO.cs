@@ -11,6 +11,8 @@ namespace SuperShopDatabase.Dao.Inter
     {
         List<Barcode> GetAll ();
         Barcode GetBarcodeById (long id);
+        Barcode GetBarcodeByProductNumber (ProductNumber product);
+        Barcode GetBarcodeByProductWeight (ProductWeight product);
         Barcode AddBarcode (Barcode barcode);
         Barcode UpdateBarcode (Barcode barcode);
         Barcode RemoveBarcode (Barcode barcode);

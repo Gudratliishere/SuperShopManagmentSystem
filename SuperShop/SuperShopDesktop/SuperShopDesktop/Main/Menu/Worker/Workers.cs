@@ -19,6 +19,8 @@ namespace SuperShopDesktop.Main.Menu.Worker
         private IWorkerDAO workerDAO;
         private IWorkSectorDAO workSectorDAO;
 
+        private int selectedProductRow = 0;
+
         public Workers ()
         {
             InitializeComponent();
@@ -111,7 +113,12 @@ namespace SuperShopDesktop.Main.Menu.Worker
                 if (dt == DialogResult.Yes)
                 {
                     int id = int.Parse(gdgv_sidebar.CurrentRow.Cells[0].Value.ToString());
-                    workSectorDAO.RemoveWorkSector(workSectorDAO.GetWorkSectorById(id));
+                    var sector = workSectorDAO.GetWorkSectorById(id);
+                    workerDAO.GetAllBySector(sector).ForEach((worker) =>
+                    {
+                        workerDAO.RemoveWorker(worker);
+                    });
+                    workSectorDAO.RemoveWorkSector(sector);
                     MainForm.Instance.gbtn_workers.PerformClick();
                 }
             }
@@ -164,6 +171,63 @@ namespace SuperShopDesktop.Main.Menu.Worker
 
             public string Id { get; set; }
             public string Name { get; set; }
+        }
+
+        private void gdgv_workers_MouseClick (object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hit = gdgv_workers.HitTest(e.X, e.Y);
+                gdgv_workers.ClearSelection();
+                if (hit.RowIndex >= 0)
+                {
+                    gdgv_workers.Rows[hit.RowIndex].Selected = true;
+                    selectedProductRow = hit.RowIndex;
+                    GunaButton button = GenerateRemoveButton(e.Location, RemoveWorker);
+                    button.MouseLeave += delegate (object sender2, EventArgs e2)
+                    {
+                        button.Visible = false;
+                    };
+                    gdgv_workers.Controls.Add(button);
+                }
+            }
+        }
+
+        private void RemoveWorker ()
+        {
+            try
+            {
+                int id = int.Parse(gdgv_workers.Rows[selectedProductRow].Cells[0].Value.ToString());
+                workerDAO.RemoveWorker(workerDAO.GetWorkerById(id));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private GunaButton GenerateRemoveButton (Point point, Action action)
+        {
+            GunaButton button = new GunaButton()
+            {
+                Image = null,
+                Text = LanguageConfig.RM.GetString("Main_Remove"),
+                Size = new Size(63, 23),
+                Location = point,
+                TabIndex = 1
+            };
+            button.Click += delegate (object sender, EventArgs e)
+            {
+                DialogResult dt =
+                MessageBox.Show(LanguageConfig.RM.GetString("Main_SureRemove"),
+                    LanguageConfig.RM.GetString("Main_Remove"), MessageBoxButtons.YesNo);
+                if (dt == DialogResult.Yes)
+                {
+                    action.Invoke();
+                    MainForm.Instance.gbtn_workers.PerformClick();
+                }
+            };
+            return button;
         }
     }
 }

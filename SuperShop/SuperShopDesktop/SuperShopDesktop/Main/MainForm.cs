@@ -34,7 +34,6 @@ namespace SuperShopDesktop.Main
             InitializeDAOs();
 
             Instance = this;
-            Session = 1;
         }
 
         private void InitializeDAOs ()
@@ -84,7 +83,9 @@ namespace SuperShopDesktop.Main
 
         private void MainAdmin_Load (object sender, EventArgs e)
         {
+            LanguageConfig.LoadResource();
             LoadControlTexts();
+            CheckForNotification();
 
             if (Session == 2)
             {
@@ -93,6 +94,26 @@ namespace SuperShopDesktop.Main
             }
 
             gbtn_products.PerformClick();
+        }
+
+        private void CheckForNotification ()
+        {
+            productNumberDAO.GetAll().ForEach((product) =>
+            {
+                if (product.Number <= 20)
+                    Notification.Notifications.Add(product.Name + " " + product.Number + " " +
+                        LanguageConfig.RM.GetString("Main_Notification_lessProductNumberLeft"));
+            });
+
+            productWeightDAO.GetAll().ForEach((product) =>
+            {
+                if (product.Weight < 10)
+                    Notification.Notifications.Add(product.Name + " " + product.Weight +
+                        LanguageConfig.RM.GetString("Main_Notification_lessProductWeightLeft"));
+            });
+
+            if (Notification.Notifications.Count > 0)
+                gbtn_notification.BaseColor = Color.Yellow;
         }
 
         private void LoadControlTexts ()

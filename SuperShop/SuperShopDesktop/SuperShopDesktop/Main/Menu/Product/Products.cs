@@ -26,6 +26,7 @@ namespace SuperShopDesktop.Main.Menu.Product
         private ProductCompany selectedProductCompany;
         private ProductKind selectedProductKind;
         private int lastIndex;
+        private int selectedProductRow = 0;
 
         public Products ()
         {
@@ -214,6 +215,7 @@ namespace SuperShopDesktop.Main.Menu.Product
                 if (hit.RowIndex >= 0)
                 {
                     gdgv_products.Rows[hit.RowIndex].Selected = true;
+                    selectedProductRow = hit.RowIndex;
                     GunaButton button = GenerateRemoveButton(e.Location, RemoveProduct);
                     button.MouseLeave += delegate (object sender2, EventArgs e2)
                     {
@@ -226,20 +228,52 @@ namespace SuperShopDesktop.Main.Menu.Product
 
         private void RemoveProduct ()
         {
-            int id = int.Parse(gdgv_products.CurrentRow.Cells[0].Value.ToString());
-            if (lastIndex == 0)
-                productNumberDAO.RemoveProductNumber(productNumberDAO.GetProductNumberById(id));
-            else
-                productWeightDAO.RemoveProductWeight(productWeightDAO.GetProductWeightById(id));
+            try
+            {
+                int id = int.Parse(gdgv_products.Rows[selectedProductRow].Cells[0].Value.ToString());
+                if (lastIndex == 0)
+                {
+                    Barcode barcode = barcodeDAO.GetBarcodeByProductNumber(productNumberDAO.GetProductNumberById(id));
+                    barcodeDAO.RemoveBarcode(barcode);
+                    productNumberDAO.RemoveProductNumber(productNumberDAO.GetProductNumberById(id));
+                }
+                else
+                    productWeightDAO.RemoveProductWeight(productWeightDAO.GetProductWeightById(id));
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void RemoveSpecifyBar ()
         {
             int id = int.Parse(gdgv_sidebar.CurrentRow.Cells[0].Value.ToString());
             if (gcb_specify.SelectedIndex == 1)
-                productCompanyDAO.RemoveProductCompany(productCompanyDAO.GetProductCompanyById(id));
+            {
+                var company = productCompanyDAO.GetProductCompanyById(id);
+                productNumberDAO.GetAllByCompany(company).ForEach((product) =>
+                {
+                    productNumberDAO.RemoveProductNumber(product);
+                });
+                productWeightDAO.GetAllByCompany(company).ForEach((product) =>
+                {
+                    productWeightDAO.RemoveProductWeight(product);
+                });
+                productCompanyDAO.RemoveProductCompany(company);
+            }
             else if (gcb_specify.SelectedIndex == 2)
+            {
+                var kind = productKindDAO.GetProductKindById(id);
+                productNumberDAO.GetAllByKind(kind).ForEach((product) =>
+                {
+                    productNumberDAO.RemoveProductNumber(product);
+                });
+                productWeightDAO.GetAllByKind(kind).ForEach((product) =>
+                {
+                    productWeightDAO.RemoveProductWeight(product);
+                });
                 productKindDAO.RemoveProductKind(productKindDAO.GetProductKindById(id));
+            }
         }
 
         private GunaButton GenerateRemoveButton (Point point, Action action)
@@ -327,18 +361,25 @@ namespace SuperShopDesktop.Main.Menu.Product
 
         private void gbtn_searchByBarcode_Click (object sender, EventArgs e)
         {
-            var barcode = barcodeDAO.GetBarcodeById(int.Parse(gtb_searchByBarcode.Text.Trim()));
-            if (barcode.ProductNumber != null)
+            try
             {
-                var list = new List<ProductNumber>();
-                list.Add(barcode.ProductNumber);
-                FillDataSourceForNumberedProcuts(list);
+                var barcode = barcodeDAO.GetBarcodeById(int.Parse(gtb_searchByBarcode.Text.Trim()));
+                if (barcode.ProductNumber != null)
+                {
+                    var list = new List<ProductNumber>();
+                    list.Add(barcode.ProductNumber);
+                    FillDataSourceForNumberedProcuts(list);
+                }
+                else
+                {
+                    var list = new List<ProductScales>();
+                    list.Add(barcode.ProductScales);
+                    FillDataSourceForScaledProducts(list);
+                }
             }
-            else
+            catch
             {
-                var list = new List<ProductScales>();
-                list.Add(barcode.ProductScales);
-                FillDataSourceForScaledProducts(list);
+
             }
         }
 
