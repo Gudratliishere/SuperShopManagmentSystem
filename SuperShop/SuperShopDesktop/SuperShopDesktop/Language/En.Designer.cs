@@ -70,6 +70,33 @@ namespace SuperShopDesktop.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please write code which was sent to your email.
+        /// </summary>
+        internal static string Login_EmailConfirmation_lbl_info {
+            get {
+                return ResourceManager.GetString("Login_EmailConfirmation_lbl_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please write code which was sent to Admin&apos;s email.
+        /// </summary>
+        internal static string Login_EmailConfirmation_lbl_infoAdmin {
+            get {
+                return ResourceManager.GetString("Login_EmailConfirmation_lbl_infoAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email confimation did not succed!.
+        /// </summary>
+        internal static string Login_EmailConfirmation_wrongCode {
+            get {
+                return ResourceManager.GetString("Login_EmailConfirmation_wrongCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         internal static string Login_MainLogin_gbtn_exit {

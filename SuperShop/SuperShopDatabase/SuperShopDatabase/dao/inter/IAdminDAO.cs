@@ -9,6 +9,7 @@ namespace SuperShopDatabase.Dao.Inter
 {
     public interface IAdminDAO
     {
+        Admin GetActiveAdmin ();
         Admin GetAdminById (int id);
         Admin GetAdminByEmail (string email);
         Admin GetAdminByPhone (string phone);

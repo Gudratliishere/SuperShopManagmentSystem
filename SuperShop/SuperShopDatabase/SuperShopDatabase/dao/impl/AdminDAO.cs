@@ -12,6 +12,7 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class AdminDAO : IAdminDAO
     {
+        private static readonly Logger _log = new Logger("AdminDAO");
 
         private Configuration config;
         private Connection connection;
@@ -25,8 +26,8 @@ namespace SuperShopDatabase.Dao.Impl
         public Admin AddAdmin (Admin admin)
         {
             int status = (admin.Status) ? 1 : 0;
-            string query = String.Format("INSERT INTO admin (name, surname, email, password, phone, status) " +
-                "VALUES (@name, @surname, @email, @password, @phone, @status); select LAST_INSERT_ID();");
+            string query = "INSERT INTO admin (name, surname, email, password, phone, status) " +
+                "VALUES (@name, @surname, @email, @password, @phone, @status); select LAST_INSERT_ID();";
 
             try
             {
@@ -40,7 +41,7 @@ namespace SuperShopDatabase.Dao.Impl
                         cmd.Parameters.AddWithValue("@email", admin.Email);
                         cmd.Parameters.AddWithValue("@password", admin.Password);
                         cmd.Parameters.AddWithValue("@phone", admin.Phone);
-                        cmd.Parameters.AddWithValue("@status", admin.Status);
+                        cmd.Parameters.AddWithValue("@status", status);
                         using (var mdr = cmd.ExecuteReader())
                             if (mdr.Read())
                                 admin.Id = Int32.Parse(mdr.GetString(0));
@@ -51,7 +52,40 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
+                return null;
+            }
+        }
+
+        public Admin GetActiveAdmin ()
+        {
+            string query = "select * from admin where status = 1";
+
+            try
+            {
+                Admin admin = new Admin();
+
+                using (var con = new MySqlConnection(connection.GenerateString()))
+                {
+                    con.Open();
+                    using (var cmd = new MySqlCommand(query, con))
+                    {
+                        using (var mdr = cmd.ExecuteReader())
+                        {
+                            if (mdr.Read())
+                                FillAdminWithMDR(admin, mdr);
+                            else
+                                throw new Exception("Active admin doesn't exists!");
+                        }
+
+                    }
+                }
+
+                return admin;
+            }
+            catch (Exception ex)
+            {
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -84,7 +118,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -117,7 +151,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -149,7 +183,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -184,7 +218,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -192,8 +226,8 @@ namespace SuperShopDatabase.Dao.Impl
         public Admin UpdateAdmin (Admin admin)
         {
             int status = (admin.Status) ? 1 : 0;
-            string query = String.Format("update admin set name = @name, surname = @surname, email = @email, " +
-                "password = @password, phone = @phone, status = @status where id = @id");
+            string query = "update admin set name = @name, surname = @surname, email = @email, " +
+                "password = @password, phone = @phone, status = @status where id = @id";
 
             try
             {
@@ -207,7 +241,8 @@ namespace SuperShopDatabase.Dao.Impl
                         cmd.Parameters.AddWithValue("@email", admin.Email);
                         cmd.Parameters.AddWithValue("@password", admin.Password);
                         cmd.Parameters.AddWithValue("@phone", admin.Phone);
-                        cmd.Parameters.AddWithValue("@status", admin.Status);
+                        cmd.Parameters.AddWithValue("@status", status);
+                        cmd.Parameters.AddWithValue("@id", admin.Id);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -216,7 +251,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }

@@ -66,34 +66,84 @@ namespace SuperShopDesktop.Login.SignUp
                 glbl_errorMessage.Visible = false;
 
                 if (adminDAO.GetAdminByPhone(phone) != null)
+                {
                     GiveMessage(LanguageConfig.RM.GetString("Login_SignupAdmin_adminExistPhone"), false);
+                    gtb_email.BorderColor = Color.Red;
+                }
                 else
                 {
                     if (!email.Contains("@"))
                     {
                         GiveMessage(LanguageConfig.RM.GetString("Login_Signup_validEmail"), false);
+                        gtb_email.BorderColor = Color.Red;
                     }
                     else
                     {
+                        gtb_email.BorderColor = Color.Silver;
                         glbl_errorMessage.Visible = false;
 
                         if (!password.Equals(confirmPassword))
+                        {
                             GiveMessage(LanguageConfig.RM.GetString("Login_Signup_passwordNotMatch"), false);
+                            gtb_password.BorderColor = Color.Red;
+                            gtb_confirmPassword.BorderColor = Color.Red;
+                        }
                         else
                         {
-                            glbl_errorMessage.Visible = false;
+                            gtb_password.BorderColor = Color.Silver;
+                            gtb_confirmPassword.BorderColor = Color.Silver;
 
-                            Admin admin = new Admin();
-                            admin.Name = name;
-                            admin.Surname = surname;
-                            admin.Email = email;
-                            admin.Phone = phone;
-                            admin.Password = Cryption.Encrypt(password);
-                            admin.Status = true;
+                            EmailConfirmation confirmation = new EmailConfirmation();
+                            confirmation.Email = email;
+                            confirmation.ShowDialog();
+                            confirmation.Close();
+                            if (EmailConfirmation.Result)
+                            {
+                                glbl_errorMessage.Visible = false;
 
-                            adminDAO.AddAdmin(admin);
+                                var oldAdmin = adminDAO.GetActiveAdmin();
+                                if (oldAdmin != null)
+                                {
+                                    EmailConfirmation.Result = false;
+                                    EmailConfirmation adminConfirmation = new EmailConfirmation();
+                                    adminConfirmation.Email = oldAdmin.Email;
+                                    adminConfirmation.AdminConfirmation = true;
+                                    adminConfirmation.ShowDialog();
+                                    adminConfirmation.Close();
+                                    if (EmailConfirmation.Result)
+                                    {
+                                        Admin admin = new Admin();
+                                        admin.Name = name;
+                                        admin.Surname = surname;
+                                        admin.Email = email;
+                                        admin.Phone = phone;
+                                        admin.Password = Cryption.Encrypt(password);
+                                        admin.Status = true;
 
-                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                                        oldAdmin.Status = false;
+                                        adminDAO.UpdateAdmin(oldAdmin);
+                                        adminDAO.AddAdmin(admin);
+
+                                        GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                                    } else
+                                        GiveMessage(LanguageConfig.RM.GetString("Login_EmailConfirmation_wrongCode"), false);
+                                }
+                                else
+                                {
+                                    Admin admin = new Admin();
+                                    admin.Name = name;
+                                    admin.Surname = surname;
+                                    admin.Email = email;
+                                    admin.Phone = phone;
+                                    admin.Password = Cryption.Encrypt(password);
+                                    admin.Status = true;
+
+                                    adminDAO.AddAdmin(admin);
+                                    GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                                }
+                            }
+                            else
+                                GiveMessage(LanguageConfig.RM.GetString("Login_EmailConfirmation_wrongCode"), false);
                         }
                     }
                 }

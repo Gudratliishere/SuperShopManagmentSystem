@@ -12,6 +12,8 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class BarcodeDAO : IBarcodeDAO
     {
+        private static readonly Logger _log = new Logger("OperatorDAO");
+
         private Configuration config;
         private Connection connection;
         private IProductNumberDAO productNumberDAO;

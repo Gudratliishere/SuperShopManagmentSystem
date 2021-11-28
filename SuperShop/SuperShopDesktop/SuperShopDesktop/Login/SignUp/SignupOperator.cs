@@ -18,12 +18,14 @@ namespace SuperShopDesktop.Login.SignUp
     public partial class SignupOperator : UserControl
     {
         private IOperatorDAO operatorDAO;
+        private IAdminDAO adminDAO;
 
         public SignupOperator ()
         {
             InitializeComponent();
 
             operatorDAO = Context.GetOperatorDAO();
+            adminDAO = Context.GetAdminDAO();
         }
 
         private void gchb_showpass_CheckedChanged (object sender, EventArgs e)
@@ -102,33 +104,65 @@ namespace SuperShopDesktop.Login.SignUp
                 glbl_errorMessage.Visible = false;
 
                 if (operatorDAO.GetOperatorByPhone(phone) != null)
+                {
                     GiveMessage(LanguageConfig.RM.GetString("Login_SignupOper_operExistPhone"), false);
+                    gtb_email.BorderColor = Color.Red;
+                }
                 else
                 {
                     if (!email.Contains("@"))
                     {
                         GiveMessage(LanguageConfig.RM.GetString("Login_Signup_validEmail"), false);
+                        gtb_email.BorderColor = Color.Red;
                     }
                     else
                     {
+                        gtb_email.BorderColor = Color.Silver;
                         glbl_errorMessage.Visible = false;
 
                         if (!password.Equals(confirmPassword))
+                        {
                             GiveMessage(LanguageConfig.RM.GetString("Login_Signup_passwordNotMatch"), false);
+                            gtb_password.BorderColor = Color.Red;
+                            gtb_confirmPassword.BorderColor = Color.Red;
+                        }
                         else
                         {
-                            glbl_errorMessage.Visible = false;
+                            gtb_password.BorderColor = Color.Silver;
+                            gtb_confirmPassword.BorderColor = Color.Silver;
 
-                            Operator oper = new Operator();
-                            oper.Name = name;
-                            oper.Surname = surname;
-                            oper.Email = email;
-                            oper.Phone = phone;
-                            oper.Password = Cryption.Encrypt(password);
+                            EmailConfirmation confirmation = new EmailConfirmation();
+                            confirmation.Email = email;
+                            confirmation.ShowDialog();
+                            confirmation.Close();
+                            if (EmailConfirmation.Result)
+                            {
+                                EmailConfirmation.Result = false;
+                                EmailConfirmation adminConfirmation = new EmailConfirmation();
+                                adminConfirmation.Email = adminDAO.GetActiveAdmin().Email;
+                                adminConfirmation.AdminConfirmation = true;
+                                adminConfirmation.ShowDialog();
+                                adminConfirmation.Close();
+                                if (EmailConfirmation.Result)
+                                {
+                                    glbl_errorMessage.Visible = false;
 
-                            operatorDAO.AddOperator(oper);
+                                    Operator oper = new Operator();
+                                    oper.Name = name;
+                                    oper.Surname = surname;
+                                    oper.Email = email;
+                                    oper.Phone = phone;
+                                    oper.Password = Cryption.Encrypt(password);
 
-                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                                    operatorDAO.AddOperator(oper);
+
+                                    GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                                }
+                                else
+                                    GiveMessage(LanguageConfig.RM.GetString("Login_EmailConfirmation_wrongCode"), false);
+                            }
+                            else
+                                GiveMessage(LanguageConfig.RM.GetString("Login_EmailConfirmation_wrongCode"), false);
                         }
                     }
                 }

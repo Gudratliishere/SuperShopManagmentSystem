@@ -70,6 +70,33 @@ namespace SuperShopDesktop.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zəhmət olmasa emailinəz göndərilmiş kodu aşağıya daxil edin!.
+        /// </summary>
+        internal static string Login_EmailConfirmation_lbl_info {
+            get {
+                return ResourceManager.GetString("Login_EmailConfirmation_lbl_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zəhmət olmasa Adminin emailinə göndərilmiş kodu aşağıya daxil edin!.
+        /// </summary>
+        internal static string Login_EmailConfirmation_lbl_infoAdmin {
+            get {
+                return ResourceManager.GetString("Login_EmailConfirmation_lbl_infoAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email təsdiqləməsi uğurla baş tutmadı!.
+        /// </summary>
+        internal static string Login_EmailConfirmation_wrongCode {
+            get {
+                return ResourceManager.GetString("Login_EmailConfirmation_wrongCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Çıx.
         /// </summary>
         internal static string Login_MainLogin_gbtn_exit {
@@ -547,7 +574,7 @@ namespace SuperShopDesktop.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to qaldı!.
+        ///   Looks up a localized string similar to dənə qaldı!.
         /// </summary>
         internal static string Main_Notification_lessProductNumberLeft {
             get {

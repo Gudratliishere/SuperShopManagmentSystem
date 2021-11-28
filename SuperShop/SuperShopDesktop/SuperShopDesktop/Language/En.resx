@@ -504,4 +504,13 @@
   <data name="Main_AddNew_gbtn_cashier" xml:space="preserve">
     <value>Cashier</value>
   </data>
+  <data name="Login_EmailConfirmation_lbl_info" xml:space="preserve">
+    <value>Please write code which was sent to your email</value>
+  </data>
+  <data name="Login_EmailConfirmation_wrongCode" xml:space="preserve">
+    <value>Email confimation did not succed!</value>
+  </data>
+  <data name="Login_EmailConfirmation_lbl_infoAdmin" xml:space="preserve">
+    <value>Please write code which was sent to Admin's email</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperSh
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\bin\Debug\MySql.Data.dll
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\bin\Debug\Google.Protobuf.xml
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\bin\Debug\MySql.Data.xml
+G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\obj\Debug\SuperShopDatabase.csprojAssemblyReference.cache
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\obj\Debug\SuperShopDatabase.csproj.CoreCompileInputs.cache
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\obj\Debug\SuperShopDatabase.csproj.CopyComplete
 G:\MyFiles\Programming\CSharpProjects\SuperShopManagmentSystem\SuperShop\SuperShopDatabase\SuperShopDatabase\obj\Debug\SuperShopDatabase.dll

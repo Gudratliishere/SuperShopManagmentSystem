@@ -12,6 +12,8 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class OperatorDAO : IOperatorDAO
     {
+        private static readonly Logger _log = new Logger("OperatorDAO");
+
         private Configuration config;
         private Connection connection;
 
@@ -23,8 +25,8 @@ namespace SuperShopDatabase.Dao.Impl
 
         public Operator AddOperator (Operator oper)
         {
-            string query = String.Format("insert into operator (name, surname, email, password, phone) " +
-                "values (@name, @surname, @email, @password, @phone); select LAST_INSERT_ID();");
+            string query = "insert into operator (name, surname, email, password, phone) " +
+                "values (@name, @surname, @email, @password, @phone); select LAST_INSERT_ID();";
 
             try
             {
@@ -51,7 +53,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -82,7 +84,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -113,7 +115,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -143,7 +145,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -176,15 +178,15 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
 
         public Operator UpdateOperator (Operator oper)
         {
-            string query = String.Format("update operator set name = @name, surname = @surname, email = @email, " +
-                "password = @password, phone = @phone");
+            string query = "update operator set name = @name, surname = @surname, email = @email, " +
+                "password = @password, phone = @phone where id = @id";
 
             try
             {
@@ -198,6 +200,7 @@ namespace SuperShopDatabase.Dao.Impl
                         cmd.Parameters.AddWithValue("@email", oper.Email);
                         cmd.Parameters.AddWithValue("@password", oper.Password);
                         cmd.Parameters.AddWithValue("@phone", oper.Phone);
+                        cmd.Parameters.AddWithValue("@id", oper.Id);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -205,7 +208,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
