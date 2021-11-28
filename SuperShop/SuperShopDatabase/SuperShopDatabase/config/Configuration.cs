@@ -66,18 +66,25 @@ namespace SuperShopDatabase.Config
                 file.Close();
             }
 
-            var xml = XmlWriter.Create(connectionConfigFilePath);
-            xml.WriteStartDocument();
-            xml.WriteStartElement("details");
-            xml.WriteElementString("host", connection.Host);
-            xml.WriteElementString("port", connection.Port);
-            xml.WriteElementString("username", connection.Encrypt(connection.Username));
-            xml.WriteElementString("password", connection.Encrypt(connection.Password));
-            xml.WriteElementString("database", connection.Database);
-            xml.WriteElementString("crypt_power", connection.CryptPower.ToString());
-            xml.WriteEndElement();
-            xml.WriteEndDocument();
-            xml.Close();
+            try
+            {
+                var setting = new XmlWriterSettings { Indent = true };
+                var xml = XmlWriter.Create(connectionConfigFilePath, setting);
+                xml.WriteStartDocument();
+                xml.WriteStartElement("details");
+                xml.WriteElementString("host", connection.Host);
+                xml.WriteElementString("port", connection.Port);
+                xml.WriteElementString("username", connection.Encrypt(connection.Username));
+                xml.WriteElementString("password", connection.Encrypt(connection.Password));
+                xml.WriteElementString("database", connection.Database);
+                xml.WriteElementString("crypt_power", connection.CryptPower.ToString());
+                xml.WriteEndElement();
+                xml.WriteEndDocument();
+                xml.Close();
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void FillConnectionWithXml (Connection connection, XmlReader xml)

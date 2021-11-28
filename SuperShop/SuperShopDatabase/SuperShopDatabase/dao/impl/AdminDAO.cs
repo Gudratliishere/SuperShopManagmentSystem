@@ -26,7 +26,7 @@ namespace SuperShopDatabase.Dao.Impl
         {
             int status = (admin.Status) ? 1 : 0;
             string query = String.Format("INSERT INTO admin (name, surname, email, password, phone, status) " +
-                "VALUES ('@name', '@surname', '@email', '@password', '@phone', @status); select LAST_INSERT_ID();");
+                "VALUES (@name, @surname, @email, @password, @phone, @status); select LAST_INSERT_ID();");
 
             try
             {
@@ -192,8 +192,8 @@ namespace SuperShopDatabase.Dao.Impl
         public Admin UpdateAdmin (Admin admin)
         {
             int status = (admin.Status) ? 1 : 0;
-            string query = String.Format("update admin set name = '@name', surname = '@surname', email = '@email', " +
-                "password = '@password', phone = '@phone', status = @status where id = @id");
+            string query = String.Format("update admin set name = @name, surname = @surname, email = @email, " +
+                "password = @password, phone = @phone, status = @status where id = @id");
 
             try
             {

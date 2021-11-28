@@ -109,5 +109,20 @@ namespace SuperShopDatabase.Config
 
             return cashierDAO;
         }
+
+        public static void Clear ()
+        {
+            adminDAO = null;
+            barcodeDAO = null;
+            operatorDAO = null;
+            productCompanyDAO = null;
+            productKindDAO = null;
+            productNumberDAO = null;
+            productScalesDAO = null;
+            productWeightDAO = null;
+            sectorDAO = null;
+            workerDAO = null;
+            cashierDAO = null;
+        }
     }
 }

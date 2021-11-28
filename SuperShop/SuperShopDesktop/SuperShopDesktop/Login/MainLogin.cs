@@ -160,6 +160,7 @@ namespace SuperShopDesktop
         {
             Settings settings = new Settings();
             settings.ShowDialog();
+            gbtn_admin.PerformClick();
         }
     }
 }

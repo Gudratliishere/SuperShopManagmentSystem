@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SuperShopDatabase.Config;
 using SuperShopDesktop.DesktopConfiguration;
+using SuperShopDesktop.Login;
 
 namespace SuperShopDesktop
 {
@@ -27,7 +28,8 @@ namespace SuperShopDesktop
         private void gbtn_save_Click (object sender, EventArgs e)
         {
             gpbar_save.Visible = true;
-            backgroundWorker.RunWorkerAsync();
+            if (!backgroundWorker.IsBusy)
+                backgroundWorker.RunWorkerAsync();
         }
 
         private void gbtn_close_Click (object sender, EventArgs e)
@@ -65,6 +67,8 @@ namespace SuperShopDesktop
 
             config.CreateDatabase();
             Invoke((MethodInvoker)(() => Close()));
+            LoginPanelManager.Clear();
+            Context.Clear();
         }
 
         private void backgroundWorker_ProgressChanged (object sender, ProgressChangedEventArgs e)

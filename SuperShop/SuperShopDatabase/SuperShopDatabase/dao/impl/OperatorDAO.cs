@@ -24,7 +24,7 @@ namespace SuperShopDatabase.Dao.Impl
         public Operator AddOperator (Operator oper)
         {
             string query = String.Format("insert into operator (name, surname, email, password, phone) " +
-                "values ('@name', '@surname', '@email', '@password', '@phone'); select LAST_INSERT_ID();");
+                "values (@name, @surname, @email, @password, @phone); select LAST_INSERT_ID();");
 
             try
             {
@@ -183,8 +183,8 @@ namespace SuperShopDatabase.Dao.Impl
 
         public Operator UpdateOperator (Operator oper)
         {
-            string query = String.Format("update operator set name = '@name', surname = '@surname', email = '@email', " +
-                "password = '@password', phone = '@phone'");
+            string query = String.Format("update operator set name = @name, surname = @surname, email = @email, " +
+                "password = @password, phone = @phone");
 
             try
             {
