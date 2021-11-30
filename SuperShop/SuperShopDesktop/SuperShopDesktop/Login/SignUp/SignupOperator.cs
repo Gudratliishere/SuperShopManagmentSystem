@@ -103,66 +103,71 @@ namespace SuperShopDesktop.Login.SignUp
             {
                 glbl_errorMessage.Visible = false;
 
-                if (operatorDAO.GetOperatorByPhone(phone) != null)
-                {
-                    GiveMessage(LanguageConfig.RM.GetString("Login_SignupOper_operExistPhone"), false);
-                    gtb_email.BorderColor = Color.Red;
-                }
+                if (adminDAO.GetActiveAdmin() == null)
+                    GiveMessage(LanguageConfig.RM.GetString("Login_Operator_AdminNotExist"), false);
                 else
                 {
-                    if (!email.Contains("@"))
+                    if (operatorDAO.GetOperatorByPhone(phone) != null)
                     {
-                        GiveMessage(LanguageConfig.RM.GetString("Login_Signup_validEmail"), false);
+                        GiveMessage(LanguageConfig.RM.GetString("Login_SignupOper_operExistPhone"), false);
                         gtb_email.BorderColor = Color.Red;
                     }
                     else
                     {
-                        gtb_email.BorderColor = Color.Silver;
-                        glbl_errorMessage.Visible = false;
-
-                        if (!password.Equals(confirmPassword))
+                        if (!email.Contains("@"))
                         {
-                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_passwordNotMatch"), false);
-                            gtb_password.BorderColor = Color.Red;
-                            gtb_confirmPassword.BorderColor = Color.Red;
+                            GiveMessage(LanguageConfig.RM.GetString("Login_Signup_validEmail"), false);
+                            gtb_email.BorderColor = Color.Red;
                         }
                         else
                         {
-                            gtb_password.BorderColor = Color.Silver;
-                            gtb_confirmPassword.BorderColor = Color.Silver;
+                            gtb_email.BorderColor = Color.Silver;
+                            glbl_errorMessage.Visible = false;
 
-                            EmailConfirmation confirmation = new EmailConfirmation();
-                            confirmation.Email = email;
-                            confirmation.ShowDialog();
-                            confirmation.Close();
-                            if (EmailConfirmation.Result)
+                            if (!password.Equals(confirmPassword))
                             {
-                                EmailConfirmation.Result = false;
-                                EmailConfirmation adminConfirmation = new EmailConfirmation();
-                                adminConfirmation.Email = adminDAO.GetActiveAdmin().Email;
-                                adminConfirmation.AdminConfirmation = true;
-                                adminConfirmation.ShowDialog();
-                                adminConfirmation.Close();
+                                GiveMessage(LanguageConfig.RM.GetString("Login_Signup_passwordNotMatch"), false);
+                                gtb_password.BorderColor = Color.Red;
+                                gtb_confirmPassword.BorderColor = Color.Red;
+                            }
+                            else
+                            {
+                                gtb_password.BorderColor = Color.Silver;
+                                gtb_confirmPassword.BorderColor = Color.Silver;
+
+                                EmailConfirmation confirmation = new EmailConfirmation();
+                                confirmation.Email = email;
+                                confirmation.ShowDialog();
+                                confirmation.Close();
                                 if (EmailConfirmation.Result)
                                 {
-                                    glbl_errorMessage.Visible = false;
+                                    EmailConfirmation.Result = false;
+                                    EmailConfirmation adminConfirmation = new EmailConfirmation();
+                                    adminConfirmation.Email = adminDAO.GetActiveAdmin().Email;
+                                    adminConfirmation.AdminConfirmation = true;
+                                    adminConfirmation.ShowDialog();
+                                    adminConfirmation.Close();
+                                    if (EmailConfirmation.Result)
+                                    {
+                                        glbl_errorMessage.Visible = false;
 
-                                    Operator oper = new Operator();
-                                    oper.Name = name;
-                                    oper.Surname = surname;
-                                    oper.Email = email;
-                                    oper.Phone = phone;
-                                    oper.Password = Cryption.Encrypt(password);
+                                        Operator oper = new Operator();
+                                        oper.Name = name;
+                                        oper.Surname = surname;
+                                        oper.Email = email;
+                                        oper.Phone = phone;
+                                        oper.Password = Cryption.Encrypt(password);
 
-                                    operatorDAO.AddOperator(oper);
+                                        operatorDAO.AddOperator(oper);
 
-                                    GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                                        GiveMessage(LanguageConfig.RM.GetString("Login_Signup_success"), true);
+                                    }
+                                    else
+                                        GiveMessage(LanguageConfig.RM.GetString("Login_EmailConfirmation_wrongCode"), false);
                                 }
                                 else
                                     GiveMessage(LanguageConfig.RM.GetString("Login_EmailConfirmation_wrongCode"), false);
                             }
-                            else
-                                GiveMessage(LanguageConfig.RM.GetString("Login_EmailConfirmation_wrongCode"), false);
                         }
                     }
                 }

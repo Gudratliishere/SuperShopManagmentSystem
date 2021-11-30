@@ -133,6 +133,15 @@ namespace SuperShopDesktop.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hal-hazırda heç bir admin yoxdur. Zəhmət olmasa adminlə əlaqə saxlayın!.
+        /// </summary>
+        internal static string Login_Operator_AdminNotExist {
+            get {
+                return ResourceManager.GetString("Login_Operator_AdminNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yadda saxla.
         /// </summary>
         internal static string Login_Settings_gbtn_save {

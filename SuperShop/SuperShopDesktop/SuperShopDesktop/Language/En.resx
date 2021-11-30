@@ -513,4 +513,7 @@
   <data name="Login_EmailConfirmation_lbl_infoAdmin" xml:space="preserve">
     <value>Please write code which was sent to Admin's email</value>
   </data>
+  <data name="Login_Operator_AdminNotExist" xml:space="preserve">
+    <value>There is not any admin, please contact with your admin.</value>
+  </data>
 </root>

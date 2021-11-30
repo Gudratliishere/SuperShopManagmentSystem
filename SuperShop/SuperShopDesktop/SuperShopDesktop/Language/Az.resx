@@ -501,4 +501,7 @@
   <data name="Login_EmailConfirmation_lbl_infoAdmin" xml:space="preserve">
     <value>Zəhmət olmasa Adminin emailinə göndərilmiş kodu aşağıya daxil edin!</value>
   </data>
+  <data name="Login_Operator_AdminNotExist" xml:space="preserve">
+    <value>Hal-hazırda heç bir admin yoxdur. Zəhmət olmasa adminlə əlaqə saxlayın!</value>
+  </data>
 </root>

@@ -133,6 +133,15 @@ namespace SuperShopDesktop.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is not any admin, please contact with your admin..
+        /// </summary>
+        internal static string Login_Operator_AdminNotExist {
+            get {
+                return ResourceManager.GetString("Login_Operator_AdminNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Login_Settings_gbtn_save {
