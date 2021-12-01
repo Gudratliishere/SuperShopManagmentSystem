@@ -26,7 +26,7 @@ namespace SuperShopDatabase.Config
                     var file = File.Create(_filePath);
                     file.Close();
                 }
-                File.AppendAllText(_filePath, ">>>" + DateTime.Now + "  " + className + "\n" + data + "\n\n");
+                File.AppendAllText(_filePath, ">>>" + DateTime.Now + "  " + className + "\r\n" + data + "\r\n\r\n");
             } catch (Exception ex)
             {
                 Console.WriteLine(ex.Message + "\n" + ex.StackTrace);

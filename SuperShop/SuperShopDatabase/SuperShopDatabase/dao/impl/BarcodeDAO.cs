@@ -63,7 +63,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -95,7 +95,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -125,7 +125,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -155,7 +155,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -185,8 +185,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -234,7 +233,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -264,7 +263,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }

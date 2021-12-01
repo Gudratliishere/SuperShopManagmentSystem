@@ -53,7 +53,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                _log.Log(ex.Message + "\n" + ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -84,7 +84,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                _log.Log(ex.Message + "\n" + ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -115,7 +115,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                _log.Log(ex.Message + "\n" + ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -145,7 +145,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                _log.Log(ex.Message + "\n" + ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -178,7 +178,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                _log.Log(ex.Message + "\n" + ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -208,7 +208,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return oper;
             } catch (Exception ex)
             {
-                _log.Log(ex.Message + "\n" + ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }

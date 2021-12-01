@@ -12,6 +12,8 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class CashierDAO : ICashierDAO
     {
+        private static readonly Logger _log = new Logger("CashierDAO");
+
         private Configuration config;
         private Connection connection;
         private IWorkerDAO workerDAO;
@@ -49,7 +51,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -82,7 +84,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -114,7 +116,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -146,7 +148,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -180,7 +182,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -205,7 +207,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }

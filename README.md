@@ -1,8 +1,8 @@
 # SuperShopManagmentSystem
 
-You can download this app from [here](https://disk.yandex.com.tr/d/LraOvQ2ZIy60jw):  
+You can download this app from [here](https://disk.yandex.com.tr/d/BEiqnx1eqP4VtQ):  
 
-https://disk.yandex.com.tr/d/LraOvQ2ZIy60jw
+https://disk.yandex.com.tr/d/BEiqnx1eqP4VtQ
 
 
 

@@ -12,6 +12,8 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class WorkSectorDAO : IWorkSectorDAO
     {
+        private static readonly Logger _log = new Logger("WorkSectorDAO");
+
         private Configuration config;
         private Connection connection;
 
@@ -45,7 +47,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -78,7 +80,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -110,7 +112,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -142,7 +144,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -171,7 +173,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -194,7 +196,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }

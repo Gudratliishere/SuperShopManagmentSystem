@@ -16,6 +16,8 @@ namespace SuperShopDesktop.Main.Menu.Product
 {
     public partial class ProductCompanyEdit : UserControl
     {
+        private static readonly Logger _log = new Logger("ProductCompanyEdit");
+
         private IProductCompanyDAO productCompanyDAO;
 
         public ProductCompanyEdit ()
@@ -39,7 +41,7 @@ namespace SuperShopDesktop.Main.Menu.Product
                     gdtp_lastComeDate.Value = ProductCompany.LastComeDate;
                 } catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 }
                 try
                 {
@@ -47,7 +49,7 @@ namespace SuperShopDesktop.Main.Menu.Product
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 }
                 try
                 {
@@ -55,7 +57,7 @@ namespace SuperShopDesktop.Main.Menu.Product
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 }
             }
 

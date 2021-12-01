@@ -12,6 +12,8 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class ProductScalesDAO : IProductScalesDAO
     {
+        private static readonly Logger _log = new Logger("ProductScalesDAO");
+
         private Configuration config;
         private Connection connection;
         private IProductWeightDAO productWeightDAO;
@@ -50,7 +52,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -82,7 +84,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -112,7 +114,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -145,7 +147,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -170,7 +172,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }

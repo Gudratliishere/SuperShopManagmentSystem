@@ -17,6 +17,8 @@ namespace SuperShopDesktop.Main.Menu.Product
 {
     public partial class Products : UserControl
     {
+        private static readonly Logger _log = new Logger("Products");
+
         private IProductCompanyDAO productCompanyDAO;
         private IProductKindDAO productKindDAO;
         private IProductNumberDAO productNumberDAO;
@@ -241,7 +243,7 @@ namespace SuperShopDesktop.Main.Menu.Product
                     productWeightDAO.RemoveProductWeight(productWeightDAO.GetProductWeightById(id));
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -377,9 +379,9 @@ namespace SuperShopDesktop.Main.Menu.Product
                     FillDataSourceForScaledProducts(list);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 

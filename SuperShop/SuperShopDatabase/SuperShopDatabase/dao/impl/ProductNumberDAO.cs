@@ -9,6 +9,8 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class ProductNumberDAO : IProductNumberDAO
     {
+        private static readonly Logger _log = new Logger("ProductNumberDAO");
+
         private Configuration config;
         private Connection connection;
         private IProductCompanyDAO productCompanyDAO;
@@ -51,8 +53,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -84,7 +85,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -116,7 +117,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -148,7 +149,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -180,7 +181,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -211,7 +212,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -250,7 +251,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -278,7 +279,7 @@ namespace SuperShopDatabase.Dao.Impl
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }

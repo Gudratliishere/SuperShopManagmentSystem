@@ -9,6 +9,7 @@ namespace SuperShopDatabase.Config
 {
     class DatabaseCreater
     {
+        private static readonly Logger _log = new Logger("DatabaseCreater");
 
         public static Connection Connection { get; set; }
 
@@ -30,7 +31,8 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
+                return;
             }
 
             CreateAdminTable();
@@ -73,7 +75,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -103,7 +105,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -129,7 +131,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\n" + ex.StackTrace);
             }
         }
 
@@ -169,7 +171,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -200,7 +202,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -231,7 +233,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -257,7 +259,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -293,7 +295,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -329,7 +331,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -359,7 +361,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 
@@ -390,7 +392,7 @@ namespace SuperShopDatabase.Config
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
     }

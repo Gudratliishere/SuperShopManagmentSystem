@@ -11,6 +11,7 @@ namespace SuperShopDatabase.Config
 {
     public class Configuration
     {
+        private static readonly Logger _log = new Logger("CashierDAO");
 
         private readonly string connectionConfigFilePath = "database_connection.xml";
         private Connection connection = null;
@@ -83,7 +84,7 @@ namespace SuperShopDatabase.Config
                 xml.Close();
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 

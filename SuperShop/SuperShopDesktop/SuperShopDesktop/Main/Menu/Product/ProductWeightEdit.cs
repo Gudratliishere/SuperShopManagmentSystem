@@ -16,6 +16,8 @@ namespace SuperShopDesktop.Main.Menu.Product
 {
     public partial class ProductWeightEdit : UserControl
     {
+        private static readonly Logger _log = new Logger("ProductWeightEdit");
+
         private ProductWeight product;
         private IProductCompanyDAO productCompanyDAO;
         private IProductKindDAO productKindDAO;
@@ -54,7 +56,7 @@ namespace SuperShopDesktop.Main.Menu.Product
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 }
                 gcb_productCompany.SelectedItem = product.Company.Name;
                 gcb_productKind.SelectedItem = product.Kind.Name;

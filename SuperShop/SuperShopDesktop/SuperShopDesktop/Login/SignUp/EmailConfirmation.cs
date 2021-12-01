@@ -1,4 +1,5 @@
-﻿using SuperShopDesktop.DesktopConfiguration;
+﻿using SuperShopDatabase.Config;
+using SuperShopDesktop.DesktopConfiguration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,8 @@ namespace SuperShopDesktop.Login.SignUp
 {
     public partial class EmailConfirmation : Form
     {
+        private static readonly Logger _log = new Logger("EmailConfirmation");
+
         private readonly string username = "gudratlicompany@gmail.com";
         private readonly string password = "ziqqeshzomumybpl";
 
@@ -68,8 +71,7 @@ namespace SuperShopDesktop.Login.SignUp
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine(ex.StackTrace);
+                    _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 }
             };
         }

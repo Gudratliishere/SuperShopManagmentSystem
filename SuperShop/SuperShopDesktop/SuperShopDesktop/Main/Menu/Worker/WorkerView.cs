@@ -10,11 +10,14 @@ using System.Windows.Forms;
 using SuperShopDatabase.Entity;
 using SuperShopDesktop.Properties;
 using SuperShopDesktop.DesktopConfiguration;
+using SuperShopDatabase.Config;
 
 namespace SuperShopDesktop.Main.Menu.Worker
 {
     public partial class WorkerView : UserControl
     {
+        private static readonly Logger _log = new Logger("EmailConfirmation");
+
         public SuperShopDatabase.Entity.Worker Worker { get; set; }
 
         public WorkerView ()
@@ -31,7 +34,7 @@ namespace SuperShopDesktop.Main.Menu.Worker
                 gpb_profilePhoto.Image = Image.FromFile(Worker.ImagePath);
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
 
             gpb_profilePhoto.SizeMode = PictureBoxSizeMode.StretchImage;

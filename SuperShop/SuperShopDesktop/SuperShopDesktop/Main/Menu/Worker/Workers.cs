@@ -16,6 +16,8 @@ namespace SuperShopDesktop.Main.Menu.Worker
 {
     public partial class Workers : UserControl
     {
+        private static readonly Logger _log = new Logger("Workers");
+
         private IWorkerDAO workerDAO;
         private IWorkSectorDAO workSectorDAO;
 
@@ -37,7 +39,7 @@ namespace SuperShopDesktop.Main.Menu.Worker
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
             LoadControlTexts();
         }
@@ -202,7 +204,7 @@ namespace SuperShopDesktop.Main.Menu.Worker
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
             }
         }
 

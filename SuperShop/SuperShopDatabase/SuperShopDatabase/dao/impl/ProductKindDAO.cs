@@ -12,6 +12,8 @@ namespace SuperShopDatabase.Dao.Impl
 {
     public class ProductKindDAO : IProductKindDAO
     {
+        private static readonly Logger _log = new Logger("ProductKindDAO");
+
         private Configuration config;
         private Connection connection;
 
@@ -43,7 +45,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return kind;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -75,7 +77,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return kinds;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -106,7 +108,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return kind;
             }catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -137,7 +139,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return kind;
             }catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -165,7 +167,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return kind;
             } catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
@@ -187,7 +189,7 @@ namespace SuperShopDatabase.Dao.Impl
                 return kind;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _log.Log(ex.Message + "\r\n" + ex.StackTrace);
                 return null;
             }
         }
